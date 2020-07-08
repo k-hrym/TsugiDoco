@@ -80,3 +80,5 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'slim-rails'
 
+gem 'bootstrap', '~> 4.5.0'
+
