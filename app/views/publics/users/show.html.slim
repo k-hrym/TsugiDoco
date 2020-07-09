@@ -1,0 +1,20 @@
+
+.row
+  .col-2
+
+    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg"
+
+  .col
+    h3= @user.name
+
+    p フォロー フォロワー
+
+    = link_to 'フォローする','#',class:"btn btn-sm btn-outline-secondary"
+
+.row
+  table.table
+    tbody
+      tr
+        th プロフィール
+        td= @user.profile
+

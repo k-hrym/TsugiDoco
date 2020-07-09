@@ -12,7 +12,7 @@ User.create!(
   password: 'password',
   profile: 'デフォルトで作成されている1人目のユーザーです。',
   birth: '1995/01/01',
-  profile_image_id: File.open('./app/assets/images/first-user.jpg'),
+  profile_image: File.open('./app/assets/images/first-user.jpg',?r),
   sex: '1', # 1:男　2:女　3:その他
   is_valid: true, # true:有効 false:退会済
 )
