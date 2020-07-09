@@ -4518,3 +4518,1009 @@ FOREIGN KEY ("genre_id")
   ↳ bin/rails:9
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "first@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "profile", "birth", "profile_image_id", "sex", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "first@gmail.com"], ["encrypted_password", "$2a$12$kMwNGP1.fqirIw6f/bnlkOxZm0shFhrFGY2mcOq.WWOmBzZj1jntS"], ["name", "first-user"], ["profile", "デフォルトで作成されている1人目のユーザーです。"], ["birth", "1995-01-01"], ["profile_image_id", "68d608434ca88749b9778be9eaa940156612920648d2bc11b1a6d809f74d"], ["sex", 1], ["created_at", "2020-07-09 13:55:23.912230"], ["updated_at", "2020-07-09 13:55:23.912230"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20200708084356)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "name" varchar NOT NULL, "profile" text, "birth" date, "profile_image_id" varchar, "sex" integer, "is_valid" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:5
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:46
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:47
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084356"]]
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateAdmins (20200708084438)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:5
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084438"]]
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "genres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200709131511_create_genres.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709131511"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePlaces (20200709132032)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "places" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "genre_id" integer, "name" varchar, "explanation" text, "postcode" integer, "address" varchar, "access" varchar, "tel" varchar, "url" varchar, "hours" varchar, "price" varchar, "holiday" varchar, "is_closed" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_fecf3ea7aa"
+FOREIGN KEY ("genre_id")
+  REFERENCES "genres" ("id")
+)[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_places_on_genre_id" ON "places" ("genre_id")[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709132032"]]
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (3.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-09 13:55:47.758954"], ["updated_at", "2020-07-09 13:55:47.758954"]]
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "first@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (3.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "profile", "birth", "profile_image_id", "sex", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "first@gmail.com"], ["encrypted_password", "$2a$12$Xtjkfo9/pZeR8sI2Iwn2hu1d4UdWFLuroRk3Xcv9BtrCmWja4YoM2"], ["name", "first-user"], ["profile", "デフォルトで作成されている1人目のユーザーです。"], ["birth", "1995-01-01"], ["profile_image_id", "f064bbce983b356060e56cd4b6f7912ca223b20f335c6423cd58a114cc77"], ["sex", 1], ["created_at", "2020-07-09 13:55:52.775610"], ["updated_at", "2020-07-09 13:55:52.775610"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Create (4.5ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@gmail.com"], ["encrypted_password", "$2a$12$QJOiIdw57QLqRxoIMzhO2OPe5jSRGcMldn1G./otf5p.aMw9pZIIC"], ["created_at", "2020-07-09 13:55:53.043276"], ["updated_at", "2020-07-09 13:55:53.043276"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.7ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "居酒屋"], ["created_at", "2020-07-09 13:55:53.068516"], ["updated_at", "2020-07-09 13:55:53.068516"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "カフェ"], ["created_at", "2020-07-09 13:55:53.082259"], ["updated_at", "2020-07-09 13:55:53.082259"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公園"], ["created_at", "2020-07-09 13:55:53.095405"], ["updated_at", "2020-07-09 13:55:53.095405"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "レストラン"], ["created_at", "2020-07-09 13:55:53.108482"], ["updated_at", "2020-07-09 13:55:53.108482"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.1ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公共施設"], ["created_at", "2020-07-09 13:55:53.120195"], ["updated_at", "2020-07-09 13:55:53.120195"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.7ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "遊ぶ"], ["created_at", "2020-07-09 13:55:53.132983"], ["updated_at", "2020-07-09 13:55:53.132983"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "体験"], ["created_at", "2020-07-09 13:55:53.145747"], ["updated_at", "2020-07-09 13:55:53.145747"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Load (2.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/rails/info/routes" for 10.0.2.2 at 2020-07-09 22:59:05 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::InfoController#routes as HTML
+  Rendering /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application
+  Rendered collection of /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_route.html.erb [47 times] (25.1ms)
+  Rendered /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/actionpack-5.2.4.3/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.6ms)
+  Rendered /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/railties-5.2.4.3/lib/rails/templates/rails/info/routes.html.erb within layouts/application (43.1ms)
+Completed 200 OK in 70ms (Views: 54.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 10.0.2.2 at 2020-07-09 23:07:53 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#top as HTML
+  Rendering home/top.html.slim within layouts/home
+  Rendered home/top.html.slim within layouts/home (8.8ms)
+Completed 200 OK in 3050ms (Views: 3036.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new(" for 10.0.2.2 at 2020-07-09 23:08:10 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  
+ActionController::RoutingError (No route matches [GET] "/admins/genres/new("):
+  
+actionpack (5.2.4.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:08:14 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (338.3ms)
+Completed 500 Internal Server Error in 413ms (ActiveRecord: 10.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `genres_path' for #<#<Class:0x00007f423812d960>:0x00007f42291ebde8>):
+    2: 
+    3: .row
+    4:   h3 ジャンル登録
+    5:   = form_for @genre do |f|
+    6:     = f.label :name,'ジャンル名'
+    7:     = f.text_field :named
+  
+app/views/admins/genres/new.html.slim:5:in `_app_views_admins_genres_new_html_slim___1384155290443168012_69961192665340'
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:08:51 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (46.8ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `named' for #<Genre id: nil, name: nil, created_at: nil, updated_at: nil>
+Did you mean?  name
+               name=
+               name?):
+    4:   h3 ジャンル登録
+    5:   = form_for @genre,url: admins_genres_path do |f|
+    6:     = f.label :name,'ジャンル名'
+    7:     = f.text_field :named
+  
+app/views/admins/genres/new.html.slim:7:in `block in _app_views_admins_genres_new_html_slim___1384155290443168012_69961196623880'
+app/views/admins/genres/new.html.slim:5:in `_app_views_admins_genres_new_html_slim___1384155290443168012_69961196623880'
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:08:57 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (13.9ms)
+Completed 200 OK in 224ms (Views: 206.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:09:36 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (980.7ms)
+Completed 500 Internal Server Error in 1010ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x00007f423812d960>:0x00007f42240f2888>):
+    3: .row
+    4:   h3 ジャンル登録
+    5:   = form_for @genre,url: admins_genres_path do |f|
+    6:   = f.label :name,'ジャンル名'
+    7:   = f.text_field :name
+  
+app/views/admins/genres/new.html.slim:6:in `_app_views_admins_genres_new_html_slim___1384155290443168012_69961024772380'
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:09:41 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (6.9ms)
+Completed 200 OK in 200ms (Views: 186.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:10:01 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (6.5ms)
+Completed 200 OK in 198ms (Views: 188.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:10:11 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (8.0ms)
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Malformed indentation
+  /home/vagrant/work/TsugiDoco/app/views/admins/genres/new.html.slim, Line 5, Column 2
+    = form_for @genre,url: admins_genres_path do |f|
+    ^
+):
+    2: 
+    3: .row
+    4:     h3 ジャンル登録
+    5:   = form_for @genre,url: admins_genres_path do |f|
+    6:     = f.label :name,'ジャンル名'
+    7:     = f.text_field :name
+    8: 
+  
+app/views/admins/genres/new.html.slim:5
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:10:14 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (7.6ms)
+Completed 200 OK in 128ms (Views: 122.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:10:29 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (9.1ms)
+Completed 200 OK in 174ms (Views: 167.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:11:03 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (10.2ms)
+Completed 200 OK in 171ms (Views: 163.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:11:35 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (6.6ms)
+Completed 200 OK in 181ms (Views: 169.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:12:08 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (8.9ms)
+Completed 200 OK in 158ms (Views: 144.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:14:54 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (4.1ms)
+Completed 200 OK in 130ms (Views: 117.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:15:06 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5Sv0PQsZOvMaIVlQWd54XTxM/XFi2bmuUSZEue4siiAvigsBITzND1ZGnEquVi9G/TgUYE33S0AsRY5SNevwwQ==", "genre"=>{"name"=>"学校"}, "commit"=>"登録"}
+No template found for Admins::GenresController#create, rendering head :no_content
+Completed 204 No Content in 356ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres/new" for 10.0.2.2 at 2020-07-09 23:15:40 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#new as HTML
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (6.3ms)
+Completed 200 OK in 178ms (Views: 166.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mGenre Load (0.6ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:16:24 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aDxndeuinKUTHq0mZOYxu816DWTMp7+vJItoV6WZT52inZhJwYdrWV95aDyTbmagDA7kdeOJTUFZ6KK8fl41fA==", "genre"=>{"name"=>"学校"}, "commit"=>"登録"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:8
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (27.5ms)
+Completed 200 OK in 824ms (Views: 771.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:17:26 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (14.1ms)
+Completed 200 OK in 880ms (Views: 866.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:17:47 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aDxndeuinKUTHq0mZOYxu816DWTMp7+vJItoV6WZT52inZhJwYdrWV95aDyTbmagDA7kdeOJTUFZ6KK8fl41fA==", "genre"=>{"name"=>"寺社仏閣"}, "commit"=>"登録"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (24.1ms)
+Completed 200 OK in 39402ms (Views: 126.4ms | ActiveRecord: 9.4ms)
+
+
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:18:51 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (11.3ms)
+Completed 200 OK in 919ms (Views: 902.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:18:56 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aDxndeuinKUTHq0mZOYxu816DWTMp7+vJItoV6WZT52inZhJwYdrWV95aDyTbmagDA7kdeOJTUFZ6KK8fl41fA==", "genre"=>{"name"=>"寺社仏閣"}, "commit"=>"登録"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ (byebug):1
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+  Rendering admins/genres/new.html.slim within layouts/application
+  Rendered admins/genres/new.html.slim within layouts/application (32.1ms)
+Completed 200 OK in 65381ms (Views: 141.0ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:20:11 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aDxndeuinKUTHq0mZOYxu816DWTMp7+vJItoV6WZT52inZhJwYdrWV95aDyTbmagDA7kdeOJTUFZ6KK8fl41fA==", "genre"=>{"name"=>"寺社仏閣"}, "commit"=>"登録"}
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+  [1m[36mGenre Create (7.6ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "寺社仏閣"], ["created_at", "2020-07-09 14:20:24.340953"], ["updated_at", "2020-07-09 14:20:24.340953"]]
+  ↳ app/controllers/admins/genres_controller.rb:9
+  [1m[35m (11.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:9
+Redirected to http://localhost:3000/admins/genres
+Completed 302 Found in 22139ms (ActiveRecord: 39.9ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:20:34 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (16.5ms)
+Completed 200 OK in 686ms (Views: 678.0ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/admins/genres" for 10.0.2.2 at 2020-07-09 23:22:10 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aDxndeuinKUTHq0mZOYxu816DWTMp7+vJItoV6WZT52inZhJwYdrWV95aDyTbmagDA7kdeOJTUFZ6KK8fl41fA==", "genre"=>{"name"=>"学校"}, "commit"=>"登録"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:8
+  [1m[36mGenre Create (4.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "学校"], ["created_at", "2020-07-09 14:22:10.339321"], ["updated_at", "2020-07-09 14:22:10.339321"]]
+  ↳ app/controllers/admins/genres_controller.rb:8
+  [1m[35m (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/admins/genres_controller.rb:8
+Redirected to http://localhost:3000/admins/genres
+Completed 302 Found in 56ms (ActiveRecord: 11.2ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:22:10 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (13.0ms)
+Completed 200 OK in 729ms (Views: 721.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:25:45 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (41.7ms)
+Completed 500 Internal Server Error in 73ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:         th ID
+     8:         th ジャンル名
+     9:     tbody
+    10:       - @genres.each do |genre|
+    11:       tr
+    12:         td= genre.id
+    13:         td= genre.name
+  
+app/views/admins/genres/index.html.slim:10:in `_app_views_admins_genres_index_html_slim___2950389871216086167_70187483435800'
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:26:09 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  Rendered admins/genres/index.html.slim within layouts/application (29.4ms)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:         th ID
+     8:         th ジャンル名
+     9:     tbody
+    10:       - @genres.each do |genre|
+    11:       tr
+    12:         td= genre.id
+    13:         td= genre.name
+  
+app/views/admins/genres/index.html.slim:10:in `_app_views_admins_genres_index_html_slim__679807720793669464_69950859467800'
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:26:25 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (858.6ms)
+Completed 500 Internal Server Error in 905ms (ActiveRecord: 4.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `genre' for #<#<Class:0x00007f3b5844f3f0>:0x00000000065d7838>
+Did you mean?  @genres):
+     9:     tbody
+    10:       - @genres.each do |genre|
+    11:       tr
+    12:         td= genre.id
+    13:         td= genre.name
+  
+app/views/admins/genres/index.html.slim:12:in `_app_views_admins_genres_index_html_slim__1105723140487486511_53412200'
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:26:48 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (33.3ms)
+Completed 200 OK in 732ms (Views: 696.0ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:27:02 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (9.9ms)
+Completed 200 OK in 172ms (Views: 157.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:27:14 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.9ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (7.3ms)
+Completed 200 OK in 175ms (Views: 166.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:27:56 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (8.3ms)
+Completed 200 OK in 128ms (Views: 119.7ms | ActiveRecord: 1.2ms)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[35mDROP TABLE "genres"[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200709131511"]]
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20200709131511_create_genres.rb:3
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "genres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "is_valid" boolean DEFAULT 0 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200709131511_create_genres.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709131511"]]
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "first@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20200708084356)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "name" varchar NOT NULL, "profile" text, "birth" date, "profile_image_id" varchar, "sex" integer, "is_valid" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:46
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:47
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084356"]]
+  ↳ bin/rails:9
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateAdmins (20200708084438)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:39
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084438"]]
+  ↳ bin/rails:9
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "genres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "is_valid" boolean DEFAULT 0 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200709131511_create_genres.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709131511"]]
+  ↳ bin/rails:9
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePlaces (20200709132032)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "places" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "genre_id" integer, "name" varchar, "explanation" text, "postcode" integer, "address" varchar, "access" varchar, "tel" varchar, "url" varchar, "hours" varchar, "price" varchar, "holiday" varchar, "is_closed" boolean DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_fecf3ea7aa"
+FOREIGN KEY ("genre_id")
+  REFERENCES "genres" ("id")
+)[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX "index_places_on_genre_id" ON "places" ("genre_id")[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709132032"]]
+  ↳ bin/rails:9
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (4.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-09 14:32:42.173697"], ["updated_at", "2020-07-09 14:32:42.173697"]]
+  ↳ bin/rails:9
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "first@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "profile", "birth", "profile_image_id", "sex", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "first@gmail.com"], ["encrypted_password", "$2a$12$JV5nnEj3Bg/o7hFElOsGdewq2Mn8qmgiSULCkWu6LOPZfJIB36ed."], ["name", "first-user"], ["profile", "デフォルトで作成されている1人目のユーザーです。"], ["birth", "1995-01-01"], ["profile_image_id", "2f3a0bd45e29dc722cbbb89ea0239c951b11333bbb9b325529530a30a65a"], ["sex", 1], ["created_at", "2020-07-09 14:32:47.311088"], ["updated_at", "2020-07-09 14:32:47.311088"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Create (3.3ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@gmail.com"], ["encrypted_password", "$2a$12$sXQvmOAWQulQhjAuM7qJx.RwE9XyR/LtzC.Uw.TTTncsbc90zmz1i"], ["created_at", "2020-07-09 14:32:47.566378"], ["updated_at", "2020-07-09 14:32:47.566378"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (4.3ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "居酒屋"], ["created_at", "2020-07-09 14:32:47.596398"], ["updated_at", "2020-07-09 14:32:47.596398"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "カフェ"], ["created_at", "2020-07-09 14:32:47.608593"], ["updated_at", "2020-07-09 14:32:47.608593"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.2ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公園"], ["created_at", "2020-07-09 14:32:47.620723"], ["updated_at", "2020-07-09 14:32:47.620723"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "レストラン"], ["created_at", "2020-07-09 14:32:47.631613"], ["updated_at", "2020-07-09 14:32:47.631613"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.4ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公共施設"], ["created_at", "2020-07-09 14:32:47.643036"], ["updated_at", "2020-07-09 14:32:47.643036"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "遊ぶ"], ["created_at", "2020-07-09 14:32:47.653604"], ["updated_at", "2020-07-09 14:32:47.653604"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.5ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "体験"], ["created_at", "2020-07-09 14:32:47.663621"], ["updated_at", "2020-07-09 14:32:47.663621"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:33:04 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (38.4ms)
+Completed 200 OK in 930ms (Views: 889.3ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:35:51 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."is_valid" = ?[0m  [["is_valid", 0]]
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (35.5ms)
+Completed 200 OK in 2425ms (Views: 2399.2ms | ActiveRecord: 4.3ms)
+
+
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (3.4ms)[0m  [1m[35mDROP TABLE "genres"[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.8ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200709131511"]]
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/bin/rake:23
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePlaces (20200709132032)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[35mDROP TABLE "places"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200709132032"]]
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateUsers (20200708084356)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "name" varchar NOT NULL, "profile" text, "birth" date, "profile_image_id" varchar, "sex" integer, "is_valid" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:5
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:46
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084356_devise_create_users.rb:47
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084356"]]
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to DeviseCreateAdmins (20200708084438)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "admins" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:5
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:39
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")[0m
+  ↳ db/migrate/20200708084438_devise_create_admins.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200708084438"]]
+  ↳ bin/rails:9
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateGenres (20200709131511)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "genres" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "is_valid" boolean DEFAULT 1 NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20200709131511_create_genres.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709131511"]]
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreatePlaces (20200709132032)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "places" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "genre_id" integer, "name" varchar, "explanation" text, "postcode" integer, "address" varchar, "access" varchar, "tel" varchar, "url" varchar, "hours" varchar, "price" varchar, "holiday" varchar, "is_closed" boolean DEFAULT 1, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_fecf3ea7aa"
+FOREIGN KEY ("genre_id")
+  REFERENCES "genres" ("id")
+)[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_places_on_genre_id" ON "places" ("genre_id")[0m
+  ↳ db/migrate/20200709132032_create_places.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200709132032"]]
+  ↳ bin/rails:9
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-07-09 14:39:04.221317"], ["updated_at", "2020-07-09 14:39:04.221317"]]
+  ↳ bin/rails:9
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "first@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:9
+  [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "name", "profile", "birth", "profile_image_id", "sex", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "first@gmail.com"], ["encrypted_password", "$2a$12$khMKrng4ToCHKep6Lif5bewpHotzPCgKqT1pU0.fzLYXQ9hiEHoE6"], ["name", "first-user"], ["profile", "デフォルトで作成されている1人目のユーザーです。"], ["birth", "1995-01-01"], ["profile_image_id", "caa67df18e91973b9f7411d81065542d107a2d4f57425841b9a9fb6d46e1"], ["sex", 1], ["created_at", "2020-07-09 14:39:10.789594"], ["updated_at", "2020-07-09 14:39:10.789594"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "admins" WHERE "admins"."email" = ? LIMIT ?[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mAdmin Create (4.2ms)[0m  [1m[32mINSERT INTO "admins" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "admin@gmail.com"], ["encrypted_password", "$2a$12$LzG2L.OV6p5g96TRNSpa1OLjyzglmiqgwjuIqczktkGAVWH0yU7Wm"], ["created_at", "2020-07-09 14:39:11.042951"], ["updated_at", "2020-07-09 14:39:11.042951"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.7ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "居酒屋"], ["created_at", "2020-07-09 14:39:11.069274"], ["updated_at", "2020-07-09 14:39:11.069274"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.5ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "カフェ"], ["created_at", "2020-07-09 14:39:11.080369"], ["updated_at", "2020-07-09 14:39:11.080369"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (4.0ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公園"], ["created_at", "2020-07-09 14:39:11.089065"], ["updated_at", "2020-07-09 14:39:11.089065"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.8ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "レストラン"], ["created_at", "2020-07-09 14:39:11.103331"], ["updated_at", "2020-07-09 14:39:11.103331"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (2.9ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "公共施設"], ["created_at", "2020-07-09 14:39:11.115886"], ["updated_at", "2020-07-09 14:39:11.115886"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (5.0ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "遊ぶ"], ["created_at", "2020-07-09 14:39:11.124694"], ["updated_at", "2020-07-09 14:39:11.124694"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:25
+  [1m[36mGenre Create (3.2ms)[0m  [1m[32mINSERT INTO "genres" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "体験"], ["created_at", "2020-07-09 14:39:11.137532"], ["updated_at", "2020-07-09 14:39:11.137532"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:25
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:39:48 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (0.7ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."is_valid" = ?[0m  [["is_valid", 1]]
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (29.2ms)
+Completed 200 OK in 775ms (Views: 738.8ms | ActiveRecord: 3.6ms)
+
+
+  [1m[36mGenre Load (0.9ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mGenre Update (5.0ms)[0m  [1m[33mUPDATE "genres" SET "is_valid" = ?, "updated_at" = ? WHERE "genres"."id" = ?[0m  [["is_valid", 0], ["updated_at", "2020-07-09 14:40:18.681383"], ["id", 7]]
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mGenre Load (0.8ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" ORDER BY "genres"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/admins/genres" for 10.0.2.2 at 2020-07-09 23:40:50 +0900
+Cannot render console from 10.0.2.2! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/vagrant/.rbenv/versions/2.5.7/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.3/lib/active_record/log_subscriber.rb:98
+Processing by Admins::GenresController#index as HTML
+  Rendering admins/genres/index.html.slim within layouts/application
+  [1m[36mGenre Load (1.0ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."is_valid" = ?[0m  [["is_valid", 1]]
+  ↳ app/views/admins/genres/index.html.slim:10
+  Rendered admins/genres/index.html.slim within layouts/application (30.9ms)
+Completed 200 OK in 1122ms (Views: 1094.1ms | ActiveRecord: 5.5ms)
+
+

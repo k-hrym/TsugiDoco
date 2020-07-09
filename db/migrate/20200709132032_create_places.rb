@@ -12,7 +12,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.string :hours
       t.string :price
       t.string :holiday
-      t.boolean :is_closed,default: 0 #0が営業中,1が閉店
+      t.boolean :is_closed,default: true #trueが営業中,falseが閉店
 
       t.timestamps
     end

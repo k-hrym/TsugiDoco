@@ -1,0 +1,13 @@
+
+.row
+  h3 ジャンル一覧
+  table.table.table-bordered
+    thead.thead-dark
+      tr
+        th ID
+        th ジャンル名
+    tbody
+      - @genres.each do |genre|
+        tr
+          td= genre.id
+          td= genre.name

@@ -21,3 +21,29 @@ Admin.create!(
   email: 'admin@gmail.com',
   password: '111111'
 )
+
+Genre.create!(
+  [
+    {
+      name: '居酒屋'
+    },
+    {
+      name: 'カフェ'
+    },
+    {
+      name: '公園'
+    },
+    {
+      name: 'レストラン'
+    },
+    {
+      name: '公共施設'
+    },
+    {
+      name: '遊ぶ'
+    },
+    {
+      name: '体験'
+    }
+  ]
+)

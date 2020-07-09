@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_132032) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
+    t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_132032) do
     t.string "hours"
     t.string "price"
     t.string "holiday"
-    t.boolean "is_closed", default: false
+    t.boolean "is_closed", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_places_on_genre_id"

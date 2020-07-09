@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-
+    resources :genres,only: [:new,:create,:index]
   end
 
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   scope module: :publics do
     resources :users,only: [:show,:edit,:update]
+    resources :places,only: [:new,:create,:index]
   end
 
 

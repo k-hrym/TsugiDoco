@@ -1,0 +1,11 @@
+
+
+.row
+  h3 ジャンル登録
+
+.row
+  = form_for @genre,url: admins_genres_path do |f|
+    = f.label :name,'ジャンル名'
+    = f.text_field :name
+
+    = f.submit '登録'
