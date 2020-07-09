@@ -1,11 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
+  # 管理者側のルーティング
+  devise_for :admins, controllers:{
+    sessions: 'admins/sessions'
+  }
+
+  namespace :admins do
+
+  end
+
+
+  # ユーザー側のルーティング
+  devise_for :users, controllers:{
+    sessions: 'publics/sessions',
+    registrations: 'publics/registrations'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-root to: 'home#top'
+  scope module: :publics do
+
+  end
 
 
+  root to: 'home#top'
 
 
 
