@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_084438) do
+ActiveRecord::Schema.define(version: 2020_07_09_132032) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,30 @@ ActiveRecord::Schema.define(version: 2020_07_08_084438) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.text "explanation"
+    t.integer "postcode"
+    t.string "address"
+    t.string "access"
+    t.string "tel"
+    t.string "url"
+    t.string "hours"
+    t.string "price"
+    t.string "holiday"
+    t.boolean "is_closed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_places_on_genre_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -32,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_084438) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.text "profile"
-    t.string "birth"
+    t.date "birth"
     t.string "profile_image_id"
     t.integer "sex"
     t.boolean "is_valid", default: true, null: false

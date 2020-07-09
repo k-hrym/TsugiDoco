@@ -1,0 +1,45 @@
+.row
+
+= form_for @user,url: user_path do |f|
+    h4 登録情報編集
+    .row
+      = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg"
+    = f.attachment_field :profile_image
+
+    table.table
+      tr.row
+        td.col-2= f.label :name,'名前'
+        td.col= f.text_field :name,class:"form-control"
+
+      tr.row
+        td.col-2= f.label :profile,'プロフィール'
+        td.col= f.text_area :profile,class:"form-control"
+
+    h4 非公開情報
+    table.table
+      tr.row
+        td.col-2= f.label :email,'メールアドレス'
+        td.col= f.email_field :email,class:"form-control"
+
+      tr.row
+        td.col-2= f.label :birth,'生年月日'
+        td.col= f.date_select :birth,
+            class:"form-control",
+            use_month_numbers: true,
+            start_year: Time.now.year-100,
+            end_year: Time.now.year-6
+
+      tr.row
+        td.col-2= f.label :sex,'性別'
+        td.col
+          = f.radio_button :sex,"1"
+          |男性
+          = f.radio_button :sex,"2"
+          |女性
+          = f.radio_button :sex,"3"
+          |その他
+
+    .row.justify-content-md-center
+      .col-6
+        = f.submit '登録',class:"btn btn-lg btn-primary btn-block"
+
