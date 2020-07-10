@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.string :name, null: false
       t.text :profile
-      t.string :birth
+      t.date :birth
       t.string :profile_image_id
       t.integer :sex
       # true：有効、false：退会済

@@ -1,0 +1,15 @@
+// Place all the styles related to the publics::places controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.place{
+  &__new{
+    &--genre{
+      margin-right:15px;
+    }
+  }
+  &__image{
+    width:150px;
+    height:auto;
+  }
+}

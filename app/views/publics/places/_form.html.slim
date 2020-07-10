@@ -1,0 +1,72 @@
+.row
+
+  h3
+    b 場所を登録
+
+.row
+  p
+    | 場所登録の協力をお願いします。<br>
+      不明な項目は未入力のままでも登録できます。<br>
+      登録後は誰でも情報を編集することができます。<br>
+      既に同じ場所が登録されている場合は後から登録したページは削除されますのでご注意ください。
+
+
+= form_for place do |f|
+  table.table
+    tr.row
+      th.col-2= f.label :name,'場所名'
+      td.col= f.text_field :name,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :genre_id,'ジャンル'
+      td.col
+        - genres.each do |genre|
+          span.place__new--genre
+            = f.radio_button :genre_id,genre.id
+            = genre.name
+
+    tr.row
+      th.col-2= f.label :explanation,'説明'
+      td.col= f.text_area :explanation,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :place_images_images,'画像'
+      td.col= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :postcode,'郵便番号'
+      td.col= f.text_field :postcode,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :address,'住所'
+      td.col= f.text_field :address,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :access,'アクセス'
+      td.col= f.text_field :access,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :tel,'電話番号'
+      td.col= f.telephone_field :tel,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :url,'Webサイト'
+      td.col= f.url_field :url,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :hours,'営業時間'
+      td.col= f.text_field :hours,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :price,'料金'
+      td.col= f.text_field :price,class:"form-control"
+
+    tr.row
+      th.col-2= f.label :holiday,'定休日'
+      td.col= f.text_field :holiday,class:"form-control"
+
+  .row.justify-content-md-center
+    .col-6
+      = f.submit '登録',class:"btn btn-lg btn-primary btn-block"
+
+
