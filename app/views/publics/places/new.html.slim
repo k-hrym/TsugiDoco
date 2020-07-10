@@ -21,13 +21,17 @@
         th.col-2= f.label :genre_id,'ジャンル'
         td.col
           - @genres.each do |genre|
-            span.place-new__genre
+            span.place__new--genre
               = f.radio_button :genre_id,genre.id
               = genre.name
 
       tr.row
         th.col-2= f.label :explanation,'説明'
         td.col= f.text_area :explanation,class:"form-control"
+
+      tr.row
+        th.col-2= f.label :place_images_images,'画像'
+        td.col= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true,class:"form-control"
 
       tr.row
         th.col-2= f.label :postcode,'郵便番号'
