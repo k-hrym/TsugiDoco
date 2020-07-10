@@ -1,11 +1,11 @@
 h3 場所一覧
 
 table.table
-  tbody
-    -@places.each do |place|
-      =link_to place_path(place) do
-        tr.row
-          td.col-md-auto= attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
-          td.col
-            h4= place.name
-            p= place.address
+  - @places.each do |place|
+    = link_to place_path(place) do
+      tr.row
+        td.col-md-auto
+          = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
+        td.col
+          h4= link_to place.name,place_path(place)
+          p= place.address
