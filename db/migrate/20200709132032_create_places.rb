@@ -4,7 +4,7 @@ class CreatePlaces < ActiveRecord::Migration[5.2]
       t.references :genre, foreign_key: true
       t.string :name
       t.text :explanation
-      t.integer :postcode
+      t.string :postcode
       t.string :address
       t.string :access
       t.string :tel

@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_132032) do
     t.integer "genre_id"
     t.string "name"
     t.text "explanation"
-    t.integer "postcode"
+    t.string "postcode"
     t.string "address"
     t.string "access"
     t.string "tel"
