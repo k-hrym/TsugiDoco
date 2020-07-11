@@ -15,10 +15,11 @@ Rails.application.routes.draw do
     registrations: 'publics/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   scope module: :publics do
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
+    resources :routes,only: [:new,:create,:index,:show,:edit]
+    resources :spots,only: [:create,:destroy]
   end
 
 
