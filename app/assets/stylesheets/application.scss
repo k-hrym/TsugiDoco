@@ -31,3 +31,9 @@ span.required{
   border-radius: 3px;
   margin-left: 3px;
 }
+
+.ui-helper-hidden-accessible{
+  div{
+    display:none;
+  }
+}

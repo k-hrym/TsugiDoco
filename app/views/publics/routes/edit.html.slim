@@ -2,7 +2,7 @@
 
 h3 スポットの登録
 
-= form_with model:@route,url: route_update_all_path do |form|
+= form_with model:@route,url: route_update_all_path(@route) do |form|
   .test
     #add_spots
       == render 'spot_form',route: @route

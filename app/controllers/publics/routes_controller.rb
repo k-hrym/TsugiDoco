@@ -25,11 +25,21 @@ class Publics::RoutesController < ApplicationController
   end
 
   def update_all
+    byebug
+    @route = Route.find(params[:id])
+    route_spot_ids = @route.spots.pluck(:id)
+    route_spot_ids.each do |rsi|
+      Spot.find(rsi).update(route_spot_params(rsi))
+    end
   end
 
   private
 
   def route_params
     params.require(:route).permit(:title,:explanation,:user_id)
+  end
+
+  def route_spot_params(spot_id)
+    params.require(:spots).require(spot_id.to_s).permit(:place_id,:memo)
   end
 end
