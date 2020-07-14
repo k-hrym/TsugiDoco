@@ -4,6 +4,7 @@
       h3.spot__form--order
         |SPOT-
         = spot.order
+        span= link_to '×削除',spot_path(spot,route_id: route),method: :delete,remote: true,class:"spot__form--delete"
       .spot_form
         = f.label '場所名'
         = f.fields_for :place,spot.place,local: true do |place|

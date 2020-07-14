@@ -1,14 +1,17 @@
 class Publics::SpotsController < ApplicationController
-  def add
-    @spot = Spot.find(params[:id])
-    @spot.update(add_spot_params)
-    redirect_back(fallback_location: root_path)
-  end
 
   def create
     @route = Route.find(params[:id])
     @spot = @route.spots.create
-    @route.spots.order_update(@route.spots)
+    @route.spots.order_update(@route.spots) #route.spotに通し番号を振り直す
+  end
+
+  def destroy
+    @route = Route.find(params[:route_id])
+    @spot = Spot.find(params[:id])
+    if @spot.destroy
+      @route.spots.order_update(@route.spots)
+    end
   end
 
   def autocomplete
@@ -20,11 +23,6 @@ class Publics::SpotsController < ApplicationController
       }
     end
     render json: places.to_json #部分一致で取得した値をjsonにする
-    # api_spot = ApiSpots.new
-    # @suggests = api_spot.suggest(params[:keyword],5)
-    # respond_to do |format|
-    #   format.json { render autocomplete_spots_path, json: @suggests }
-    # end
   end
 
   private

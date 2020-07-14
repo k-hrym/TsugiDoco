@@ -25,7 +25,6 @@ class Publics::RoutesController < ApplicationController
   end
 
   def update_all
-    byebug
     @route = Route.find(params[:id])
     route_spot_ids = @route.spots.pluck(:id)
     route_spot_ids.each do |rsi|

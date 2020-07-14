@@ -12,5 +12,14 @@
       border-bottom:2px solid white;
       margin-bottom:10px;
     }
+    &--delete{
+      background-color:#808080;
+      color:#FFF;
+      font-size:15px;
+      padding:5px;
+      border-radius:6px;
+      margin-left:20px;
+      vertical-align: middle;
+    }
   }
 }
