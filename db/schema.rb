@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_042044) do
   create_table "spots", force: :cascade do |t|
     t.integer "route_id"
     t.integer "place_id"
-    t.integer "order", null: false
+    t.integer "order", default: 1, null: false
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

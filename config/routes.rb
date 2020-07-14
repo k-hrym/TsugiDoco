@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
     resources :routes,only: [:new,:create,:index,:show,:edit]
-    resources :spots,only: [:create,:destroy]
+    patch 'routes' => 'routes#update_all',as: 'route_update_all'
+    patch 'spots/:id/add' => 'spots#add',as: 'add_spot'
+    resources :spots,only: [:create,:destroy] do
+      get 'autocomplete', on: :collection
+    end
   end
 
 

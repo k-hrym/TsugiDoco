@@ -1,2 +1,10 @@
-h1 Publics::Routes#edit
-p Find me in app/views/publics/routes/edit.html.slim
+/ == render 'route_form',route: @route
+
+h3 スポットの登録
+
+= form_with model:@route,url: route_update_all_path do |form|
+  .test
+    #add_spots
+      == render 'spot_form',route: @route
+  = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-secondary form-control"
+  = form.submit

@@ -1,0 +1,15 @@
+- route.spots.each do |spot|
+  .spot__form
+    = fields_for "spots[]", spot,local: true do |f|
+      h3.spot__form--order
+        |SPOT-
+        = spot.order
+      div class="spot_form"
+        = f.label '場所名'
+        = f.fields_for :place,spot.place,local: true do |place|
+          = place.text_field :name,placeholder:"登録したい場所名を入力してください",class:"form-control field"
+          = place.text_field :address,placeholder:"登録したい場所名を入力してください",class:"form-control spot_address"
+        = f.hidden_field :place_id,class:"place_id"
+
+        =f.label :memo ,'メモ'
+        =f.text_area :memo,class:"form-control"

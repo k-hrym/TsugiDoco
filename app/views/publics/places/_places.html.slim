@@ -1,0 +1,12 @@
+table.table
+  - places.each do |place|
+    tr
+      td
+        = link_to place_path(place) do
+          .row
+            .col-md-auto
+              = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
+            .col
+              h4= place.name
+              p= place.address
+
