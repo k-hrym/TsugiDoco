@@ -1,6 +1,5 @@
 $("#add_spots").html("<%= j(render 'publics/routes/spot_form',route: @route) %>");
-// 下記のjs、うまく機能していない。
-$(document).on('turbolinks:load', function(){
+$(function(){
   var $target = $(".field");
   $target.autocomplete({
     source: function(req,resp){

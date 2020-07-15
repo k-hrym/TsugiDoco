@@ -38,14 +38,17 @@ class Publics::RoutesController < ApplicationController
   end
 
   def release #更新内容を保存して公開
-    route_spot_ids = @route.spots.pluck(:id)
-    route_spot_ids.each do |rsi|
-      Spot.find(rsi).update(route_spot_params(rsi))
+    @route.spots.each do |rsi|
+      Spot.find(rsi.id).update(route_spot_params(rsi.id))
     end
-    if @route.update(status: true) && @route.update(route_params) #route.statusはtrueに
+    debugger
+    unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
+      @route.update(status: true)
+      @route.update(route_params)
       redirect_to @route,notice: "公開が完了しました！"
     else
-      render :edit,notice: "公開に失敗しました"
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = "場所が未登録のスポットがあります"
     end
   end
 

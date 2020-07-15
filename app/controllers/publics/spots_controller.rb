@@ -32,3 +32,4 @@ class Publics::SpotsController < ApplicationController
   end
 end
 
+

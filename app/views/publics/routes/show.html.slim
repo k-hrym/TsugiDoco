@@ -8,11 +8,11 @@ p
 
 - @route.spots.each do |spot|
   .route__container--spot
-    .row.d-flex.align-items-center
-      h5.col-md-auto.route__spot-order
-        =spot.order
-      h2.col
-        =link_to place_path(spot.place) do
+    =link_to place_path(spot.place) do
+      .row.d-flex.align-items-center
+        h5.col-md-auto.route__spot-order
+          =spot.order
+        h2.col
           b=spot.place.name
-    = attachment_image_tag spot.place.place_images.first,:image,class:"route__image--short"
+        = attachment_image_tag spot.place.place_images.first,:image,class:"route__image--short"
     =spot.memo

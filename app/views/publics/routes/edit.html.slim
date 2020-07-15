@@ -7,6 +7,7 @@
     h3 スポットの登録
     #add_spots
       == render 'spot_form',route: @route
+
     = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-outline-secondary form-control"
 
     .row
