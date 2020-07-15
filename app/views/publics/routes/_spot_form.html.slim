@@ -10,7 +10,8 @@
         = f.fields_for :place,spot.place,local: true do |place|
           = place.text_field :name,placeholder:"登録したい場所名を入力してください",class:"form-control field"
           = place.hidden_field :address,placeholder:"登録したい場所名を入力してください",class:"form-control spot_address"
-        = f.hidden_field :place_id,class:"place_id"
+        =f.hidden_field :place_id,class:"place_id"
+        / spotに紐づくplace_idをフォームで検索して取得
 
         =f.label :memo ,'メモ'
         =f.text_area :memo,class:"form-control"

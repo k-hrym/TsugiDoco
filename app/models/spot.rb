@@ -4,8 +4,8 @@ class Spot < ApplicationRecord
 
   scope :place_nil, -> {where(place_id: nil)}
 
-  def self.order_update(spots)
-    n = 1
+  def order_update(spots)
+    n = 0
     spots.each do |spot|
       spot.update(order: n)
       n += 1

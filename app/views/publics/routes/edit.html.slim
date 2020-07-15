@@ -1,10 +1,14 @@
-/ == render 'route_form',route: @route
+= form_with model:@route,url: route_draft_path(@route) do |form|
+  .route__container
+    h2 ルート情報
+    == render 'route_form',route: @route,f: form
 
-h3 スポットの登録
-
-= form_with model:@route,url: route_update_all_path(@route) do |form|
-  .test
+  .route__container--spots
+    h3 スポットの登録
     #add_spots
       == render 'spot_form',route: @route
-  = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-secondary form-control"
-  = form.submit
+    = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-secondary form-control"
+    / フォームの送信先をdraftアクションに変更
+    = form.submit "下書きで保存する",type:'button',onclick:"submitAction('/routes/#{@route.id}/draft');"
+    / フォームの送信先をreleaseアクションに変更
+    = form.submit "保存して公開する",type:'button',onclick:"submitAction('/routes/#{@route.id}/release');"
