@@ -7,8 +7,10 @@
     h3 スポットの登録
     #add_spots
       == render 'spot_form',route: @route
-    = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-secondary form-control"
-    / フォームの送信先をdraftアクションに変更
-    = form.submit "下書きで保存する",type:'button',onclick:"submitAction('/routes/#{@route.id}/draft');"
-    / フォームの送信先をreleaseアクションに変更
-    = form.submit "保存して公開する",type:'button',onclick:"submitAction('/routes/#{@route.id}/release');"
+    = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-outline-secondary form-control"
+
+    .row
+      / フォームの送信先をdraftアクションに変更
+      = form.submit "下書きに保存する",type:'button',onclick:"submitAction('/routes/#{@route.id}/draft');",class:"btn btn-outline-info form-control col mr-2"
+      / フォームの送信先をreleaseアクションに変更
+      = form.submit "保存して公開する",type:'button',onclick:"submitAction('/routes/#{@route.id}/release');",class:"btn btn-info form-control col ml-2"

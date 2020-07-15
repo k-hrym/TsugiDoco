@@ -15,6 +15,7 @@ class Publics::RoutesController < ApplicationController
   end
 
   def index
+    @routes = Route.released
   end
 
   def show
