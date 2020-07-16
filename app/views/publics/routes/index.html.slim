@@ -1,14 +1,10 @@
--@routes.each do |route|
-  .row
-    .col-4.route__container.route__link
-      =link_to route_path(route) do
-        =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',class:"route__image"
-        .row
-          .route__link--profile-image.col-md-auto
-            =attachment_image_tag route.user,:profile_image,:fill,50,50,class:"rounded-circle"
-          .col.route__link--text
-            h4=route.title
-            p=route.explanation
-            p.route__link--user-name
-              |by.
-              =route.user.name
+.row
+  .col-4.p-1 
+    /左列
+    == render 'route_repeat',routes: @routes_left
+  .col-4.p-1
+    /真ん中列
+    == render 'route_repeat',routes: @routes_center
+  .col-4.p-1
+    /右列
+    == render 'route_repeat',routes: @routes_right

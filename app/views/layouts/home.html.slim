@@ -17,10 +17,15 @@ html
               h2
                 | Tsugi Doco
         ul.navbar-nav.ml-auto.nav-right
-          li.nav-item
-            = link_to 'ログイン',new_user_session_path,class:"nav-link"
-          li.nav-item
-            = link_to '会員登録',new_user_registration_path,class:"nav-link"
+          -if user_signed_in?
+            li.nav-item
+              =link_to user_path(current_user) do
+                = attachment_image_tag current_user,:profile_image,:fill,40,40,class:"rounded-circle"
+          -else
+            li.nav-item
+              = link_to 'ログイン',new_user_session_path,class:"nav-link"
+            li.nav-item
+              = link_to '会員登録',new_user_registration_path,class:"nav-link"
       .container-fluid.main-image
         .row.justify-content-center
           .col-3.main-image__text
@@ -43,14 +48,12 @@ html
               br
               = link_to 'ログイン',new_user_session_path,class:"nav-link btn btn-sm btn-outline-light"
               = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        ul.navbar-nav.ml-auto
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
+        ul.navbar-nav
           li.nav-item
-            | ロゴ
+            =link_to '場所一覧',places_path,class:"nav-link"
           li.nav-item
-            | SNSボタン
-          li.nav-item
-            | 会員登録
+            =link_to 'ルート一覧',routes_path,class:"nav-link"
     .container
       .row.justify-content-md-center
         .col-11

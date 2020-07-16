@@ -15,7 +15,24 @@ class Publics::RoutesController < ApplicationController
   end
 
   def index
-    @routes = Route.released
+    routes = Route.released
+    @routes_left = [] #左列用の配列
+    @routes_center = [] #真ん中列用の配列
+    @routes_right = [] #右列用の配列
+    n = 1
+    routes.map do |route|
+      case n
+      when 1
+        @routes_left << route
+        n += 1
+      when 2
+        @routes_center << route
+        n += 1
+      when 3
+        @routes_right << route
+        n = 1
+      end
+    end
   end
 
   def show
@@ -26,20 +43,20 @@ class Publics::RoutesController < ApplicationController
   end
 
   def draft #更新内容を下書き保存
-    route_spot_ids = @route.spots.pluck(:id)
-    route_spot_ids.each do |rsi|
-      Spot.find(rsi).update(route_spot_params(rsi))
+    @route.spots.map do |rsi|
+      rsi.update(route_spot_params(rsi.id))
     end
     if @route.update(status: false) && @route.update(route_params) #route.statusはfalseに
       redirect_to @route,notice: "下書きに保存しました！"
     else
-      render :edit,notice: "下書き保存に失敗しました"
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = "場所が未登録のスポットがあります"
     end
   end
 
   def release #更新内容を保存して公開
-    @route.spots.each do |rsi|
-      Spot.find(rsi.id).update(route_spot_params(rsi.id))
+    @route.spots.map do |rsi|
+      rsi.update(route_spot_params(rsi.id))
     end
     debugger
     unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
