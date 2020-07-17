@@ -1,7 +1,7 @@
 
 .row
   .col-md-auto
-    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg"
+    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg",size: "70x70"
 
   .col
     h3= @user.name
