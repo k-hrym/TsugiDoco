@@ -15,10 +15,16 @@ Rails.application.routes.draw do
     registrations: 'publics/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   scope module: :publics do
+    get 'users/routes' => 'users#routes',as: 'user_routes'
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
+    resources :routes,only: [:new,:create,:index,:show,:edit,:destroy]
+    patch 'routes/:id/draft' => 'routes#draft',as: 'route_draft'
+    patch 'routes/:id/release' => 'routes#release',as: 'route_release'
+    resources :spots,only: [:create,:destroy] do
+      get 'autocomplete', on: :collection
+    end
   end
 
 

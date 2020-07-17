@@ -1,0 +1,5 @@
+.route__container
+  h2 ルート情報
+  = form_for @route,onsubmit:"return false;" do |f|
+    == render 'route_form',route: @route,f: f
+

@@ -1,46 +1,58 @@
-h1
-  b= @place.name
-p
-  b ジャンル: 
-  = @place.genre.name
+.row
+  .col-9
+    h1
+      b= @place.name
+    p
+      b ジャンル:
+      = @place.genre.name
 
-- @place.place_images.each do |image|
-  = attachment_image_tag image,:image,:fill,150,150
+    - @place.place_images.each do |image|
+      = attachment_image_tag image,:image,:fill,150,150
 
 
-table.table
-  tr.row
-    th.col-2 説明
-    td.col= @place.explanation
+    table.table
+      tr.row
+        th.col-3 説明
+        td.col= @place.explanation
 
-  tr.row
-    th.col-2 郵便番号
-    td.col= @place.postcode
+      tr.row
+        th.col-3 郵便番号
+        td.col= @place.postcode
 
-  tr.row
-    th.col-2 住所
-    td.col= @place.address
+      tr.row
+        th.col-3 住所
+        td.col= @place.address
 
-  tr.row
-    th.col-2 アクセス
-    td.col= @place.access
+      tr.row
+        th.col-3 アクセス
+        td.col= @place.access
 
-  tr.row
-    th.col-2 電話番号
-    td.col= link_to @place.tel,"tel:#{@place.tel}"
+      tr.row
+        th.col-3 電話番号
+        td.col= link_to @place.tel,"tel:#{@place.tel}"
 
-  tr.row
-    th.col-2 Webサイト
-    td.col= link_to @place.url,"#{@place.url}"
+      tr.row
+        th.col-3 Webサイト
+        td.col= link_to @place.url,"#{@place.url}"
 
-  tr.row
-    th.col-2 営業時間
-    td.col= @place.hours
+      tr.row
+        th.col-3 営業時間
+        td.col= @place.hours
 
-  tr.row
-    th.col-2 料金
-    td.col= @place.price
+      tr.row
+        th.col-3 料金
+        td.col= @place.price
 
-  tr.row
-    th.col-2 定休日
-    td.col= @place.holiday
+      tr.row
+        th.col-3 定休日
+        td.col= @place.holiday
+
+  .col-3.border.pt-3
+    h5
+      b 次、どこ行く？
+    p みんなが行った場所
+    -@next_spots.each do |spot|
+      =link_to place_path(spot.place) do
+        .place__next-spot
+          =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90'
+          =spot.place.name

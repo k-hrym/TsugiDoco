@@ -1,0 +1,25 @@
+// Place all the styles related to the publics::spots controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.spot{
+  &__form{
+    padding:15px;
+    margin:15px auto;
+    background-color:#eee;
+    border-radius: 6px;
+    &--order{
+      border-bottom:2px solid white;
+      margin-bottom:10px;
+    }
+    &--delete{
+      background-color:#808080;
+      color:#FFF;
+      font-size:15px;
+      padding:5px;
+      border-radius:6px;
+      margin-left:20px;
+      vertical-align: middle;
+    }
+  }
+}

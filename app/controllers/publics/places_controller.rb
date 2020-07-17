@@ -1,7 +1,7 @@
 class Publics::PlacesController < ApplicationController
   before_action :authenticate_user!,only: [:new,:create]
   before_action :valid_genres,only: [:new,:create,:edit,:update]
-  before_action :find_places,only: [:show,:edit,:update]
+  before_action :find_place,only: [:show,:edit,:update]
 
   def new
     @place = Place.new
@@ -23,6 +23,12 @@ class Publics::PlacesController < ApplicationController
   end
 
   def show
+    @spots = Spot.where(place_id: @place.id)
+    @next_spots = @spots.map do |spot|
+      next_spots = []
+      route_spots = spot.route.spots
+      route_spots.find_by(order: spot.order + 1)
+    end
   end
 
   def edit

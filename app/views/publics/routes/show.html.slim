@@ -1,0 +1,18 @@
+h1
+  b=@route.title
+p= @route.explanation
+p
+  =link_to user_path(@route.user)
+    =attachment_image_tag @route.user,:profile_image,:fill,50,50,class:"rounded-circle mr-3"
+    =@route.user.name
+
+- @route.spots.each do |spot|
+  .route__container--spot
+    =link_to place_path(spot.place) do
+      .row.d-flex.align-items-center
+        h5.col-md-auto.route__spot-order
+          =spot.order
+        h2.col
+          b=spot.place.name
+        = attachment_image_tag spot.place.place_images.first,:image,class:"route__image--short"
+    =spot.memo

@@ -1,0 +1,11 @@
+
+.row
+  .col.user_route_all
+    |全て
+  .col.user_route_release.btn
+    |公開
+  .col.user_route_draft
+    |下書き
+
+#user_route_table
+  == render 'table',routes: @routes

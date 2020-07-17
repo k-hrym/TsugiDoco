@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_044929) do
+ActiveRecord::Schema.define(version: 2020_07_11_042044) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,6 +57,27 @@ ActiveRecord::Schema.define(version: 2020_07_10_044929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_places_on_genre_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", null: false
+    t.text "explanation"
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_routes_on_user_id"
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer "route_id"
+    t.integer "place_id"
+    t.integer "order", default: 1, null: false
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_spots_on_place_id"
+    t.index ["route_id"], name: "index_spots_on_route_id"
   end
 
   create_table "users", force: :cascade do |t|
