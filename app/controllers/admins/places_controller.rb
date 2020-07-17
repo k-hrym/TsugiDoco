@@ -1,4 +1,5 @@
 class Admins::PlacesController < ApplicationController
+  before_action :authenticate_admin!
   layout 'admins'
   def index
     @places = Place.all
