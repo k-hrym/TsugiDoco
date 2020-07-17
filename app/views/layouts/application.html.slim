@@ -21,7 +21,7 @@ html
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do
-                = attachment_image_tag current_user,:profile_image,:fill,40,40,class:"rounded-circle"
+                = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle"
             li.nav-item
               =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link"
           -else

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :places,only: [:index,:show,:edit,:new] do
       collection { post :import }
     end
+    resources :routes,only: [:index,:show]
+    resources :users,only: [:index,:edit,:update]
     get 'top' => 'home#top', as: 'top'
   end
 
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   scope module: :publics do
     get 'users/routes' => 'users#routes',as: 'user_routes'
+    patch 'users/:id/hide' => 'users#hide',as: 'users_hide'
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
     resources :routes,only: [:new,:create,:index,:show,:edit,:destroy]

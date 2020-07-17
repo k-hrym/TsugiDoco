@@ -11,6 +11,21 @@ class User < ApplicationRecord
 
   has_many :routes,dependent: :destroy
 
-  validates :name,:email,:is_valid, presence: true
+  validates :name,:email, presence: true
+  validates :is_valid, inclusion: { in: [true, false]}
   validates :profile,length: {maximum: 500}
+
+  def valid_user
+    case self.is_valid
+    when true
+      return '有効'
+    when false
+      return '退会済'
+    end
+  end
+
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
+
 end
