@@ -1,0 +1,12 @@
+=form_with model:@genre,url:admins_genre_path(@genre) do |f|
+  .row
+    =f.label :name
+    =f.text_field :name
+  .row
+    p
+      =f.radio_button :is_valid,true
+      |有効
+      =f.radio_button :is_valid,false
+      |無効
+  .row
+    =f.submit

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :genres,only: [:new,:create,:index]
+    resources :genres,only: [:new,:create,:index,:edit,:update]
     resources :places,only: [:index,:show,:edit,:new] do
       collection { post :import }
     end

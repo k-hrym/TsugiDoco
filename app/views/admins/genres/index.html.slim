@@ -6,8 +6,12 @@
       tr
         th ID
         th ジャンル名
+        th 有効無効
+        th
     tbody
       - @genres.each do |genre|
         tr
           td= genre.id
           td= genre.name
+          td= genre.valid_invalid
+          td= link_to '編集', edit_admins_genre_path(genre),class:"btn btn-outline-secondary"
