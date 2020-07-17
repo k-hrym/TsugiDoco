@@ -1,6 +1,6 @@
 class Publics::RoutesController < ApplicationController
-  before_action :authenticate_user!,only: [:new,:edit,:create]
-  before_action :find_route,only: [:show,:edit,:draft,:release]
+  before_action :authenticate_user!,only: [:new,:edit,:create,:control]
+  before_action :find_route,only: [:show,:edit,:draft,:release,:destroy]
   def new
     @route = Route.new
   end
@@ -68,6 +68,16 @@ class Publics::RoutesController < ApplicationController
       flash[:notice] = "場所が未登録のスポットがあります"
     end
   end
+
+  def destroy
+    if @route.destroy
+      redirect_back(fallback_location: root_path)
+    else
+      @user = current_user
+      render 'users/routes'
+    end
+  end
+
 
   private
 

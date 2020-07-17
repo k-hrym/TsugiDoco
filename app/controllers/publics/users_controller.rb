@@ -3,6 +3,7 @@ class Publics::UsersController < ApplicationController
   before_action :valid_user?,only: [:edit]
 
   def show
+    @routes = Route.where(user_id: @user.id)
   end
 
   def edit
@@ -14,6 +15,13 @@ class Publics::UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def routes
+    @user = current_user
+    @routes = @user.routes
+    @routes_release = @routes.where(status: true)
+    @routes_draft = @routes.where(status: false)
   end
 
   private
