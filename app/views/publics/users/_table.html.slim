@@ -7,7 +7,7 @@ table.table
       th
       th
   tbody
-  - @user.routes.each do |route|
+  - user.routes.each do |route|
     tr
       th=link_to route.title,route_path(route)
       td=route.status_display

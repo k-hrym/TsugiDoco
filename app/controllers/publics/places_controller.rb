@@ -50,7 +50,7 @@ class Publics::PlacesController < ApplicationController
   end
 
   def place_params_without_images
-    params.require(:place).permit(:name,:genre_id,:explanation,:postcode,:address,:access,:tel,:url,:hours,:price,:holiday)
+    params.require(:place).permit(:name,:genre_id,:explanation,:postcode,:address,:access,:tel,:url,:hours,:price,:holiday,:is_closed)
   end
 
   def valid_genres

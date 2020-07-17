@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :genres,only: [:new,:create,:index]
+    resources :places,only: [:index,:show,:edit,:new] do
+      collection { post :import }
+    end
+    get 'top' => 'home#top', as: 'top'
   end
 
 

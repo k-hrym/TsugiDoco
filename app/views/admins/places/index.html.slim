@@ -1,0 +1,13 @@
+table.table
+  thead
+    tr
+      th 場所名
+      th ジャンル
+      th ステータス
+  tbody
+    -@places.each do |place|
+      tr
+        td=link_to edit_admins_place_path(place) do
+          =place.name
+        td=place.genre.name
+        td=place.open_close
