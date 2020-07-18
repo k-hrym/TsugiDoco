@@ -20,7 +20,9 @@ html
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do
-                = attachment_image_tag current_user,:profile_image,:fill,40,40,class:"rounded-circle"
+                = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle"
+            li.nav-item
+              =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link"
           -else
             li.nav-item
               = link_to 'ログイン',new_user_session_path,class:"nav-link"
@@ -51,7 +53,11 @@ html
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
         ul.navbar-nav
           li.nav-item
+            =link_to '場所登録',new_place_path,class:"nav-link"
+          li.nav-item
             =link_to '場所一覧',places_path,class:"nav-link"
+          li.nav-item
+            =link_to 'ルート登録',new_route_path,class:"nav-link"
           li.nav-item
             =link_to 'ルート一覧',routes_path,class:"nav-link"
     .container

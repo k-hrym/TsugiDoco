@@ -1,7 +1,7 @@
 
 .row
   .col-md-auto
-    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg"
+    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg",size: "70x70"
 
   .col
     h3= @user.name
@@ -13,6 +13,7 @@
   -if user_signed_in? && @user==current_user
     .col
       = link_to 'プロフィール編集',edit_user_path,class:"badge badge-light"
+      = link_to '退会する',users_hide_path(@user),method: :patch,class:"badge",data:{confirm: '退会しますか'}
 
 .row
   table.table

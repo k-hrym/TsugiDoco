@@ -58,7 +58,6 @@ class Publics::RoutesController < ApplicationController
     @route.spots.map do |rsi|
       rsi.update(route_spot_params(rsi.id))
     end
-    debugger
     unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
       @route.update(status: true)
       @route.update(route_params)
