@@ -6,9 +6,10 @@
   .col
     h3= @user.name
 
-    p フォロー フォロワー
-
-    = link_to 'フォローする','#',class:"btn btn-sm btn-outline-secondary"
+    #follow-user-count
+      ==render 'publics/relations/count',user: @user
+    #follow-user-button
+      ==render 'publics/relations/button',user: @user
 
   -if user_signed_in? && @user==current_user
     .col
