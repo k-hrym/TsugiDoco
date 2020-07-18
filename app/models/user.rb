@@ -13,9 +13,16 @@ class User < ApplicationRecord
 
   has_many :likes
 
-  validates :name,:email, presence: true
+  validates :name, presence: true
+  #validate :email_exist
   validates :is_valid, inclusion: { in: [true, false]}
   validates :profile,length: {maximum: 500}
+
+  # def email_exist
+  #   if User.where.not(id:id).where(email: email).where(is_valid:true).present?
+  #     errors.add(:email,"email is already exist")
+  #   end
+  # end
 
   def valid_user
     case self.is_valid

@@ -36,6 +36,10 @@ class Publics::RoutesController < ApplicationController
   end
 
   def show
+    if @route.status == false
+      redirect_to routes_path
+      flash[:notice] = "非公開に設定されています"
+    end
   end
 
   def edit

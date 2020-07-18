@@ -9,6 +9,9 @@ p
   span.ml-auto id="route-#{@route.id}"
     ==render 'publics/likes/heart',route: @route
 
+  - if @route.user == current_user
+    =link_to '編集',edit_route_path(@route),class:"btn btn-sm ml-2"
+
 - @route.spots.each do |spot|
   .route__container--spot
     =link_to place_path(spot.place) do
