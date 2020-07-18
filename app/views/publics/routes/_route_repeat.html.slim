@@ -14,3 +14,7 @@
             p.route__link--user-name
               |by.
               = link_to route.user.name,user_path(route.user)
+              i.fas.fa-heart.heart__pink.p-1.ml-3
+                |   
+                =route.likes.count
+

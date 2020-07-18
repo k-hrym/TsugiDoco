@@ -20,13 +20,15 @@ Rails.application.routes.draw do
     sessions: 'publics/sessions',
     registrations: 'publics/registrations'
   }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   scope module: :publics do
     get 'users/routes' => 'users#routes',as: 'user_routes'
     patch 'users/:id/hide' => 'users#hide',as: 'users_hide'
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
-    resources :routes,only: [:new,:create,:index,:show,:edit,:destroy]
+    resources :routes,only: [:new,:create,:index,:show,:edit,:destroy] do
+      resource :likes,only: [:create,:destroy]
+    end
     patch 'routes/:id/draft' => 'routes#draft',as: 'route_draft'
     patch 'routes/:id/release' => 'routes#release',as: 'route_release'
     resources :spots,only: [:create,:destroy] do
@@ -34,10 +36,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   root to: 'home#top'
-
-
-
 
 end

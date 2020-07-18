@@ -1,0 +1,16 @@
+// Place all the styles related to the publics::likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.heart{
+  &__pink{
+    color:pink;
+    border:0.3px solid pink;
+    border-radius:6px;
+  }
+  &__gray{
+    color:gray;
+    border:0.3px solid gray;
+    border-radius:6px;
+  }
+}

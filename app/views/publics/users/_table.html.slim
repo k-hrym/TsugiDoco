@@ -4,6 +4,7 @@ table.table
       th ルート名
       th 公開/下書き
       th 作成日
+      th いいね
       th
       th
   tbody
@@ -12,5 +13,6 @@ table.table
       th=link_to route.title,route_path(route)
       td=route.status_display
       td=route.created_at.strftime('%Y/%m/%d %H:%M:%S')
+      td=route.likes.count
       td=link_to '編集',edit_route_path(route),class:"btn btn-outline-success btn-sm"
       td=link_to '削除',route_path(route),method: :delete,data: {confirm: "削除しますか？"},class:"btn btn-outline-danger btn-sm"
