@@ -2,6 +2,7 @@ class Route < ApplicationRecord
   belongs_to :user
 
   has_many :spots,dependent: :destroy
+  has_many :likes,dependent: :destroy
 
   scope :released, -> { where(status: true) }
 

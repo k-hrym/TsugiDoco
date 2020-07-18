@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :routes,dependent: :destroy
 
+  has_many :likes
+
   validates :name,:email, presence: true
   validates :is_valid, inclusion: { in: [true, false]}
   validates :profile,length: {maximum: 500}

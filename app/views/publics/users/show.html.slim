@@ -34,15 +34,15 @@
         =link_to route_path(route) do
           =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',class:"route__image"
         .row
-          .route__link--profile-image
-            = link_to user_path(route.user) do
-              =attachment_image_tag route.user,:profile_image,:fill,30,30,class:"rounded-circle"
-          .col.route__link--text
             =link_to route_path(route) do
               h5=route.title
               p=route.explanation
               p.route__link--user-name
                 |by.
                 = link_to route.user.name,user_path(route.user)
+                i.fas.fa-heart.heart__pink.p-1.ml-3
+                  |   
+                  =route.likes.count
+
 
 
