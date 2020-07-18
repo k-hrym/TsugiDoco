@@ -1,11 +1,11 @@
 
 .row
-  .col.user_route_all
+  .col-auto.user_route_all.btn =link_to users_switch_table_path,remote: true do
     |全て
-  .col.user_route_release.btn
+  .col-auto.user_route_release.btn =link_to users_switch_table_path(published:true),remote: true do
     |公開
-  .col.user_route_draft
+  .col-auto.user_route_draft.btn =link_to users_switch_table_path(published:false),remote: true do
     |下書き
 
 #user_route_table
-  == render 'table',user: @user
+  == render 'table',routes: @routes

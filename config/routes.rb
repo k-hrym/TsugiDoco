@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   scope module: :publics do
     get 'users/routes' => 'users#routes',as: 'user_routes'
     patch 'users/:id/hide' => 'users#hide',as: 'users_hide'
+    get 'users/switch_table' => 'users#switch_table',as: 'users_switch_table'
     resources :users,only: [:show,:edit,:update]
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
     resources :routes,only: [:new,:create,:index,:show,:edit,:destroy] do

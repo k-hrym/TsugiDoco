@@ -4,7 +4,7 @@ class Publics::UsersController < ApplicationController
   before_action :valid_user?,only: [:show]
 
   def show
-    @routes = Route.where(user_id: @user.id)
+    @routes = Route.where(user_id: @user.id,status: true)
   end
 
   def edit
@@ -21,8 +21,17 @@ class Publics::UsersController < ApplicationController
   def routes
     @user = current_user
     @routes = @user.routes
-    @routes_release = @routes.where(status: true)
-    @routes_draft = @routes.where(status: false)
+  end
+
+  def switch_table
+    @user = current_user
+    if params[:published] =="true"
+      @routes = @user.routes.where(status: true)
+    elsif params[:published] == "false"
+      @routes = @user.routes.where(status: false)
+    else
+      @routes = @user.routes
+    end
   end
 
   def hide
