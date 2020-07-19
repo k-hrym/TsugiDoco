@@ -19,4 +19,5 @@ class Route < ApplicationRecord
       return "下書き"
     end
   end
+
 end

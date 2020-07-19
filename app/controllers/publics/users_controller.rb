@@ -5,6 +5,8 @@ class Publics::UsersController < ApplicationController
 
   def show
     @routes = Route.where(user_id: @user.id,status: true)
+    @wishes_places = @user.wishes.map{|wish| wish.place}
+    @wents_places = @user.wents.map{|went| went.place}
   end
 
   def edit

@@ -1,12 +1,13 @@
-table.table
-  - places.each do |place|
-    tr
-      td
+-unless places.blank?
+  .row.mt-0
+    - places.each do |place|
+      .col-md-auto.p-1
         = link_to place_path(place) do
-          .row
-            .col-md-auto
-              = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
-            .col
-              h4= place.name
-              p= place.address
+          .place__image--wrap
+            = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
+          h4.place__image--text
+            b= place.name
 
+-else
+
+  p 何も登録されていません

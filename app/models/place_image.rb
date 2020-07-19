@@ -4,7 +4,6 @@ class PlaceImage < ApplicationRecord
 
   attachment :image
 
-
   def self.add_place_images(params,place,user) #既存のPlaceに追加するときだけ使う
     params.each do |image|
       unless image == "[]" #Refileで複数アップロードするとパラメーター最初に[]が入ってしまうため、はじく

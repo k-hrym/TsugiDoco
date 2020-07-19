@@ -14,11 +14,15 @@
 = form_for place do |f|
   table.table
     tr.row
-      th.col-2= f.label :name,'場所名'
+      th.col-2
+        = f.label :name,'場所名'
+        span.required 必須
       td.col= f.text_field :name,class:"form-control"
 
     tr.row
-      th.col-2= f.label :genre_id,'ジャンル'
+      th.col-2
+        = f.label :genre_id,'ジャンル'
+        span.required 必須
       td.col
         - genres.each do |genre|
           span.place__new--genre
