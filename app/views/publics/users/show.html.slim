@@ -24,26 +24,30 @@
           td.user-profile__text= @user.profile
 
 .row.mb-0
-  a.col-auto.p-0.m-1#user__routes
-    |投稿したルート(
+  a.col-auto.p-1.m-1.btn#user__routes
+    i.fas.fa-route.pr-1
+    |ルート(
     =@user.routes.released.count
     |)
-  a.col-auto.p-0.m-1#user__wishes
-    |いきたい(
-    =@user.wishes.count
-    |)
-  a.col-auto.p-0.m-1#user__wents
-    |いった一覧(
-    =@user.wents.count
-    |)
   -if user_signed_in? && @user == current_user
+    a.col-auto.p-1.m-1.btn#user__wishes
+      i.fas.fa-bookmark.pr-1
+      |いきたい(
+      =@user.wishes.count
+      |)
+    a.col-auto.p-1.m-1.btn#user__wents
+      i.fas.fa-check-square.pr-1
+      |いった(
+      =@user.wents.count
+      |)
     .col-auto.ml-auto
       =link_to 'ルートの管理',user_routes_path
 
 .row
   .row.mt-0#user__routes--content
     ==render 'posted_route',routes: @routes
-  .row.mt-0#user__wishes--content
-    ==render 'publics/places/places',places: @wishes_places
-  .row.mt-0#user__wents--content
-    ==render 'publics/places/places',places: @wents_places
+  -if user_signed_in? && @user == current_user
+    .row.mt-0#user__wishes--content
+      ==render 'publics/places/places',places: @wishes_places
+    .row.mt-0#user__wents--content
+      ==render 'publics/places/places',places: @wents_places

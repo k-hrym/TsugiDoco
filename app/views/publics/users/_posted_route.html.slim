@@ -1,4 +1,4 @@
-.row.mt-0
+-unless routes.blank?
   -routes.each do |route|
     .route__link.col-3.p-1
       .route__container.mb-2
@@ -15,5 +15,7 @@
                   |   
                   =route.likes.count
 
+-else
 
+  p 何も登録されていません
 

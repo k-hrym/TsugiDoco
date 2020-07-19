@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_19_030231) do
 
   create_table "places", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "name"
+    t.string "name", null: false
     t.text "explanation"
     t.string "postcode"
     t.string "address"

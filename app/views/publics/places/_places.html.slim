@@ -1,4 +1,4 @@
--if places
+-unless places.blank?
   .row.mt-0
     - places.each do |place|
       .col-md-auto.p-1
@@ -10,4 +10,4 @@
 
 -else
 
-  p何も登録されていません
+  p 何も登録されていません
