@@ -6,4 +6,27 @@
   &__text{
     white-space: pre-wrap;
   }
+  &__container{
+    border:1px solid #dee2e6;
+    padding:15px;
+  }
+}
+
+#user{
+  &__routes{
+    border-bottom:2px solid #4682B4;
+    &--content{
+      desiplay:block;
+    }
+  }
+  &__wishes{
+    &--content{
+      display:none;
+    }
+  }
+  &__wents{
+    &--content{
+      display:none;
+    }
+  }
 }

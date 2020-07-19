@@ -1,49 +1,49 @@
+.user-profile__container
+  .row
+    .col-md-auto
+      = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg",size: "70x70"
 
-.row
-  .col-md-auto
-    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg",size: "70x70"
-
-  .col
-    h3= @user.name
-
-    #follow-user-count
-      ==render 'publics/relations/count',user: @user
-    #follow-user-button
-      ==render 'publics/relations/button',user: @user
-
-  -if user_signed_in? && @user==current_user
     .col
-      = link_to 'プロフィール編集',edit_user_path,class:"badge badge-light"
-      = link_to '退会する',users_hide_path(@user),method: :patch,class:"badge",data:{confirm: '退会しますか'}
+      h3= @user.name
 
-.row
-  table.table
-    tbody
-      tr
-        th プロフィール
-        td.user-profile__text= @user.profile
+      #follow-user-count
+        ==render 'publics/relations/count',user: @user
+      #follow-user-button
+        ==render 'publics/relations/button',user: @user
+
+    -if user_signed_in? && @user==current_user
+      .col
+        = link_to 'プロフィール編集',edit_user_path,class:"badge badge-light"
+        = link_to '退会する',users_hide_path(@user),method: :patch,class:"badge",data:{confirm: '退会しますか'}
+
+  .row
+    table.table
+      tbody
+        tr
+          th プロフィール
+          td.user-profile__text= @user.profile
 
 .row.mb-0
-  h5.col
-    |投稿したルート
-  .col0-auto.ml-auto
-    =link_to 'ルートの管理',user_routes_path
-.row.mt-0
-  -@routes.each do |route|
-    .route__link.col-3.p-1
-      .route__container.mb-2
-        =link_to route_path(route) do
-          =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',class:"route__image"
-        .row
-            =link_to route_path(route) do
-              h5=route.title
-              p=route.explanation
-              p.route__link--user-name
-                |by.
-                = link_to route.user.name,user_path(route.user)
-                i.fas.fa-heart.heart__pink.p-1.ml-3
-                  |   
-                  =route.likes.count
+  a.col-auto.p-0.m-1#user__routes
+    |投稿したルート(
+    =@user.routes.released.count
+    |)
+  a.col-auto.p-0.m-1#user__wishes
+    |いきたい(
+    =@user.wishes.count
+    |)
+  a.col-auto.p-0.m-1#user__wents
+    |いった一覧(
+    =@user.wents.count
+    |)
+  -if user_signed_in? && @user == current_user
+    .col-auto.ml-auto
+      =link_to 'ルートの管理',user_routes_path
 
-
-
+.row
+  .row.mt-0#user__routes--content
+    ==render 'posted_route',routes: @routes
+  .row.mt-0#user__wishes--content
+    ==render 'publics/places/places',places: @wishes_places
+  .row.mt-0#user__wents--content
+    ==render 'publics/places/places',places: @wents_places

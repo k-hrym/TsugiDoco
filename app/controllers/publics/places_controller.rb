@@ -23,11 +23,13 @@ class Publics::PlacesController < ApplicationController
   end
 
   def show
-    @spots = Spot.where(place_id: @place.id)
-    @next_spots = @spots.map do |spot|
-      next_spots = []
-      route_spots = spot.route.spots
-      route_spots.find_by(order: spot.order + 1)
+    spots = Spot.where(place_id: @place.id)
+    unless spots.nil?
+      @next_spots = spots.map do |spot|
+        next_spots = []
+        route_spots = spot.route.spots
+        route_spots.find_by(order: spot.order + 1)
+      end
     end
   end
 

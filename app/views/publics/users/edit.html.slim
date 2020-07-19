@@ -8,21 +8,25 @@
 
     table.table
       tr.row
-        td.col-2= f.label :name,'名前'
+        th.col-3
+          = f.label :name,'名前'
+          span.required 必須
         td.col= f.text_field :name,class:"form-control"
 
       tr.row
-        td.col-2= f.label :profile,'プロフィール'
+        th.col-3= f.label :profile,'プロフィール'
         td.col= f.text_area :profile,class:"form-control"
 
     h4 非公開情報
     table.table
       tr.row
-        td.col-2= f.label :email,'メールアドレス'
+        th.col-3
+          = f.label :email,'メールアドレス'
+          span.required 必須
         td.col= f.email_field :email,class:"form-control"
 
       tr.row
-        td.col-2= f.label :birth,'生年月日'
+        th.col-3= f.label :birth,'生年月日'
         td.col= f.date_select :birth,
             class:"form-control",
             use_month_numbers: true,
@@ -30,7 +34,7 @@
             end_year: Time.now.year-6
 
       tr.row
-        td.col-2= f.label :sex,'性別'
+        th.col-3= f.label :sex,'性別'
         td.col
           = f.radio_button :sex,"1"
           |男性

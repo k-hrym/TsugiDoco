@@ -11,7 +11,8 @@
   }
   &__image{
     width:150px;
-    height:auto;
+    height:150px;
+    object-fit: cover;
     &:hover{
       opacity: 0.6;
       transition-duration: 0.5s;

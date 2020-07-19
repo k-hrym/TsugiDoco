@@ -1,4 +1,5 @@
 class Publics::RoutesController < ApplicationController
+  protect_from_forgery
   before_action :authenticate_user!,only: [:new,:edit,:create,:control]
   before_action :find_route,only: [:show,:edit,:draft,:release,:destroy]
   def new

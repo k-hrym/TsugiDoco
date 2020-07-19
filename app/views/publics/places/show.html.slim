@@ -38,7 +38,7 @@
 
       tr.row
         th.col-3 電話番号
-        td.col= link_to @place.tel,"tel:#{@place.tel}"
+        td.col= link_to @place.tel,"#{@place.tel}"
 
       tr.row
         th.col-3 Webサイト
@@ -60,8 +60,12 @@
     h5
       b 次、どこ行く？
     p みんなが行った場所
-    -@next_spots.each do |spot|
-      =link_to place_path(spot.place) do
-        .place__next-spot
-          =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90'
-          =spot.place.name
+
+    -if @next_spots && @next_spots != [nil]
+      -@next_spots.each do |spot|
+        =link_to place_path(spot.place) do
+          .place__next-spot
+            =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90'
+            =spot.place.name
+    -else
+      p 登録されていません
