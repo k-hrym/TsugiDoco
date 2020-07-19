@@ -1,7 +1,7 @@
 .row
   .col-auto
-    |フォロー
-    =user.followings.count
+    |フォロー：
+    b=user.followings.count
   .col-auto
-    |フォロワー
-    =user.followers.count
+    |フォロワー：
+    b=user.followers.count

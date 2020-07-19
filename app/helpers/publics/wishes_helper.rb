@@ -1,0 +1,2 @@
+module Publics::WishesHelper
+end

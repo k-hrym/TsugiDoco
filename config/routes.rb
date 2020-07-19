@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       get 'autocomplete', on: :collection
     end
     resources :relations,only: [:create,:destroy]
+    resource :wishes,only: [:create,:destroy]
+    resource :wents,only: [:create,:destroy]
   end
 
   root to: 'home#top'

@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relations, class_name: 'Relation',foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relations,source: :user
 
+  has_many :wents
+  has_many :wishes
+
   validates :name, presence: true
   #validate :email_exist
   validates :is_valid, inclusion: { in: [true, false]}
@@ -28,6 +31,14 @@ class User < ApplicationRecord
   #     errors.add(:email,"email is already exist")
   #   end
   # end
+
+  def wishing?(place)
+    self.wishes.find_by(place_id: place.id).present?
+  end
+
+  def went?(place)
+    self.wents.find_by(place_id: place.id).present?
+  end
 
   def valid_user
     case self.is_valid

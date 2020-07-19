@@ -36,3 +36,14 @@ span.required{
     display:none;
   }
 }
+
+.table{
+  td{
+    .url{
+      font-size:10px;
+    }
+    a{
+      word-wrap:break-word;
+    }
+  }
+}
