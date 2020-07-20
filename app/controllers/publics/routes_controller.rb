@@ -42,6 +42,7 @@ class Publics::RoutesController < ApplicationController
       flash[:notice] = "非公開に設定されています"
     end
     gon.places = @route.spots.map{|spot| spot.place}
+    gon.spots = @route.spots
   end
 
   def edit

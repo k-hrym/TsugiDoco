@@ -1,6 +1,6 @@
-let map_route;
 
 function initMapRoute() {
+  let map_route;
   geocoder = new google.maps.Geocoder()
 
   // マップを作成
@@ -14,16 +14,20 @@ function initMapRoute() {
   });
 
   // マーカーを立てる場所の緯度経度を指定
-  console.log(gon.places[0]);
-  for(place in gon.places){
-    var  marker = `${gon.places[place].name}`;
-    console.log('name:',marker);
+  var places = gon.places;
+  var spots = gon.spots;
+  for(var i = 0; i < places.length ; i ++){
+    var  marker = `${places[i].name}`;
+    console.log('name:', places[i].id);
+    console.log('order:', spots[i].order);
+    console.log('i:', i);
     marker = new google.maps.Marker({
       position: {
-        lat: gon.places[place].latitude,
-        lng: gon.places[place].longitude
+        lat: places[i].latitude,
+        lng: places[i].longitude
       },
-      map: map_route
+      map: map_route,
+      icon: new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld="+ (i + 1) + "|ff7e73|000000")
     });
   }
 
