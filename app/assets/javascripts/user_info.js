@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function(){
   $('#user__routes').on('click',function(){
     $('#user__routes--content').show();
     $(this).css('border-bottom','2px solid #4682b4');

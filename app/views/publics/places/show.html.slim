@@ -16,7 +16,7 @@
       = link_to '情報を編集する',edit_place_path(@place),class:"badge ml-auto col-auto"
 
     - @place.place_images.each do |image|
-      = attachment_image_tag image,:image,:fill,150,150
+      = attachment_image_tag image,:image,:fill,150,150,class:"mr-1"
 
 
     table.table
@@ -70,7 +70,7 @@
       -@next_spots.each do |spot|
         =link_to place_path(spot.place) do
           .place__next-spot
-            =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90'
-            =spot.place.name
+            =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90',class:"place__next-spot--image"
+            p=spot.place.name
     -else
       p 登録されていません
