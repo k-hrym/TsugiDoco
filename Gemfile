@@ -63,6 +63,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end
@@ -88,3 +89,5 @@ gem 'jquery-ui-rails'
 
 gem 'roo'
 
+gem 'gon'
+gem 'geocoder'

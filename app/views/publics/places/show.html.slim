@@ -30,7 +30,13 @@
 
       tr.row
         th.col-3 住所
-        td.col= @place.address
+        td.col
+          .mb-2= @place.address
+          #map style='height: 200px; width: auto;'
+
+          - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
+          script{ async src=google_api }
+
 
       tr.row
         th.col-3 アクセス

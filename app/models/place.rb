@@ -9,6 +9,9 @@ class Place < ApplicationRecord
   has_many :wents
   has_many :wishes
 
+  geocoded_by :address
+  after_validation :geocode
+
   def self.search(search)
     return Place.all unless search
     Place.where(["name LIKE ?", "%#{search}%"])
