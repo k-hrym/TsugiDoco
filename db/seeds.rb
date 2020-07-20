@@ -45,15 +45,24 @@ Place.create!(
   [
     {
       genre_id: '3',
-      name: '代々木公園'
+      name: '代々木公園',
+      address: '東京都渋谷区代々木神園町２−１',
+      latitude: 35.6717823,
+      longitude: 139.6917847
     },
     {
       genre_id: '2',
-      name: 'Tsugi Cafe'
+      name: 'Tsugi Cafe',
+      address: '東京都渋谷区富ケ谷１丁目１５−２ バルビゾン５５ 1F',
+      latitude: 35.6668094,
+      longitude: 139.6923539
     },
     {
       genre_id: '1',
-      name: '居酒屋DOC'
+      name: '居酒屋DOC',
+      address: '東京都渋谷区富ケ谷１丁目５１−４ 野本ビル 1F',
+      latitude: 35.6686994,
+      longitude: 139.6895603
     }
   ]
 )

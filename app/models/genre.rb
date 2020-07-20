@@ -5,6 +5,7 @@ class Genre < ApplicationRecord
 
   scope :only_valid, -> { where(is_valid: true) }
 
+  # viewでis_validカラムに応じた文字列を定義する
   def valid_invalid
     case self.is_valid
     when true

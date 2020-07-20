@@ -9,11 +9,15 @@ class Place < ApplicationRecord
   has_many :wents
   has_many :wishes
 
-  def self.search(search)
-    return Place.all unless search
-    Place.where(["name LIKE ?", "%#{search}%"])
-  end
+  geocoded_by :address
+  after_validation :geocode
 
+  # def self.search(search)
+  #   return Place.all unless search
+  #   Place.where(["name LIKE ?", "%#{search}%"])
+  # end
+
+  # viewでis_closedカラムに応じた文字列を定義する
   def open_close
     case self.is_closed
     when true

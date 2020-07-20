@@ -24,14 +24,18 @@ class Publics::PlacesController < ApplicationController
 
   def show
     spots = Spot.where(place_id: @place.id)
+    # @placeに紐づくSpotが登録されているかを確認
     unless spots.nil?
+      #あればその次にいったSpotを配列にして返す
       @next = spots.map do |spot|
         next_spots = []
         route_spots = spot.route.spots
         route_spots.find_by(order: spot.order + 1)
       end
-      @next_spots = @next.compact
+      @next_spots = @next.compact #nilは含めない
     end
+
+    gon.place = @place #map表示用の変数を定義
   end
 
   def edit

@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_07_19_030231) do
     t.text "explanation"
     t.string "postcode"
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "access"
     t.string "tel"
     t.string "url"
