@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+jQuery(document).ready(function($){
   var $target = $(".field");
   $target.autocomplete({
     source: function(req,resp){
