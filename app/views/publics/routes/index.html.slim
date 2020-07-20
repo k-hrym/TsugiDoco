@@ -1,0 +1,13 @@
+h3
+  b ルート一覧
+
+.row
+  .col-4.p-1 
+    /左列
+    == render 'route_repeat',routes: @routes_left
+  .col-4.p-1
+    /真ん中列
+    == render 'route_repeat',routes: @routes_center
+  .col-4.p-1
+    /右列
+    == render 'route_repeat',routes: @routes_right

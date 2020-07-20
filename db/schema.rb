@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_10_044929) do
+ActiveRecord::Schema.define(version: 2020_07_19_030231) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2020_07_10_044929) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_likes_on_route_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "place_images", force: :cascade do |t|
     t.integer "place_id", null: false
     t.integer "user_id", null: false
@@ -43,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_044929) do
 
   create_table "places", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "name"
+    t.string "name", null: false
     t.text "explanation"
     t.string "postcode"
     t.string "address"
@@ -57,6 +66,37 @@ ActiveRecord::Schema.define(version: 2020_07_10_044929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_places_on_genre_id"
+  end
+
+  create_table "relations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relations_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relations_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relations_on_user_id"
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title", null: false
+    t.text "explanation"
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_routes_on_user_id"
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer "route_id"
+    t.integer "place_id"
+    t.integer "order", default: 1, null: false
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_spots_on_place_id"
+    t.index ["route_id"], name: "index_spots_on_route_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +115,26 @@ ActiveRecord::Schema.define(version: 2020_07_10_044929) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wents", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_wents_on_place_id"
+    t.index ["user_id", "place_id"], name: "index_wents_on_user_id_and_place_id", unique: true
+    t.index ["user_id"], name: "index_wents_on_user_id"
+  end
+
+  create_table "wishes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_wishes_on_place_id"
+    t.index ["user_id", "place_id"], name: "index_wishes_on_user_id_and_place_id", unique: true
+    t.index ["user_id"], name: "index_wishes_on_user_id"
   end
 
 end

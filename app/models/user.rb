@@ -9,6 +9,63 @@ class User < ApplicationRecord
   has_many :place_images
   accepts_attachments_for :place_images, attachment: :image
 
-  validates :name,:email,:is_valid, presence: true
+  has_many :routes,dependent: :destroy
+
+  has_many :likes
+
+  has_many :relations
+  has_many :followings,through: :relations,source: :follow
+  has_many :reverse_of_relations, class_name: 'Relation',foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relations,source: :user
+
+  has_many :wents
+  has_many :wishes
+
+  validates :name, presence: true
+  #validate :email_exist
+  validates :is_valid, inclusion: { in: [true, false]}
   validates :profile,length: {maximum: 500}
+
+  # def email_exist
+  #   if User.where.not(id:id).where(email: email).where(is_valid:true).present?
+  #     errors.add(:email,"email is already exist")
+  #   end
+  # end
+
+  def wishing?(place)
+    self.wishes.find_by(place_id: place.id).present?
+  end
+
+  def went?(place)
+    self.wents.find_by(place_id: place.id).present?
+  end
+
+  def valid_user
+    case self.is_valid
+    when true
+      return '有効'
+    when false
+      return '退会済'
+    end
+  end
+
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
+
+  def follow(other_user)
+    unless self == other_user
+      self.relations.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relation = self.relations.find_by(follow_id: other_user.id)
+    relation.destroy if relation
+  end
+
+  def following?(other_user)
+    self.followings.include?(other_user)
+  end
+
 end

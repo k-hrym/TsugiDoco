@@ -1,23 +1,53 @@
+.user-profile__container
+  .row
+    .col-md-auto
+      = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg",size: "70x70"
 
-.row
-  .col-md-auto
-    = attachment_image_tag @user,:profile_image,:fill,100,100,class:"rounded-circle",fallback:"no_image.jpg"
-
-  .col
-    h3= @user.name
-
-    p フォロー フォロワー
-
-    = link_to 'フォローする','#',class:"btn btn-sm btn-outline-secondary"
-
-  -if user_signed_in? && @user==current_user
     .col
-      = link_to 'プロフィール編集',edit_user_path,class:"badge badge-light"
+      h3= @user.name
+
+      #follow-user-count
+        ==render 'publics/relations/count',user: @user
+      #follow-user-button
+        ==render 'publics/relations/button',user: @user
+
+    -if user_signed_in? && @user==current_user
+      .col
+        = link_to 'プロフィール編集',edit_user_path,class:"badge badge-light"
+        = link_to '退会する',users_hide_path(@user),method: :patch,class:"badge",data:{confirm: '退会しますか'}
+
+  .row
+    table.table
+      tbody
+        tr
+          th プロフィール
+          td.user-profile__text= @user.profile
+
+.row.mb-0
+  a.col-auto.p-1.m-1.btn#user__routes
+    i.fas.fa-route.pr-1
+    |ルート(
+    =@user.routes.released.count
+    |)
+  -if user_signed_in? && @user == current_user
+    a.col-auto.p-1.m-1.btn#user__wishes
+      i.fas.fa-bookmark.pr-1
+      |いきたい(
+      =@user.wishes.count
+      |)
+    a.col-auto.p-1.m-1.btn#user__wents
+      i.fas.fa-check-square.pr-1
+      |いった(
+      =@user.wents.count
+      |)
+    .col-auto.ml-auto
+      =link_to 'ルートの管理',user_routes_path
 
 .row
-  table.table
-    tbody
-      tr
-        th プロフィール
-        td.user-profile__text= @user.profile
-
+  .row.mt-0#user__routes--content
+    ==render 'posted_route',routes: @routes
+  -if user_signed_in? && @user == current_user
+    .row.mt-0#user__wishes--content
+      ==render 'publics/places/places',places: @wishes_places
+    .row.mt-0#user__wents--content
+      ==render 'publics/places/places',places: @wents_places

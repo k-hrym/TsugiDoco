@@ -1,0 +1,24 @@
+=attachment_image_tag @user,:profile_image,:fill,100,100,fallback: 'no_image.jpg',size: '100x100',class:"rounded-circle"
+.row
+  table.table
+    tbody
+      tr
+        th ユーザー名
+        td=@user.name
+      tr
+        th プロフィール
+        td=@user.profile
+      tr
+        th 生年月日
+        td=@user.birth
+      tr
+        th 性別
+        td=@user.sex
+
+= form_with model: @user,url: admins_user_path(@user) do |form|
+  p
+    =form.radio_button :is_valid,true
+    |有効
+    =form.radio_button :is_valid,false
+    |退会
+  =form.submit

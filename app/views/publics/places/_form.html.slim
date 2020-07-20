@@ -14,11 +14,15 @@
 = form_for place do |f|
   table.table
     tr.row
-      th.col-2= f.label :name,'場所名'
+      th.col-2
+        = f.label :name,'場所名'
+        span.required 必須
       td.col= f.text_field :name,class:"form-control"
 
     tr.row
-      th.col-2= f.label :genre_id,'ジャンル'
+      th.col-2
+        = f.label :genre_id,'ジャンル'
+        span.required 必須
       td.col
         - genres.each do |genre|
           span.place__new--genre
@@ -64,6 +68,13 @@
     tr.row
       th.col-2= f.label :holiday,'定休日'
       td.col= f.text_field :holiday,class:"form-control"
+
+    -if place.id #newページで呼び出された時は表示しない
+      tr.row
+        th.col-2= f.label :is_closed,'閉店サイン'
+        td.col
+          = f.check_box :is_closed,{checked: false},"false","true"
+          | 閉店や廃業の場合のみチェックを入れてください
 
   .row.justify-content-md-center
     .col-6

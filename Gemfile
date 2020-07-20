@@ -83,3 +83,8 @@ gem 'slim-rails'
 gem 'bootstrap', '~> 4.5.0'
 
 gem 'html2slim'
+
+gem 'jquery-ui-rails'
+
+gem 'roo'
+

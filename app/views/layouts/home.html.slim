@@ -17,12 +17,19 @@ html
               h2
                 | Tsugi Doco
         ul.navbar-nav.ml-auto.nav-right
-          li.nav-item
-            = link_to 'ログイン',new_user_session_path,class:"nav-link"
-          li.nav-item
-            = link_to '会員登録',new_user_registration_path,class:"nav-link"
+          -if user_signed_in?
+            li.nav-item
+              =link_to user_path(current_user) do
+                = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle"
+            li.nav-item
+              =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link"
+          -else
+            li.nav-item
+              = link_to 'ログイン',new_user_session_path,class:"nav-link"
+            li.nav-item
+              = link_to '会員登録',new_user_registration_path,class:"nav-link"
       .container-fluid.main-image
-        .row.justify-content-center
+        .row.mt-0.justify-content-center
           .col-3.main-image__text
             div
               h4
@@ -41,16 +48,21 @@ html
               h4
                 | さあ、はじめよう
               br
-              = link_to 'ログイン',new_user_session_path,class:"nav-link btn btn-sm btn-outline-light"
-              = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        ul.navbar-nav.ml-auto
+              -if user_signed_in?
+                = link_to 'ルートを投稿',new_route_path,class:"nav-link btnt btn-sm btn-light"
+              -else
+                = link_to 'ログイン',new_user_session_path,class:"nav-link btn btn-sm btn-outline-light mb-2"
+                = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"
+      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
+        ul.navbar-nav
           li.nav-item
-            | ロゴ
+            =link_to '場所登録',new_place_path,class:"nav-link"
           li.nav-item
-            | SNSボタン
+            =link_to '場所一覧',places_path,class:"nav-link"
           li.nav-item
-            | 会員登録
+            =link_to 'ルート登録',new_route_path,class:"nav-link"
+          li.nav-item
+            =link_to 'ルート一覧',routes_path,class:"nav-link"
     .container
       .row.justify-content-md-center
         .col-11

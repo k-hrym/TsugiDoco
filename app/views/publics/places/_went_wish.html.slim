@@ -1,0 +1,20 @@
+/いきたい登録済かどうか確認
+-unless current_user.wishing?(place)
+  =link_to wishes_path(id: place.id),method: :post,remote: true,class:"wish__not-yet"
+    i.far.fa-bookmark
+    |   いきたい
+-else
+  =link_to wishes_path(id: place.id),method: :delete,remote: true,class:"wish__already"
+    i.fas.fa-bookmark
+    |   いきたい
+
+
+/ いった登録済かどうか確認
+-unless current_user.went?(place)
+  =link_to wents_path(id: place.id),method: :post,remote: true,class:"went__not-yet"
+    i.far.fa-square
+    |   いった
+-else
+  =link_to wents_path(id: place.id),method: :delete,remote: true,class:"went__already"
+    i.fas.fa-check-square
+    |   いった
