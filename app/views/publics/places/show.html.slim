@@ -37,7 +37,6 @@
           - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
           script{ async src=google_api }
 
-
       tr.row
         th.col-3 アクセス
         td.col= @place.access

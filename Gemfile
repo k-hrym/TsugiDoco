@@ -91,3 +91,5 @@ gem 'roo'
 
 gem 'gon'
 gem 'geocoder'
+gem 'gmaps4rails'
+

@@ -41,6 +41,7 @@ class Publics::RoutesController < ApplicationController
       redirect_to routes_path
       flash[:notice] = "非公開に設定されています"
     end
+    gon.places = @route.spots.map{|spot| spot.place}
   end
 
   def edit
