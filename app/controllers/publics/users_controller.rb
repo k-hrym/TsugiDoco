@@ -4,8 +4,13 @@ class Publics::UsersController < ApplicationController
   before_action :valid_user?,only: [:show]
 
   def show
+    # 公開済のルート
     @routes = Route.where(user_id: @user.id,status: true)
+    # いいねしたルート
+    @like_routes = @user.likes.map{|like| like.route}
+    # いきたい登録した場所
     @wishes_places = @user.wishes.map{|wish| wish.place}
+    # いった登録した場所
     @wents_places = @user.wents.map{|went| went.place}
   end
 
