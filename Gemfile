@@ -95,4 +95,3 @@ gem 'gon'
 gem 'geocoder'
 # google mapを表示できるようにする
 gem 'gmaps4rails'
-
