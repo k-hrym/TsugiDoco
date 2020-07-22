@@ -16,7 +16,12 @@ html
             = link_to root_path,class:"nav-link" do
               h2
                 | Tsugi Doco
+
         ul.navbar-nav.ml-auto.nav-right
+          =form_with url: search_path,method: :get,local: true do |form|
+            .nav-item.m-0.mr-2
+              =form.text_field :search,class:"form-control",placeholder:'場所・ルートを検索'
+
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do
