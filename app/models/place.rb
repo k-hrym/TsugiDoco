@@ -16,10 +16,10 @@ class Place < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  # def self.search(search)
-  #   return Place.all unless search
-  #   Place.where(["name LIKE ?", "%#{search}%"])
-  # end
+  def self.search(search)
+    return Place.all unless search
+    Place.where(["name LIKE ? OR explanation LIKE ? OR address LIKE ?", "%#{search}%","%#{search}%","%#{search}%"])
+  end
 
   # viewでis_closedカラムに応じた文字列を定義する
   def open_close
@@ -31,6 +31,7 @@ class Place < ApplicationRecord
     end
   end
 
+  # csvインポート用
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成

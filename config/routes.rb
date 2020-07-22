@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :relations,only: [:create,:destroy]
     resource :wishes,only: [:create,:destroy]
     resource :wents,only: [:create,:destroy]
+    get 'search' => 'search#search'
   end
 
   root to: 'home#top'
