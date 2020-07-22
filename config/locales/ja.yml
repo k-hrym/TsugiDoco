@@ -16,6 +16,7 @@ ja:
       user:
         name: 名前
         encrypted_password: パスワード
+        password: パスワード
         email: メールアドレス
         profile: プロフィール
         birth: 生年月日
@@ -24,6 +25,7 @@ ja:
       admin:
         email: メールアドレス
         encrypted_password: パスワード
+        password: パスワード
       genre:
         name: ジャンル名
         is_valid: 有効無効
