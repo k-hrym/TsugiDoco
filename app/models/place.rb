@@ -17,7 +17,7 @@ class Place < ApplicationRecord
   after_validation :geocode
 
   def self.search(search)
-    return Place.all unless search
+    return nil if search.blank?
     Place.where(["name LIKE ? OR explanation LIKE ? OR address LIKE ?", "%#{search}%","%#{search}%","%#{search}%"])
   end
 

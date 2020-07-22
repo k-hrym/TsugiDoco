@@ -27,7 +27,7 @@ class Route < ApplicationRecord
 
   #ルートの検索
   def self.search(search)
-    return nil unless search
+    return nil if search.blank?
     #入力された文字でヒットするルート
     routes = Route.where(["title LIKE ? OR explanation LIKE ?", "%#{search}%","%#{search}%"])
     #入力された文字でヒットしたplaceを含むルート

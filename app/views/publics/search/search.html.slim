@@ -2,46 +2,58 @@
   a.col.text-center.p-1.border-right.search-results__place 場所
   a.col.text-center.p-1.search-results__route ルート
 
-table.table.search-results__place--table
-  tbody
-    -@places.each do |place|
-      tr.row
-        td.col-auto
-          =link_to place_path(place),class:"text-reset" do
-            = attachment_image_tag place.place_images.sample,:image,:fill,100,70,fallback: 'no_image.jpg',size: '250x200'
-        td.col
-          =link_to place_path(place),class:"text-reset" do
-            .row
-              h3.col
-                b= place.name
-              .text-12.ml-auto.pt-1 id="place-#{place.id}"
-                ==render 'publics/places/went_wish',place: place
-            p.col.border-bottom=place.genre.name
-            p.col.text-black-50
-              |住所:
-              =place.address
-            p.col=place.explanation
-            .row.text-black-50
-              .col-auto
-                |営業時間:
-                =place.hours
-              .col
-                |定休日:
-                =place.holiday
+-if @places.blank?
+  p.text-center.search-results__place--table.p-5
+    |検索結果：なし
 
-table.table.search-results__route--table
-  tbody
-    -@routes.each do |route|
-      tr.row
-        td.col-auto
-          =link_to route_path(route),class:"text-reset" do
-            = attachment_image_tag route.display_an_image,:image,:fill,100,70,fallback: 'no_image.jpg',size: '250x200'
-        td.col
-          =link_to route_path(route),class:"text-reset" do
-            .row.border-bottom
-              h3.col
-                b= route.title
-              .text-12.ml-auto.pt-1 id="route-#{route.id}"
-                ==render 'publics/likes/heart',route: route
-            p.col=route.explanation
-            .row.text-black-50
+-else
+  table.table.search-results__place--table
+    tbody
+      -@places.each do |place|
+        tr.row
+          td.col-auto
+            =link_to place_path(place),class:"text-reset" do
+              = attachment_image_tag place.place_images.sample,:image,:fill,100,70,fallback: 'no_image.jpg',size: '250x200'
+          td.col
+            =link_to place_path(place),class:"text-reset" do
+              .row
+                h3.col
+                  b= place.name
+                .text-12.ml-auto.pt-1 id="place-#{place.id}"
+                  ==render 'publics/places/went_wish',place: place
+              p.col.border-bottom=place.genre.name
+              p.col.text-black-50
+                |住所:
+                =place.address
+              p.col=place.explanation
+              .row.text-black-50
+                .col-auto
+                  |営業時間:
+                  =place.hours
+                .col
+                  |定休日:
+                  =place.holiday
+
+
+/タブの切り替えされるまでは非表示
+-if @routes.blank?
+  p.text-center.search-results__route--table.p-5
+    |検索結果：なし
+
+-else
+  table.table.search-results__route--table
+    tbody
+      -@routes.each do |route|
+        tr.row
+          td.col-auto
+            =link_to route_path(route),class:"text-reset" do
+              = attachment_image_tag route.display_an_image,:image,:fill,100,70,fallback: 'no_image.jpg',size: '250x200'
+          td.col
+            =link_to route_path(route),class:"text-reset" do
+              .row.border-bottom
+                h3.col
+                  b= route.title
+                .text-12.ml-auto.pt-1 id="route-#{route.id}"
+                  ==render 'publics/likes/heart',route: route
+              p.col=route.explanation
+              .row.text-black-50
