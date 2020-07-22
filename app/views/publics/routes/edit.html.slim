@@ -5,8 +5,10 @@
 
   .route__container--spots
     h3 スポットの登録
-    #add_spots
-      == render 'spot_form',route: @route
+
+    div id="add_spots"
+      - @route.spots.each do |spot|
+        == render 'spot_form',spot: spot,route: @route
 
     = link_to 'スポットを追加する',spots_path(id: @route.id),method: :post,remote: true,class:"btn btn-outline-secondary form-control"
 
