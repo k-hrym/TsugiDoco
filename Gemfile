@@ -95,3 +95,6 @@ gem 'gon'
 gem 'geocoder'
 # google mapを表示できるようにする
 gem 'gmaps4rails'
+# エラーメッセージを日本語化する
+gem 'rails-i18n'
+

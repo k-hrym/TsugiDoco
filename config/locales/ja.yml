@@ -1,0 +1,75 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      route: ルート
+      admin: 管理者
+      genre: ジャンル
+      like: ルート
+      place_image: イメージ
+      place: 場所
+      relation: フォロー
+      spot: スポット
+      went: いった
+      wish: いきたい
+    attributes:
+      user:
+        name: 名前
+        encrypted_password: パスワード
+        email: メールアドレス
+        profile: プロフィール
+        birth: 生年月日
+        profile_image_id: プロフィール画像
+        sex: 性別
+      admin:
+        email: メールアドレス
+        encrypted_password: パスワード
+      genre:
+        name: ジャンル名
+        is_valid: 有効無効
+      like:
+        user_id: ユーザーID
+        route_id: ルートID
+      place_image:
+        place_id: 場所ID
+        user_id: ユーザーID
+        image_id: 画像
+      place:
+        genre_id: ジャンルID
+        name: 場所名
+        explanation: 説明文
+        postcode: 郵便番号
+        address: 住所
+        latitude: 緯度
+        longitude: 経度
+        access: アクセス
+        tel: 電話番号
+        url: URL
+        hours: 営業時間
+        price: 料金
+        holiday: 定休日
+        is_closed: 閉店確認
+      relation:
+        user_id: ユーザーID
+        follow_id: フォロワーID
+      route:
+        user_id: ユーザーID
+        title: タイトル
+        explanation: 説明文
+        status: 公開非公開
+      spot:
+        route_id: ルートID
+        place_id: 場所ID
+        order: 順番
+        memo: メモ
+      went:
+        user_id: ユーザーID
+        place_id: 場所ID
+      wish:
+        user_id: ユーザーID
+        place_id: 場所ID
+
+
+　attributes:
+    created_at: 作成日
+    updated_at: 更新日

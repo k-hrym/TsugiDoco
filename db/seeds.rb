@@ -68,10 +68,12 @@ Place.create!(
 )
 
 User.all.each do |user|
+  puts user.name
   user.routes.create!(
     title: "#{user.name}の初投稿",
     explanation: "#{user.name}の初投稿として自動生成されています",
-    status: true
+    status: true,
+    user_id: user.id
   )
 end
 

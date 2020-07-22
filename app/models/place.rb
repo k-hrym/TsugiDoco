@@ -16,7 +16,7 @@ class Place < ApplicationRecord
   validates :name,presence: true,length: {maximum: 50}
   validates :explanation,length: {maximum: 300}
   validates :genre_id,presence: true
-  validates :postcode,length: {is: 7}
+  validates :postcode,length: {is: 7}, allow_nil: true
   validates :address,presence: true
   validates :access,length: {maximum: 200}
   validates :is_closed, inclusion: {in: [true,false]}

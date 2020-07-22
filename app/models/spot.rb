@@ -3,7 +3,7 @@ class Spot < ApplicationRecord
   belongs_to :place, optional: true
 
   validates :route_id,:order,presence: true
-  validates :memo,langth: {maximum: 200}
+  validates :memo,length: {maximum: 200}
 
   scope :place_nil, -> {where(place_id: nil)}
 
