@@ -16,9 +16,13 @@ class Place < ApplicationRecord
   validates :name,presence: true,length: {maximum: 50}
   validates :explanation,length: {maximum: 300}
   validates :genre_id,presence: true
-  validates :postcode,length: {is: 7}, allow_nil: true
-  validates :address,presence: true
+  validates :postcode,length: {is: 7}, allow_blank: true
+  validates :address,presence: true,length: {maximum: 100}
   validates :access,length: {maximum: 200}
+  validates :tel,length: {in: 10..11}, allow_blank: true
+  validates :hours,length: {maximum: 200}
+  validates :price,length: {maximum: 200}
+  validates :holiday,length: {maximum: 200}
   validates :is_closed, inclusion: {in: [true,false]}
 
   geocoded_by :address

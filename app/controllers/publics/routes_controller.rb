@@ -51,10 +51,12 @@ class Publics::RoutesController < ApplicationController
 
   def draft #更新内容を下書き保存
     @route.spots.map do |rsi|
-      rsi.update(route_spot_params(rsi.id))
+      unless rsi.update(route_spot_params(rsi.id))
+        render :edit
+      end
     end
     if @route.update(status: false) && @route.update(route_params) #route.statusはfalseに
-      redirect_to @route,notice: "下書きに保存しました！"
+      redirect_to routes_path,notice: "下書きに保存しました！"
     else
       redirect_back(fallback_location: root_path)
       flash[:notice] = "場所が未登録のスポットがあります"

@@ -97,4 +97,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 # エラーメッセージを日本語化する
 gem 'rails-i18n'
+# デバイスの日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 

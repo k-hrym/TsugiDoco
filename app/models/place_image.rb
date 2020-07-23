@@ -2,7 +2,7 @@ class PlaceImage < ApplicationRecord
   belongs_to :place
   belongs_to :user
 
-  validates :image_id,presence: true
+  # validates :image_id,presence: true
 
   attachment :image
 

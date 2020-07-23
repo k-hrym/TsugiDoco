@@ -8,7 +8,7 @@ class Route < ApplicationRecord
 
   validates :title,presence: true,length: {maximum: 50}
   validates :explanation,length: {maximum: 500}
-  validates :status,presence: true,inclusion: {in: [true,false]}
+  validates :status,inclusion: {in: [true,false]}
 
   scope :released, -> { where(status: true) }
 

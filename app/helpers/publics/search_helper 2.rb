@@ -1,2 +1,0 @@
-module Publics::SearchHelper
-end
