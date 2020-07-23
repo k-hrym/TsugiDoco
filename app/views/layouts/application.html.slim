@@ -5,20 +5,26 @@ html
       | TsugiDoco
     = csrf_meta_tags
     = csp_meta_tag
+    = include_gon
     link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"]
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     script[src="https://kit.fontawesome.com/27cb1ad52b.js" crossorigin="anonymous"]
 
   body
     header
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #e3f2fd;"]
-        ul.navbar-nav.mr-auto.nav-right
+        ul.navbar-nav.nav-right
           li.nav-item
             = link_to root_path,class:"nav-link" do
               h2
                 | Tsugi Doco
+
         ul.navbar-nav.ml-auto.nav-right
+          =form_with url: search_path,method: :get,local: true do |form|
+            .nav-item.m-0.mr-2
+              =form.text_field :search,class:"form-control",placeholder:'場所・ルートを検索'
+
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do
@@ -51,3 +57,5 @@ html
     script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"]
     script[src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"]
     script[src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"]
+    script[type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"]
+

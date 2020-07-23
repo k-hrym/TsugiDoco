@@ -6,8 +6,8 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"]
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   body
     header
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #e3f2fd;"]
@@ -16,7 +16,12 @@ html
             = link_to root_path,class:"nav-link" do
               h2
                 | Tsugi Doco
+
         ul.navbar-nav.ml-auto.nav-right
+          =form_with url: search_path,method: :get,local: true do |form|
+            .nav-item.m-0.mr-2
+              =form.text_field :search,class:"form-control",placeholder:'場所・ルートを検索'
+
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do

@@ -9,11 +9,19 @@ class Place < ApplicationRecord
   has_many :wents
   has_many :wishes
 
+  validates :name,presence: true
+  validates :genre_id,presence: true
+  validates :address,presence: true
+
+  geocoded_by :address
+  after_validation :geocode
+
   def self.search(search)
-    return Place.all unless search
-    Place.where(["name LIKE ?", "%#{search}%"])
+    return nil if search.blank?
+    Place.where(["name LIKE ? OR explanation LIKE ? OR address LIKE ?", "%#{search}%","%#{search}%","%#{search}%"])
   end
 
+  # viewでis_closedカラムに応じた文字列を定義する
   def open_close
     case self.is_closed
     when true
@@ -23,6 +31,7 @@ class Place < ApplicationRecord
     end
   end
 
+  # csvインポート用
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       # IDが見つかれば、レコードを呼び出し、見つかれなければ、新しく作成

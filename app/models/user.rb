@@ -32,14 +32,17 @@ class User < ApplicationRecord
   #   end
   # end
 
+  # 場所にいきたい登録しているかをtrue/falseで返す
   def wishing?(place)
     self.wishes.find_by(place_id: place.id).present?
   end
 
+  # 場所にいった登録しているかをtrue/falseで返す
   def went?(place)
     self.wents.find_by(place_id: place.id).present?
   end
 
+  # viewでis_validカラムに応じた文字列を定義する
   def valid_user
     case self.is_valid
     when true
@@ -49,21 +52,25 @@ class User < ApplicationRecord
     end
   end
 
+  # 論理削除
   def active_for_authentication?
     super && (self.is_valid == true)
   end
 
+  # ユーザーをフォローする
   def follow(other_user)
     unless self == other_user
       self.relations.find_or_create_by(follow_id: other_user.id)
     end
   end
 
+  # ユーザーのフォローを外す
   def unfollow(other_user)
     relation = self.relations.find_by(follow_id: other_user.id)
     relation.destroy if relation
   end
 
+  # ユーザーをフォローしているかをtrue/falseで返す
   def following?(other_user)
     self.followings.include?(other_user)
   end

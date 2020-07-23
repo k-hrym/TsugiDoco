@@ -20,6 +20,12 @@
       display:block;
     }
   }
+  &__likes{
+    border-radius: 0;
+    &--content{
+      display:none;
+    }
+  }
   &__wishes{
     border-radius: 0;
     &--content{
