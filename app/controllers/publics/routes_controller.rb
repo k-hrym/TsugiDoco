@@ -41,6 +41,7 @@ class Publics::RoutesController < ApplicationController
       redirect_to routes_path
       flash[:notice] = "非公開に設定されています"
     end
+    # mapを表示するjsで使うための変数
     gon.places = @route.spots.map{|spot| spot.place}
     gon.spots = @route.spots
   end
@@ -51,9 +52,7 @@ class Publics::RoutesController < ApplicationController
 
   def draft #更新内容を下書き保存
     @route.spots.map do |rsi|
-      unless rsi.update(route_spot_params(rsi.id))
-        render :edit
-      end
+      rsi.update(route_spot_params(rsi.id))
     end
     if @route.update(status: false) && @route.update(route_params) #route.statusはfalseに
       redirect_to routes_path,notice: "下書きに保存しました！"

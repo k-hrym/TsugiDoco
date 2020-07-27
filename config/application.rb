@@ -22,7 +22,6 @@ module TsugiDoco
     # エラーメッセージの個別化
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       # エラーが出てない場合
-      debugger
       if instance.kind_of?(ActionView::Helpers::Tags::Label)
         html_tag.html_safe  #HTMLをそのまま表示する
       else
