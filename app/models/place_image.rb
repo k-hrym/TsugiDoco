@@ -2,6 +2,8 @@ class PlaceImage < ApplicationRecord
   belongs_to :place
   belongs_to :user
 
+  # validates :image_id,presence: true
+
   attachment :image
 
   def self.add_place_images(params,place,user) #既存のPlaceに追加するときだけ使う

@@ -1,20 +1,22 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  = flash[:error]
+.row.justify-content-md-center
+  .col-6
+    h2
+      | ログイン
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = flash[:error]
 
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "publics/shared/links"
+      .field
+        = f.label :email,class:"mt-2"
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control"
+      .field
+        = f.label :password,class:"mt-2"
+        br
+        = f.password_field :password, autocomplete: "current-password",class:"form-control"
+      - if devise_mapping.rememberable?
+        .field.mt-2
+          = f.check_box :remember_me
+          = f.label :remember_me ,"ログイン情報を保存する"
+      .actions
+        = f.submit "ログイン",class:"mt-2 form-control btn btn-secondary"
+    = render "publics/shared/links"

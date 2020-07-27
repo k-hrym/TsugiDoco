@@ -23,6 +23,7 @@ p
         = attachment_image_tag spot.place.place_images.first,:image,class:"route__image--short"
     =spot.memo
 
+h2 MAP
 #map_route style='height: 400px; width: auto;'
 
 - google_route_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMapRoute".html_safe
