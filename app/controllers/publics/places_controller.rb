@@ -1,5 +1,5 @@
 class Publics::PlacesController < ApplicationController
-  before_action :authenticate_user!,only: [:new,:create]
+  before_action :authenticate_user!,only: [:new,:create,:edit]
   before_action :valid_genres,only: [:new,:create,:edit,:update]
   before_action :find_place,only: [:show,:edit,:update]
 

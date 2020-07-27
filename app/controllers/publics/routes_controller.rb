@@ -54,12 +54,10 @@ class Publics::RoutesController < ApplicationController
     @route.spots.map do |rsi|
       rsi.update(route_spot_params(rsi.id))
     end
-    if @route.update(status: false) && @route.update(route_params) #route.statusはfalseに
-      redirect_to routes_path,notice: "下書きに保存しました！"
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = "場所が未登録のスポットがあります"
-    end
+
+    @route.update(status: false) #route.statusはfalse(下書き)に
+    @route.update(route_params)
+    redirect_to routes_path,notice: "下書きに保存しました！"
   end
 
   def release #更新内容を保存して公開

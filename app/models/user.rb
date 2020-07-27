@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :spots,through: :routes
 
   has_many :likes
-  has_many :routes,through: :likes
+  # has_many :routes,through: :likes
 
   has_many :relations
   has_many :followings,through: :relations,source: :follow

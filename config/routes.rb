@@ -25,7 +25,10 @@ Rails.application.routes.draw do
     get 'users/routes' => 'users#routes',as: 'user_routes'
     patch 'users/:id/hide' => 'users#hide',as: 'users_hide'
     get 'users/switch_table' => 'users#switch_table',as: 'users_switch_table'
-    resources :users,only: [:show,:edit,:update]
+    resources :users,only: [:show,:edit,:update] do
+      get 'following' => 'relations#following'
+      get 'follower' => 'relations#follower'
+    end
     resources :places,only: [:new,:create,:index,:show,:edit,:update]
     resources :routes,only: [:new,:create,:index,:show,:edit,:destroy] do
       resource :likes,only: [:create,:destroy]
