@@ -2,16 +2,28 @@ class Place < ApplicationRecord
   belongs_to :genre
 
   has_many :place_images, dependent: :destroy, autosave: true
+  has_many :users,through: :place_images
   accepts_attachments_for :place_images, attachment: :image
 
   has_many :spots
+  has_many :routes,through: :spots
 
   has_many :wents
+  has_many :users,through: :wents
   has_many :wishes
+  has_many :users,through: :wishes
 
-  validates :name,presence: true
+  validates :name,presence: true,length: {maximum: 50}
+  validates :explanation,length: {maximum: 300}
   validates :genre_id,presence: true
-  validates :address,presence: true
+  validates :postcode,length: {is: 7}, allow_blank: true
+  validates :address,presence: true,length: {maximum: 100}
+  validates :access,length: {maximum: 200}
+  validates :tel,length: {in: 10..11}, allow_blank: true
+  validates :hours,length: {maximum: 200}
+  validates :price,length: {maximum: 200}
+  validates :holiday,length: {maximum: 200}
+  validates :is_closed, inclusion: {in: [true,false]}
 
   geocoded_by :address
   after_validation :geocode

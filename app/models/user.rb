@@ -10,8 +10,10 @@ class User < ApplicationRecord
   accepts_attachments_for :place_images, attachment: :image
 
   has_many :routes,dependent: :destroy
+  has_many :spots,through: :routes
 
   has_many :likes
+  has_many :routes,through: :likes
 
   has_many :relations
   has_many :followings,through: :relations,source: :follow
@@ -19,12 +21,17 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relations,source: :user
 
   has_many :wents
+  has_many :places,through: :wents
   has_many :wishes
+  has_many :places,through: :wishes
 
-  validates :name, presence: true
-  #validate :email_exist
+  validates :name, presence: true,length: {maximum: 15}
+  validates :profile, presence: true,length: {maximum: 400}
   validates :is_valid, inclusion: { in: [true, false]}
   validates :profile,length: {maximum: 500}
+  validates :sex,inclusion: {in: [0,1,2]}
+
+  #validate :email_exist
 
   # def email_exist
   #   if User.where.not(id:id).where(email: email).where(is_valid:true).present?

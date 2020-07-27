@@ -1,15 +1,14 @@
 = f.hidden_field :user_id,value: current_user.id
-.row
-  = f.label :title
-    b
-      |ルート名
-      span.required 必須
-  = f.text_field :title,class:"form-control"
 
-.row
-  = f.label :explanation
-    b ルート説明
-  = f.text_area :explanation,class:"form-control"
+= f.label :title
+  b
+    |ルート名
+    span.required 必須
+= f.text_field :title,class:"form-control"
+
+.mt-3= f.label :explanation
+  b ルート説明
+= f.text_area :explanation,size: "20x10",class:"form-control"
 
 - if route.id.nil?
   .row
