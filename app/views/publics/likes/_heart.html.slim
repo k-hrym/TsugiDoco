@@ -1,11 +1,13 @@
-/ いいね済みかを確認
--if Like.liked(route,current_user).blank?
-  =link_to route_likes_path(route),method: :post,remote: true
-    i.fas.fa-heart.heart__gray.p-1.ml-3
-      |   いいね   
-      =route.likes.count
--else
-  =link_to route_likes_path(route),method: :delete,remote: true
-    i.fas.fa-heart.heart__pink.p-1.ml-3
-      |   いいね   
-      =route.likes.count
+-if user_signed_in?
+  / いいね済みかを確認
+  -if Like.liked(route,current_user).blank?
+    =link_to route_likes_path(route),method: :post,remote: true
+      i.fas.fa-heart.heart__gray.p-1.ml-3
+        |   いいね   
+        =route.likes.count
+  -else
+    =link_to route_likes_path(route),method: :delete,remote: true
+      i.fas.fa-heart.heart__pink.p-1.ml-3
+        |   いいね   
+        =route.likes.count
+

@@ -14,4 +14,12 @@ class Publics::RelationsController < ApplicationController
       flash[:notice] = "フォローを外せませんでした"
     end
   end
+
+  def following
+    @user = User.find(params[:user_id])
+  end
+
+  def follower
+    @user = User.find(params[:user_id])
+  end
 end

@@ -1,0 +1,16 @@
+.row.justify-content-md-center
+  .col-10
+
+    table.table
+      tbody
+        -@user.followings.each do |f|
+          tr
+            .row
+              td=link_to user_path(@user)
+                = attachment_image_tag f,:profile_image,:fill,100,100,class:"rounded-circle col-auto",fallback:"no_image.jpg",size: "70x70"
+              td=link_to user_path(@user)
+                b=f.name
+                p=f.profile
+              td
+                #follow-user-button
+                  ==render 'publics/relations/button',user: f

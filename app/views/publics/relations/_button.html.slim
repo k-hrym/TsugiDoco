@@ -1,4 +1,4 @@
-- unless user == current_user
+-if user_signed_in? && user != current_user
   - if current_user.following?(user)
     = link_to 'フォローを外す',relation_path(id: user.id),method: :delete,remote: true,class:"btn btn-sm btn-secondary"
   - else
