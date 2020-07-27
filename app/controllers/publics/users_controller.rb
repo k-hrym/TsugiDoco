@@ -20,6 +20,7 @@ class Publics::UsersController < ApplicationController
   def update
     if @user.update(user_params)
       redirect_to @user
+      flash[:notice] = "保存しました"
     else
       render :edit
     end
@@ -65,7 +66,7 @@ class Publics::UsersController < ApplicationController
   def valid_user?
     unless @user.is_valid == true
       redirect_back(fallback_location: root_path)
-      flash[:notice] = "存在しないユーザーです"
+      flash[:alert] = "存在しないユーザーです"
     end
   end
 end
