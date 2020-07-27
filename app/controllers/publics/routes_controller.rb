@@ -10,6 +10,7 @@ class Publics::RoutesController < ApplicationController
     @route = Route.new(route_params)
     if @route.save
       redirect_to edit_route_path(@route)
+      flash[:notice] = "保存しました"
     else
       render:new
     end
@@ -39,7 +40,7 @@ class Publics::RoutesController < ApplicationController
   def show
     if @route.status == false
       redirect_to routes_path
-      flash[:notice] = "非公開に設定されています"
+      flash[:alert] = "非公開に設定されています"
     end
     # mapを表示するjsで使うための変数
     gon.places = @route.spots.map{|spot| spot.place}
@@ -61,16 +62,19 @@ class Publics::RoutesController < ApplicationController
   end
 
   def release #更新内容を保存して公開
+    # spotのmemoや、紐づくplaceの情報を保存
     @route.spots.map do |rsi|
       rsi.update(route_spot_params(rsi.id))
     end
+
     unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
-      @route.update(status: true)
+      @route.spots.order_update(@route.spots) #route.spotに通し番号を振り直す
+      @route.update(status: true) #ステータスを「公開」にする
       @route.update(route_params)
       redirect_to @route,notice: "公開が完了しました！"
     else
       redirect_back(fallback_location: root_path)
-      flash[:notice] = "場所が未登録のスポットがあります"
+      flash[:alert] = "場所が未登録のスポットがあります"
     end
   end
 

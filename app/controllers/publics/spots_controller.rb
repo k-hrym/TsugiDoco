@@ -3,15 +3,12 @@ class Publics::SpotsController < ApplicationController
   def create
     @route = Route.find(params[:id])
     @spot = @route.spots.create
-    @route.spots.order_update(@route.spots) #route.spotに通し番号を振り直す
   end
 
   def destroy
     @route = Route.find(params[:route_id])
     @spot = Spot.find(params[:id])
-    if @spot.destroy
-      @route.spots.order_update(@route.spots)
-    end
+    @spot.destroy
   end
 
   def autocomplete
@@ -31,5 +28,3 @@ class Publics::SpotsController < ApplicationController
     params.permit(:place_id)
   end
 end
-
-

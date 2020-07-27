@@ -13,6 +13,7 @@ class Publics::PlacesController < ApplicationController
     @place.place_images.map{|pi| pi.user = current_user} # PlaceImageのuser_idに値を渡す
     if @place.save
       redirect_to @place
+      flash[:notice] = "保存しました"
     else
       render :new
     end
@@ -45,6 +46,7 @@ class Publics::PlacesController < ApplicationController
   def update
     if @place.update(place_params_without_images) && PlaceImage.add_place_images(place_params[:place_images_images],@place,current_user)
       redirect_to @place
+      flash[:notice] = "保存しました"
     else
       render :edit
     end

@@ -9,6 +9,7 @@ class Admins::GenresController < ApplicationController
     @genre = Genre.new(genre_params)
     if @genre.save
       redirect_to admins_genres_path
+      flash[:notice] = "保存しました"
     else
       render :new
     end
@@ -26,6 +27,7 @@ class Admins::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
       redirect_to admins_genres_path
+      flash[:notice] = "保存しました"
     else
       render :edit
     end

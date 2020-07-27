@@ -3,7 +3,7 @@ class Publics::RelationsController < ApplicationController
     @other_user = User.find(params[:id])
     unless current_user.follow(@other_user)
       redirect_back(fallback_location: root_path)
-      flash[:notice] = "フォローできませんでした"
+      flash[:alert] = "フォローできませんでした"
     end
   end
 
@@ -11,7 +11,7 @@ class Publics::RelationsController < ApplicationController
     @other_user = User.find(params[:id])
     unless current_user.unfollow(@other_user)
       redirect_back(fallback_location: root_path)
-      flash[:notice] = "フォローを外せませんでした"
+      flash[:alert] = "フォローを外せませんでした"
     end
   end
 

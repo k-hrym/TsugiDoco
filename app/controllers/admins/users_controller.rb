@@ -16,6 +16,7 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(edit_valid)
     redirect_to admins_users_path
+    flash[:notice] = "保存しました"
   end
 
   private

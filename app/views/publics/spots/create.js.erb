@@ -1,6 +1,11 @@
 // 新しく作った分のspot_formを差し込む
 $("#add_spots").append("<%= j(render 'publics/routes/spot_form',spot: @spot,route: @route) %>");
 
+// SPOT- の後に続く番号を1から順に振り直す。
+jQuery(function(){
+  spotOrder();
+});
+
 // autocomplete機能を使えるようにする
 jQuery(function(){
   placeAutoComplete();
