@@ -14,9 +14,9 @@ html
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
         ul.navbar-nav.mr-auto.nav-right
           li.nav-item
-            = link_to root_path,class:"nav-link" do
-              h2.text-white
-                | Tsugi Doco
+            = link_to root_path,class:"nav-link p-0" do
+              .logo-img
+
         ul.navbar-nav.ml-auto.nav-right
           -if admin_signed_in?
             li.nav-item

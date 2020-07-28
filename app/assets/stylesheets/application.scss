@@ -68,3 +68,12 @@ span.required{
   }
 }
 
+
+// ロゴ
+.logo-img{
+  background-image: image-url("logo.png");
+  width:250px;
+  height:70px;
+  background-size:cover;
+  background-position:center center;
+}

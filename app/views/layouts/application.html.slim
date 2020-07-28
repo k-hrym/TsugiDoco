@@ -16,9 +16,8 @@ html
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
         ul.navbar-nav.nav-right
           li.nav-item
-            = link_to root_path,class:"nav-link" do
-              h2.text-white
-                | Tsugi Doco
+            = link_to root_path,class:"nav-link p-0" do
+              .logo-img
 
         ul.navbar-nav.ml-auto.nav-right
           =form_with url: search_path,method: :get,local: true do |form|
@@ -38,6 +37,10 @@ html
               = link_to '会員登録',new_user_registration_path,class:"nav-link text-white"
       nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center
         ul.navbar-nav
+          li.nav-item
+            =link_to 'ホーム',root_path,class:"nav-link"
+          li.nav-item
+            =link_to 'TsugiDocoとは？',about_path,class:"nav-link"
           li.nav-item
             =link_to 'プレイス登録',new_place_path,class:"nav-link"
           li.nav-item
