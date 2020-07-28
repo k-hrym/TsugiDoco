@@ -45,5 +45,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#top'
+  get 'about' => 'home#about'
 
 end
