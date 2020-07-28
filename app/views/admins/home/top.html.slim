@@ -1,2 +1,34 @@
-h1 Admins::Home#top
-p Find me in app/views/admins/home/top.html.slim
+
+table.table.back__white
+  thead.thead-dark
+    tr
+      th
+      th 全体の合計数
+      th 今日の新着数
+      th 今週の新着数
+      th 今月の新着数
+  tbody
+    tr
+      td=link_to 'プレイス一覧',admins_places_path
+      td=@places.count
+      td=@places_today.count
+      td=@places_thisweek.count
+      td=@places_thismonth.count
+    tr
+      td=link_to 'ジャンル一覧',admins_genres_path
+      td=@genres.count
+      td=@genres_today.count
+      td=@genres_thisweek.count
+      td=@genres_thismonth.count
+    tr
+      td=link_to 'ルート一覧',admins_routes_path
+      td=@routes.count
+      td=@routes_today.count
+      td=@routes_thisweek.count
+      td=@routes_thismonth.count
+    tr
+      td=link_to 'ユーザー一覧',admins_users_path
+      td=@users.count
+      td=@users_today.count
+      td=@users_thisweek.count
+      td=@users_thismonth.count

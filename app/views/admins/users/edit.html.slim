@@ -1,7 +1,23 @@
-=attachment_image_tag @user,:profile_image,:fill,100,100,fallback: 'no_image.jpg',size: '100x100',class:"rounded-circle"
+h3 ユーザー情報
+
 .row
-  table.table
+  table.table.back__white
     tbody
+      tr
+        td
+          .row
+            .col-auto
+              =attachment_image_tag @user,:profile_image,:fill,100,100,fallback: 'no_image.jpg',size: '100x100',class:"rounded-circle"
+
+            .col
+              = form_with model: @user,url: admins_user_path(@user) do |form|
+                p
+                  =form.radio_button :is_valid,true,class:"m-2"
+                  |有効
+                  =form.radio_button :is_valid,false,class:"m-2"
+                  |退会
+                =form.submit '更新',class:"btn btn-secondary"
+
       tr
         th ユーザー名
         td=@user.name
@@ -13,12 +29,28 @@
         td=@user.birth
       tr
         th 性別
-        td=@user.sex
-
-= form_with model: @user,url: admins_user_path(@user) do |form|
-  p
-    =form.radio_button :is_valid,true
-    |有効
-    =form.radio_button :is_valid,false
-    |退会
-  =form.submit
+        td=@user.sex_display
+      tr
+        th 登録日時
+        td=@user.created_at.strftime('%Y/%m/%d %H:%M:%S')
+      tr
+        th ステータス
+        td=@user.valid_user
+      tr
+        th フォロー数
+        td=@user.followings.count
+      tr
+        th フォロワー数
+        td=@user.followers.count
+      tr
+        th 投稿数
+        td=@user.routes.count
+      tr
+        th いいね数
+        td=@user.likes.count
+      tr
+        th いきたい数
+        td=@user.wishes.count
+      tr
+        th いった数
+        td=@user.wents.count

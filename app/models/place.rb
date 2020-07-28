@@ -28,6 +28,10 @@ class Place < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  scope :all_day, -> {where(created_at: Time.zone.now.all_day)}
+  scope :all_week, -> {where(created_at: Time.zone.now.all_week)}
+  scope :all_month, -> {where(created_at: Time.zone.now.all_month)}
+
   def self.search(search)
     return nil if search.blank?
     Place.where(["name LIKE ? OR explanation LIKE ? OR address LIKE ?", "%#{search}%","%#{search}%","%#{search}%"])

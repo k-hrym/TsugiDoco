@@ -30,6 +30,10 @@ class User < ApplicationRecord
   validates :profile,length: {maximum: 500}
   validates :sex,inclusion: {in: [0,1,2]}
 
+  scope :all_day, -> {where(created_at: Time.zone.now.all_day)}
+  scope :all_week, -> {where(created_at: Time.zone.now.all_week)}
+  scope :all_month, -> {where(created_at: Time.zone.now.all_month)}
+
   #validate :email_exist
 
   # def email_exist
@@ -55,6 +59,18 @@ class User < ApplicationRecord
       return '有効'
     when false
       return '退会済'
+    end
+  end
+
+  # 性別の日本語表示
+  def sex_display
+    case self.sex
+    when 1
+      return '男性'
+    when 2
+      return '女性'
+    when 3
+      return 'その他'
     end
   end
 

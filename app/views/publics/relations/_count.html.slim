@@ -1,9 +1,9 @@
 .row
   .col-auto
-    =link_to user_following_path(user)
+    =link_to user_following_path(user),class:"text-reset"
       |フォロー：
       b=user.followings.count
   .col-auto
-    =link_to user_follower_path(user)
+    =link_to user_follower_path(user),class:"text-reset"
       |フォロワー：
       b=user.followers.count

@@ -1,9 +1,13 @@
-h3 =@route.title
-p =@route.explanation
-p
-  |作成者：
-  =link_to @route.user.name,admins_user_path(@route.user)
-table.table
+.back__white.p-3.mb-3
+  h3 =@route.title
+  p
+    |ステータス：
+    =@route.status_display
+  p =@route.explanation
+  p
+    |作成者：
+    =link_to @route.user.name,edit_admins_user_path(@route.user),class:"text-reset"
+table.table.back__white
   thead
     tr
       th 順番
@@ -12,4 +16,7 @@ table.table
     -@route.spots.each do |spot|
       tr
         td=spot.order
-        td=spot.place.name
+        -if spot.place.present?
+          td=spot.place.name
+        -else
+          td
