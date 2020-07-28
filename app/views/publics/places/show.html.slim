@@ -1,5 +1,5 @@
 .row
-  .col-9
+  .col-9.back__white.mr-4
     .row
       h1.col-auto
         b= @place.name
@@ -19,7 +19,7 @@
       =link_to attachment_url(image,:image),'data-lightbox': image do
         = attachment_image_tag image,:image,:fill,150,150,class:"mr-1"
 
-    table.table
+    table.table.back__white
       tr.row
         th.col-3 説明
         td.col= @place.explanation
@@ -61,7 +61,7 @@
         th.col-3 定休日
         td.col= @place.holiday
 
-  .col-3.border.pt-3
+  .col.border.pt-3.back__white
     h5
       b 次、どこ行く？
     p みんなが行ったプレイス
