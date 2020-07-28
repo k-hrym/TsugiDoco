@@ -8,6 +8,8 @@ html
     link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"]
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    script[src="https://kit.fontawesome.com/27cb1ad52b.js" crossorigin="anonymous"]
+
   body
     header
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #e3f2fd;"]
@@ -60,6 +62,10 @@ html
                 = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
         ul.navbar-nav
+          li.nav-item
+            =link_to 'Home',root_path,class:"nav-link"
+          li.nav-item
+            =link_to 'プレイス登録',new_place_path,class:"nav-link"
           li.nav-item
             =link_to 'プレイス登録',new_place_path,class:"nav-link"
           li.nav-item
