@@ -1,9 +1,9 @@
-.route__container
+.route__container.back__white
   h3
     b ルート情報
   p
-    |スポットに登録したい場所が存在しているかを確認してから投稿しましょう。<br>
-    =link_to '場所登録画面',new_place_path
+    |スポットに登録したいプレイスが存在しているかを確認してから投稿しましょう。<br>
+    =link_to 'プレイス登録画面',new_place_path
     |から登録が可能です。
   = form_for @route,onsubmit:"return false;" do |f|
     == render 'route_form',route: @route,f: f

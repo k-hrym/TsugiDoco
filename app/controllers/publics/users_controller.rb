@@ -8,9 +8,9 @@ class Publics::UsersController < ApplicationController
     @routes = Route.where(user_id: @user.id,status: true)
     # いいねしたルート
     @like_routes = @user.likes.map{|like| like.route}
-    # いきたい登録した場所
+    # いきたい登録したプレイス
     @wishes_places = @user.wishes.map{|wish| wish.place}
-    # いった登録した場所
+    # いった登録したプレイス
     @wents_places = @user.wents.map{|went| went.place}
   end
 

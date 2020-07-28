@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
     resources :routes,only: [:index,:show]
     resources :users,only: [:index,:edit,:update]
-    get 'top' => 'home#top', as: 'top'
+    get '/' => 'home#top', as: 'top'
   end
 
 
@@ -45,5 +45,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#top'
+  get 'about' => 'home#about'
 
 end

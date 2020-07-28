@@ -1,84 +1,86 @@
-.row
+.back__white.p-3.mt-2
+  .row
 
-  h3
-    b 場所を登録
+    h3
+      b プレイスを登録
 
-.row
-  p
-    | 場所登録の協力をお願いします。<br>
-      不明な項目は未入力のままでも登録できます。<br>
-      登録後は誰でも情報を編集することができます。<br>
-      既に同じ場所が登録されている場合は後から登録したページは削除されますのでご注意ください。
+  .row
+    p
+      | プレイス登録の協力をお願いします。<br>
+        不明な項目は未入力のままでも登録できます。<br>
+        登録後は誰でも情報を編集することができます。<br>
+        既に同じプレイスが登録されている場合は後から登録したページは削除されますのでご注意ください。
 
 
 = form_for place,html: {class:"needs-validation"} do |f|
-  table.table
-    tr.row
-      th.col-2
-        = f.label :name,'場所名'
-        span.required 必須
-      td.col= f.text_field :name,class:"form-control",placeholder: '例：TsugiCafe'
-
-    tr.row
-      th.col-2
-        = f.label :genre_id,'ジャンル'
-        span.required 必須
-      td.col
-        = f.collection_check_boxes :genre_id,genres,:id,:name, include_hidden: false do |b|
-          .place__new--genre=b.check_box + b.text
-
-            / = genre.name
-
-    tr.row
-      th.col-2= f.label :explanation,'説明'
-      td.col= f.text_area :explanation,size: "20x10",class:"form-control",placeholder:"説明文を入力してください"
-
-    tr.row
-      th.col-2
-        = f.label :postcode,'郵便番号'
-      td.col= f.text_field :postcode,class:"form-control",placeholder:"ハイフンなし(例：1230000)"
-
-    tr.row
-      th.col-2
-        = f.label :address,'住所'
-        span.required 必須
-      td.col= f.text_field :address,class:"form-control",placeholder:"例：東京都新宿区東新宿1-1"
-
-    tr.row
-      th.col-2= f.label :place_images_images,'画像'
-      td.col= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true
-
-    tr.row
-      th.col-2= f.label :access,'アクセス'
-      td.col= f.text_field :access,class:"form-control",placeholder:"例：東新宿駅から徒歩5分"
-
-    tr.row
-      th.col-2= f.label :tel,'電話番号'
-      td.col= f.telephone_field :tel,class:"form-control",placeholder:"例：03-1111-2222"
-
-    tr.row
-      th.col-2= f.label :url,'Webサイト'
-      td.col= f.url_field :url,class:"form-control",placeholder:"例：http://localhost:3000/places/new"
-
-    tr.row
-      th.col-2= f.label :hours,'営業時間'
-      td.col= f.text_field :hours,class:"form-control",placeholder:"例：月~金 17:00~22:00"
-
-    tr.row
-      th.col-2= f.label :price,'料金'
-      td.col= f.text_field :price,class:"form-control",placeholder:"例：入場料　大人800円 こども400円"
-
-    tr.row
-      th.col-2= f.label :holiday,'定休日'
-      td.col= f.text_field :holiday,class:"form-control",placeholder:"例：水曜日"
-
-    -if place.id #newページで呼び出された時は表示しない
+  .back__white.p-3.my-4
+    table.table
       tr.row
-        th.col-2= f.label :is_closed,'閉店サイン'
-        td.col
-          = f.check_box :is_closed,{checked: false},"false","true"
-          | 閉店や廃業の場合のみチェックを入れてください
+        th.col-2
+          = f.label :name,'プレイス名'
+          span.required 必須
+        td.col= f.text_field :name,class:"form-control",placeholder: '例：TsugiCafe'
 
-  .row.justify-content-md-center
-    .col-6
-      = f.submit '登録',class:"btn btn-lg btn-primary btn-block"
+      tr.row
+        th.col-2
+          = f.label :genre_id,'ジャンル'
+          span.required 必須
+        td.col
+          = f.collection_check_boxes :genre_id,genres,:id,:name, include_hidden: false do |b|
+            .place__new--genre=b.check_box + b.text
+
+              / = genre.name
+
+      tr.row
+        th.col-2= f.label :explanation,'説明'
+        td.col= f.text_area :explanation,size: "20x10",class:"form-control",placeholder:"説明文を入力してください"
+
+      tr.row
+        th.col-2
+          = f.label :postcode,'郵便番号'
+        td.col= f.text_field :postcode,class:"form-control",placeholder:"ハイフンなし(例：1230000)"
+
+      tr.row
+        th.col-2
+          = f.label :address,'住所'
+          span.required 必須
+        td.col= f.text_field :address,class:"form-control",placeholder:"例：東京都新宿区東新宿1-1"
+
+      tr.row
+        th.col-2= f.label :place_images_images,'画像'
+        td.col= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true
+
+      tr.row
+        th.col-2= f.label :access,'アクセス'
+        td.col= f.text_field :access,class:"form-control",placeholder:"例：東新宿駅から徒歩5分"
+
+      tr.row
+        th.col-2= f.label :tel,'電話番号'
+        td.col= f.telephone_field :tel,class:"form-control",placeholder:"例：03-1111-2222"
+
+      tr.row
+        th.col-2= f.label :url,'Webサイト'
+        td.col= f.url_field :url,class:"form-control",placeholder:"例：http://localhost:3000/places/new"
+
+      tr.row
+        th.col-2= f.label :hours,'営業時間'
+        td.col= f.text_field :hours,class:"form-control",placeholder:"例：月~金 17:00~22:00"
+
+      tr.row
+        th.col-2= f.label :price,'料金'
+        td.col= f.text_field :price,class:"form-control",placeholder:"例：入場料　大人800円 こども400円"
+
+      tr.row
+        th.col-2= f.label :holiday,'定休日'
+        td.col= f.text_field :holiday,class:"form-control",placeholder:"例：水曜日"
+
+      -if place.id #newページで呼び出された時は表示しない
+        tr.row
+          th.col-2= f.label :is_closed,'閉店サイン'
+          td.col
+            = f.check_box :is_closed,{checked: false},"false","true"
+            | 閉店や廃業の場合のみチェックを入れてください
+
+    .row.justify-content-md-center
+      .col-6
+        = f.submit '登録',class:"btn btn-lg btn-primary btn-block"

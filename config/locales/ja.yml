@@ -7,7 +7,7 @@ ja:
       genre: ジャンル
       like: ルート
       place_image: イメージ
-      place: 場所
+      place: プレイス
       relation: フォロー
       spot: スポット
       went: いった
@@ -33,12 +33,12 @@ ja:
         user_id: ユーザーID
         route_id: ルートID
       place_image:
-        place_id: 場所ID
+        place_id: プレイスID
         user_id: ユーザーID
         image_id: 画像
       place:
         genre_id: ジャンルID
-        name: 場所名
+        name: プレイス名
         explanation: 説明文
         postcode: 郵便番号
         address: 住所
@@ -61,15 +61,15 @@ ja:
         status: 公開非公開
       spot:
         route_id: ルートID
-        place_id: 場所ID
+        place_id: プレイスID
         order: 順番
         memo: メモ
       went:
         user_id: ユーザーID
-        place_id: 場所ID
+        place_id: プレイスID
       wish:
         user_id: ユーザーID
-        place_id: 場所ID
+        place_id: プレイスID
 
 
 　attributes:

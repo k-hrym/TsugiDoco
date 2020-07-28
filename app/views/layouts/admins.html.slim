@@ -11,28 +11,30 @@ html
 
   body
     header
-      nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #e3f2fd;"]
+      nav.navbar.navbar-expand-lg.navbar-light.border-bottom[style="background-color: #999999;"]
         ul.navbar-nav.mr-auto.nav-right
           li.nav-item
-            = link_to root_path,class:"nav-link" do
-              h2
-                | Tsugi Doco
+            = link_to root_path,class:"nav-link p-0" do
+              .logo-img
+
         ul.navbar-nav.ml-auto.nav-right
           -if admin_signed_in?
             li.nav-item
-              =link_to 'ログアウト',destroy_admin_session_path,method: :delete,class:"nav-link"
+              =link_to 'ログアウト',destroy_admin_session_path,method: :delete,class:"nav-link text-white"
           -else
             li.nav-item
-              = link_to 'ログイン',new_admin_session_path,class:"nav-link"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
+              = link_to 'ログイン',new_admin_session_path,class:"nav-link text-white"
+      nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center.border-bottom
         ul.navbar-nav
-          li.nav-item
-            =link_to '場所登録',new_admins_place_path,class:"nav-link"
-          li.nav-item
-            =link_to '場所一覧',admins_places_path,class:"nav-link"
-          li.nav-item
+          li.nav-item.border-right
+            =link_to '管理者トップ',admins_top_path,class:"nav-link"
+          li.nav-item.border-right
+            =link_to 'プレイス登録',new_admins_place_path,class:"nav-link"
+          li.nav-item.border-right
+            =link_to 'プレイス一覧',admins_places_path,class:"nav-link"
+          li.nav-item.border-right
             =link_to 'ジャンル一覧',admins_genres_path,class:"nav-link"
-          li.nav-item
+          li.nav-item.border-right
             =link_to 'ルート一覧',admins_routes_path,class:"nav-link"
           li.nav-item
             =link_to 'ユーザー一覧',admins_users_path,class:"nav-link"

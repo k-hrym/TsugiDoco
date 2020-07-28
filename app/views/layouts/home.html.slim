@@ -8,62 +8,65 @@ html
     link[rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"]
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    script[src="https://kit.fontawesome.com/27cb1ad52b.js" crossorigin="anonymous"]
+
   body
     header
-      nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #e3f2fd;"]
+      nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
         ul.navbar-nav.mr-auto.nav-right
           li.nav-item
-            = link_to root_path,class:"nav-link" do
-              h2
-                | Tsugi Doco
+            = link_to root_path,class:"nav-link p-0" do
+              .logo-img
 
         ul.navbar-nav.ml-auto.nav-right
           =form_with url: search_path,method: :get,local: true do |form|
             .nav-item.m-0.mr-2
-              =form.text_field :search,class:"form-control",placeholder:'場所・ルートを検索'
+              =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'
 
           -if user_signed_in?
             li.nav-item
               =link_to user_path(current_user) do
                 = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle"
             li.nav-item
-              =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link"
+              =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link text-white"
           -else
             li.nav-item
-              = link_to 'ログイン',new_user_session_path,class:"nav-link"
+              = link_to 'ログイン',new_user_session_path,class:"nav-link text-white"
             li.nav-item
-              = link_to '会員登録',new_user_registration_path,class:"nav-link"
+              = link_to '会員登録',new_user_registration_path,class:"nav-link text-white"
       .container-fluid.main-image
         .row.mt-0.justify-content-center
           .col-3.main-image__text
             div
               h4
-                | 「次、どこ行こうか」
-                br
-                | をなくそう。
+                b 「次、どこ行こうか」
               br
               |  どんな所・順番で回ったかをシェアしよう。
               br
-              |  デート、食べ歩き、はしご酒
+              |  デート、食べ歩き、はしご酒....
               br
-              |  あなたは街をどう歩きますか？ 
+              |  あなたは街をどう歩きますか？
           .col-2
           .col-3.main-image__text
             div
               h4
-                | さあ、はじめよう
+                b さあ、はじめよう
               br
               -if user_signed_in?
                 = link_to 'ルートを投稿',new_route_path,class:"nav-link btnt btn-sm btn-light"
               -else
                 = link_to 'ログイン',new_user_session_path,class:"nav-link btn btn-sm btn-outline-light mb-2"
                 = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
+      nav.navbar.navbar-expand-lg.navbar-light.back__white.justify-content-center.border-bottom
         ul.navbar-nav
           li.nav-item
-            =link_to '場所登録',new_place_path,class:"nav-link"
+            =link_to 'ホーム',root_path,class:"nav-link"
           li.nav-item
-            =link_to '場所一覧',places_path,class:"nav-link"
+            =link_to 'TsugiDocoとは？',about_path,class:"nav-link"
+          li.nav-item
+            =link_to 'プレイス登録',new_place_path,class:"nav-link"
+          li.nav-item
+            =link_to 'プレイス一覧',places_path,class:"nav-link"
           li.nav-item
             =link_to 'ルート登録',new_route_path,class:"nav-link"
           li.nav-item
@@ -71,6 +74,8 @@ html
     .container
       .row.justify-content-md-center
         .col-11
+          .alert-success= notice
+          .alert-danger= alert
           = yield
     script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
     script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"]

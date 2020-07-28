@@ -32,3 +32,13 @@ header{
     }
   }
 }
+
+body{
+  background-color:rgb(243, 243, 243);
+}
+
+.back{
+  &__white{
+    background-color:white;
+  }
+}

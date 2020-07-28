@@ -12,6 +12,10 @@ class Route < ApplicationRecord
 
   scope :released, -> { where(status: true) }
 
+  scope :all_day, -> {where(created_at: Time.zone.now.all_day)}
+  scope :all_week, -> {where(created_at: Time.zone.now.all_week)}
+  scope :all_month, -> {where(created_at: Time.zone.now.all_month)}
+
   #ルートに紐づくspotの一つ目のplaceの画像の一つ目を持ってくる
   def display_an_image
     self.spots.first.place.place_images.first

@@ -1,8 +1,9 @@
-h3 場所を登録
+.back__white.p-3
+  h3 プレイスを登録
 
-p
-  |name,genre_id,explanation,postcode,address,access,tel,url,hours,price,holiday<br>の順で作成したcsvファイルを作成してください。
+  p
+    |name,genre_id,explanation,postcode,address,access,tel,url,hours,price,holiday<br>の順で作成したcsvファイルを作成してください。
 
-= form_tag import_admins_places_path, multipart: true do
-  =file_field_tag :file
-  = submit_tag "インポート"
+  = form_tag import_admins_places_path, multipart: true do
+    =file_field_tag :file
+    = submit_tag "インポート",class:"btn btn-secondary"

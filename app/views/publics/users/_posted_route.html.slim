@@ -2,7 +2,7 @@
   .row.mt-0
     -routes.each do |route|
       .route__link.col-3.p-1
-        .route__container.mb-2
+        .route__container.mb-2.back__white
           =link_to route_path(route) do
             =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',class:"route__image--user-page"
           .row

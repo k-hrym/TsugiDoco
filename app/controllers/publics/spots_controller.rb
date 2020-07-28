@@ -12,7 +12,7 @@ class Publics::SpotsController < ApplicationController
   end
 
   def autocomplete
-    places = Place.where('name LIKE ?',"%#{params[:keyword]}%").map do |place|#入力された文字から場所名を検索
+    places = Place.where('name LIKE ?',"%#{params[:keyword]}%").map do |place|#入力された文字からプレイス名を検索
       {
         place_id: place.id,
         name: place.name,

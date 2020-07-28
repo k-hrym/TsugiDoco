@@ -4,7 +4,7 @@ function initMapRoute() {
 
   // マップを作成
   map_route = new google.maps.Map(document.getElementById('map_route'), {
-    // マップの中心に表示する場所の緯度経度を指定
+    // マップの中心に表示するプレイスの緯度経度を指定
     center: {
       lat: places[0].latitude,
       lng: places[0].longitude
@@ -12,7 +12,7 @@ function initMapRoute() {
     zoom: 14,
   });
 
-  // マーカーを立てる場所の緯度経度を指定
+  // マーカーを立てるプレイスの緯度経度を指定
   for(var i = 0; i < places.length ; i ++){
     var  marker = `${places[i].name}`;
     marker = new google.maps.Marker({

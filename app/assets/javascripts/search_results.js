@@ -4,7 +4,7 @@ $(function(){
     $(this).css({
         'border-top':'2px solid #4682b4',
         'border-bottom':'none',
-        'background-color':'transparent'
+        'background-color':'white'
     });
     $('.search-results__route--table').hide();
     $('.search-results__route').css({
@@ -24,7 +24,7 @@ $(function(){
     $(this).css({
         'border-top':'2px solid #4682b4',
         'border-bottom':'none',
-        'background-color':'transparent'
+        'background-color':'white'
     });
   });
 });

@@ -1,5 +1,5 @@
 .row.mb-0
-  a.col.text-center.p-1.border-right.search-results__place 場所
+  a.col.text-center.p-1.border-right.search-results__place.back__white プレイス
   a.col.text-center.p-1.search-results__route ルート
 
 -if @places.blank?
@@ -7,7 +7,7 @@
     |検索結果：なし
 
 -else
-  table.table.search-results__place--table
+  table.table.search-results__place--table.back__white
     tbody
       -@places.each do |place|
         tr.row
@@ -41,7 +41,7 @@
     |検索結果：なし
 
 -else
-  table.table.search-results__route--table
+  table.table.search-results__route--table.back__white
     tbody
       -@routes.each do |route|
         tr.row
