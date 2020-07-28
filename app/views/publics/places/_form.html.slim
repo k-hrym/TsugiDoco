@@ -26,10 +26,9 @@
           = f.label :genre_id,'ジャンル'
           span.required 必須
         td.col
-          = f.collection_check_boxes :genre_id,genres,:id,:name, include_hidden: false do |b|
-            .place__new--genre=b.check_box + b.text
-
-              / = genre.name
+          -@genres.each do |genre|
+            = f.radio_button :genre_id,genre.id,class:"ml-2"
+            =genre.name
 
       tr.row
         th.col-2= f.label :explanation,'説明'
