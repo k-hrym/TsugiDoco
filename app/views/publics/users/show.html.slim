@@ -19,9 +19,9 @@
   .row
     table.table
       tbody
-        tr
-          th プロフィール
-          td.user-profile__text= @user.profile
+        tr.row
+          th.col-3 プロフィール
+          td.col.user-profile__text= @user.profile
 
 .row.mb-0
   a.col-auto.p-1.m-1.btn#user__routes
@@ -48,13 +48,13 @@
     .col-auto.ml-auto
       =link_to 'ルートの管理',user_routes_path
 
-.row
-  .row.mt-0#user__routes--content
+.container
+  #user__routes--content
     ==render 'posted_route',routes: @routes
   -if user_signed_in? && @user == current_user
-    .row.mt-0#user__likes--content
+    #user__likes--content
       ==render 'posted_route',routes: @like_routes
-    .row.mt-0#user__wishes--content
+    #user__wishes--content
       ==render 'publics/places/places',places: @wishes_places
-    .row.mt-0#user__wents--content
+    #user__wents--content
       ==render 'publics/places/places',places: @wents_places

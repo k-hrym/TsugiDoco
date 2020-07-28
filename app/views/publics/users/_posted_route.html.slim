@@ -1,20 +1,23 @@
 -unless routes.blank?
   .row.mt-0
     -routes.each do |route|
-      .route__link.col-3.p-1
-        .route__container.mb-2.back__white
+      .p-1.col-3
+
+        .route__link.route__container.mb-2.back__white
           =link_to route_path(route) do
-            =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',class:"route__image--user-page"
+            =attachment_image_tag route.display_an_image, :image,fallback: 'no_image.jpg',size: '200x135',class:"route__image--user-page"
+
           .row
               =link_to route_path(route) do
                 h5=route.title
                 p=route.explanation
-                p.route__link--user-name
-                  |by.
-                  = link_to route.user.name,user_path(route.user)
-                  i.fas.fa-heart.heart__pink.p-1.ml-3
-                    |   
-                    =route.likes.count
+
+          .route__link--user-name
+            |by.
+            = link_to route.user.name,user_path(route.user)
+            i.fas.fa-heart.heart__pink.p-1.ml-3
+              |   
+              =route.likes.count
 
 -else
 
