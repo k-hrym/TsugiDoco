@@ -25,10 +25,9 @@ class User < ApplicationRecord
   has_many :places,through: :wishes
 
   validates :name, presence: true,length: {maximum: 15}
-  validates :profile, presence: true,length: {maximum: 400}
+  validates :profile,length: {maximum: 400}
   validates :is_valid, inclusion: { in: [true, false]}
-  validates :profile,length: {maximum: 500}
-  validates :sex,inclusion: {in: [0,1,2]}
+  validates :sex,inclusion: {in: [nil,0,1,2]}
 
   scope :all_day, -> {where(created_at: Time.zone.now.all_day)}
   scope :all_week, -> {where(created_at: Time.zone.now.all_week)}
