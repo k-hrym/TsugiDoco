@@ -1,21 +1,21 @@
 .row
 
   h3
-    b 場所を登録
+    b プレイスを登録
 
 .row
   p
-    | 場所登録の協力をお願いします。<br>
+    | プレイス登録の協力をお願いします。<br>
       不明な項目は未入力のままでも登録できます。<br>
       登録後は誰でも情報を編集することができます。<br>
-      既に同じ場所が登録されている場合は後から登録したページは削除されますのでご注意ください。
+      既に同じプレイスが登録されている場合は後から登録したページは削除されますのでご注意ください。
 
 
 = form_for place,html: {class:"needs-validation"} do |f|
   table.table
     tr.row
       th.col-2
-        = f.label :name,'場所名'
+        = f.label :name,'プレイス名'
         span.required 必須
       td.col= f.text_field :name,class:"form-control",placeholder: '例：TsugiCafe'
 

@@ -74,7 +74,7 @@ class Publics::RoutesController < ApplicationController
       redirect_to @route,notice: "公開が完了しました！"
     else
       redirect_back(fallback_location: root_path)
-      flash[:alert] = "場所が未登録のスポットがあります"
+      flash[:alert] = "プレイスが未登録のスポットがあります"
     end
   end
 

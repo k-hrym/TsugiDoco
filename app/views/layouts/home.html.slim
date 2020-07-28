@@ -20,7 +20,7 @@ html
         ul.navbar-nav.ml-auto.nav-right
           =form_with url: search_path,method: :get,local: true do |form|
             .nav-item.m-0.mr-2
-              =form.text_field :search,class:"form-control",placeholder:'場所・ルートを検索'
+              =form.text_field :search,class:"form-control",placeholder:'プレイス・ルートを検索'
 
           -if user_signed_in?
             li.nav-item
@@ -61,9 +61,9 @@ html
       nav.navbar.navbar-expand-lg.navbar-light.bg-light.justify-content-center
         ul.navbar-nav
           li.nav-item
-            =link_to '場所登録',new_place_path,class:"nav-link"
+            =link_to 'プレイス登録',new_place_path,class:"nav-link"
           li.nav-item
-            =link_to '場所一覧',places_path,class:"nav-link"
+            =link_to 'プレイス一覧',places_path,class:"nav-link"
           li.nav-item
             =link_to 'ルート登録',new_route_path,class:"nav-link"
           li.nav-item
@@ -71,6 +71,8 @@ html
     .container
       .row.justify-content-md-center
         .col-11
+          .alert-success= notice
+          .alert-danger= alert
           = yield
     script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
     script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"]

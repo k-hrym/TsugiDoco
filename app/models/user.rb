@@ -38,12 +38,12 @@ class User < ApplicationRecord
   #   end
   # end
 
-  # 場所にいきたい登録しているかをtrue/falseで返す
+  # プレイスにいきたい登録しているかをtrue/falseで返す
   def wishing?(place)
     self.wishes.find_by(place_id: place.id).present?
   end
 
-  # 場所にいった登録しているかをtrue/falseで返す
+  # プレイスにいった登録しているかをtrue/falseで返す
   def went?(place)
     self.wents.find_by(place_id: place.id).present?
   end

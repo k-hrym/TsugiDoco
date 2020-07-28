@@ -5,9 +5,9 @@ div class="spot__form-#{spot.id} spot__form"
       = spot.order
       span= link_to '×削除',spot_path(spot,route_id: route),method: :delete,remote: true,class:"spot__form--delete"
     .spot_form
-      = f.label '場所名'
+      = f.label 'プレイス名'
       = f.fields_for :place,spot.place,local: true do |place|
-        = place.text_field :name,placeholder:"登録したい場所名を入力してください",class:"form-control field"
+        = place.text_field :name,placeholder:"登録したいプレイス名を入力してください",class:"form-control field"
         = place.hidden_field :address,class:"form-control spot_address"
       =f.hidden_field :place_id,class:"place_id"
       / spotに紐づくplace_idをフォームで検索して取得
