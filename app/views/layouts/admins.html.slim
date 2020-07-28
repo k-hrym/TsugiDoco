@@ -11,7 +11,7 @@ html
 
   body
     header
-      nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
+      nav.navbar.navbar-expand-lg.navbar-light.border-bottom[style="background-color: #999999;"]
         ul.navbar-nav.mr-auto.nav-right
           li.nav-item
             = link_to root_path,class:"nav-link p-0" do
@@ -24,7 +24,7 @@ html
           -else
             li.nav-item
               = link_to 'ログイン',new_admin_session_path,class:"nav-link text-white"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center
+      nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center.border-bottom
         ul.navbar-nav
           li.nav-item.border-right
             =link_to '管理者トップ',admins_top_path,class:"nav-link"

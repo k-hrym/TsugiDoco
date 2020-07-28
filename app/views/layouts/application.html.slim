@@ -13,7 +13,7 @@ html
 
   body
     header
-      nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
+      nav.navbar.navbar-expand-lg.navbar-light.border-bottom[style="background-color: #999999;"]
         ul.navbar-nav.nav-right
           li.nav-item
             = link_to root_path,class:"nav-link p-0" do
@@ -35,7 +35,7 @@ html
               = link_to 'ログイン',new_user_session_path,class:"nav-link text-white"
             li.nav-item
               = link_to '会員登録',new_user_registration_path,class:"nav-link text-white"
-      nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center
+      nav.navbar.navbar-expand-lg.navbar-light.bg-white.justify-content-center.border-bottom
         ul.navbar-nav
           li.nav-item
             =link_to 'ホーム',root_path,class:"nav-link"
