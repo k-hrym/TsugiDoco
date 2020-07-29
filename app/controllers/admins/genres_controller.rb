@@ -29,6 +29,7 @@ class Admins::GenresController < ApplicationController
       redirect_to admins_genres_path
       flash[:notice] = "保存しました"
     else
+      debugger
       render :edit
     end
   end

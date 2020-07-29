@@ -10,7 +10,7 @@ h3 ユーザー情報
               =attachment_image_tag @user,:profile_image,:fill,100,100,fallback: 'no_image.jpg',size: '100x100',class:"rounded-circle"
 
             .col
-              = form_with model: @user,url: admins_user_path(@user) do |form|
+              = form_with model: @user,url: admins_user_path(@user),local: true do |form|
                 p
                   =form.radio_button :is_valid,true,class:"m-2"
                   |有効
