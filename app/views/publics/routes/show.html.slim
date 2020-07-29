@@ -13,7 +13,7 @@ p
     =link_to '編集',edit_route_path(@route),class:"btn btn-sm ml-2"
 
 - @route.spots.each do |spot|
-  .route__container--spot
+  .route__container--spot.back__white
     =link_to place_path(spot.place) do
       .row.d-flex.align-items-center
         h5.col-md-auto.route__spot-order
