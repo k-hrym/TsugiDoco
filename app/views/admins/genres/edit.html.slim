@@ -1,6 +1,6 @@
 .back__white.p-3
   h3 ジャンル編集
-  =form_with model:@genre,url:admins_genre_path(@genre) do |f|
+  =form_with model:@genre,url:admins_genre_path(@genre),local: true do |f|
     .row
       =f.label :name
       =f.text_field :name
