@@ -2,6 +2,8 @@ class PlaceImage < ApplicationRecord
   belongs_to :place
   belongs_to :user
 
+  has_many :tags
+
   # validates :image_id,presence: true
 
   attachment :image

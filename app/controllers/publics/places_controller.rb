@@ -12,6 +12,14 @@ class Publics::PlacesController < ApplicationController
     @place = Place.new(place_params)
     @place.place_images.map{|pi| pi.user = current_user} # PlaceImageのuser_idに値を渡す
     if @place.save
+      # VisionAPIを用いてplace_imageにタグを付与
+      @place.place_images.each do |place_image|
+        tags = Vision.get_image_data(place_image)
+        tags.each do |tag|
+          place_image.tags.create(name: tag)
+        end
+      end
+
       redirect_to @place
       flash[:notice] = "保存しました"
     else
