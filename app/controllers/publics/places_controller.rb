@@ -14,10 +14,7 @@ class Publics::PlacesController < ApplicationController
     if @place.save
       # VisionAPIを用いてplace_imageにタグを付与
       @place.place_images.each do |place_image|
-        tags = Vision.get_image_data(place_image)
-        tags.each do |tag|
-          place_image.tags.create(name: tag)
-        end
+        place_image.create_tag
       end
 
       redirect_to @place
@@ -43,6 +40,9 @@ class Publics::PlacesController < ApplicationController
       end
       @next_spots = @next.compact #nilは含めない
     end
+
+    # アップロードされている画像にタグ付されたタグを抽出して先頭から5個を渡す。
+    @tags = @place.with_tags.take(5)
 
     gon.place = @place #map表示用の変数を定義
   end

@@ -13,6 +13,8 @@ class Place < ApplicationRecord
   has_many :wishes
   has_many :users,through: :wishes
 
+  has_many :tags,through: :place_images
+
   validates :name,presence: true,length: {maximum: 50}
   validates :explanation,length: {maximum: 300}
   validates :genre_id,presence: true
@@ -62,5 +64,10 @@ class Place < ApplicationRecord
   # 更新を許可するカラムを定義
   def self.updatable_attributes
     ["name","genre_id","explanation","postcode","address","access","tel","url","hours","price","holiday"]
+  end
+
+  # placeに紐づいたタグを多い順に並べて重複を削除。
+  def with_tags
+    self.tags.pluck(:name).group_by{|e| e}.sort_by{|_,v|-v.size}.map(&:first)
   end
 end
