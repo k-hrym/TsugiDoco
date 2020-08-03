@@ -14,28 +14,37 @@ html
 
   body
     header
+      nav.gnav
+        .gnav__wrap
+          .gnav__menu
+            .gnav__menu__item
+              p 画像と似た場所を探す
+            .gnav__menu__item
+              =form_for @image_search,url: image_search_path,method: :post do |f|
+                =f.attachment_field :image,class:"search-box"
+                =f.submit
+            .gnav__menu__item
+              p キーワードで検索
+            .gnav__menu__item
+              =form_with url: search_path,method: :get,local: true do |form|
+                =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'
+                =form.submit
+            a.menu
+              span.menu__line.menu__line--top
+              span.menu__line.menu__line--bottom
+
       nav.navbar.navbar-expand-lg.navbar-light.border-bottom[style="background-color: #999999;"]
         ul.navbar-nav.nav-right
           li.nav-item
             = link_to root_path,class:"nav-link p-0" do
               .logo-img
 
-        ul.navbar-nav.ml-auto.nav-right
-          =form_for @image_search,url: image_search_path,method: :post do |f|
-            .nav-item.m-0.mr-2
-              =f.attachment_field :image,class:"form-control search-box"
-              =f.submit
-
-        / ul.navbar-nav.ml-auto.nav-right
-        /   =form_with model: @place_image,url: image_search_path,method: :get,local: true do |form|
-        /     .nav-item.m-0.mr-2
-        /       =form.attachment_field :image,class:"form-control search-box"
-        /       =form.submit
 
         ul.navbar-nav.ml-auto.nav-right
-          =form_with url: search_path,method: :get,local: true do |form|
-            .nav-item.m-0.mr-2
-              =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'
+          li.nav-item.m-0.mr-4
+            a.search-menu.btn.btn-outline-light.text-white
+              i.fas.fa-search-location
+              |検索する
 
           -if user_signed_in?
             li.nav-item
