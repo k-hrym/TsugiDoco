@@ -22,7 +22,7 @@
 
     - @place.place_images.each do |image|
       =link_to attachment_url(image,:image),'data-lightbox': image do
-        = attachment_image_tag image,:image,:fill,150,150,class:"mr-1"
+        = attachment_image_tag image,:image,:fill,150,150,class:"mr-1 mb-1"
 
     table.table.back__white
       tr.row

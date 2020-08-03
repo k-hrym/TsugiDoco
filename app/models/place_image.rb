@@ -29,5 +29,17 @@ class PlaceImage < ApplicationRecord
     end
   end
 
+  def self.image_search(place_image)
+    # VisionAPIでタグを作成
+    tags = Vision.search_image_data(place_image)
+    place_array = []
+    # 同名のタグがついているプレイスイメージを持つプレイスを配列に入れる
+    tags.each do |tag|
+      Tag.where(name: tag).each do |t|
+        place_array << t.place
+      end
+    end
+    return place_array.uniq! #重複を削除
+  end
 end
 

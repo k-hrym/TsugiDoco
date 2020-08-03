@@ -21,6 +21,18 @@ html
               .logo-img
 
         ul.navbar-nav.ml-auto.nav-right
+          =form_for @image_search,url: image_search_path,method: :post do |f|
+            .nav-item.m-0.mr-2
+              =f.attachment_field :image,class:"form-control search-box"
+              =f.submit
+
+        / ul.navbar-nav.ml-auto.nav-right
+        /   =form_with model: @place_image,url: image_search_path,method: :get,local: true do |form|
+        /     .nav-item.m-0.mr-2
+        /       =form.attachment_field :image,class:"form-control search-box"
+        /       =form.submit
+
+        ul.navbar-nav.ml-auto.nav-right
           =form_with url: search_path,method: :get,local: true do |form|
             .nav-item.m-0.mr-2
               =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'

@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     resource :wishes,only: [:create,:destroy]
     resource :wents,only: [:create,:destroy]
     get 'search' => 'search#search'
+    post 'image_search' => 'search#image_search'
   end
 
   root to: 'home#top'

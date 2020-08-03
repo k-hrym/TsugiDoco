@@ -1,0 +1,36 @@
+.row.mb-0
+
+h5 画像から連想される検索結果
+
+-if @places.blank?
+  p.text-center.search-results__place--table.p-5
+    |検索結果：なし
+
+-else
+  table.table.search-results__place--table.back__white
+    tbody
+      -@places.each do |place|
+        tr.row
+          td.col-auto
+            =link_to place_path(place),class:"text-reset" do
+              = attachment_image_tag place.place_images.sample,:image,:fill,100,70,fallback: 'no_image.jpg',size: '250x200'
+          td.col
+            =link_to place_path(place),class:"text-reset" do
+              .row
+                h3.col
+                  b= place.name
+                .text-12.ml-auto.pt-1 id="place-#{place.id}"
+                  ==render 'publics/places/went_wish',place: place
+              p.col.border-bottom=place.genre.name
+              p.col.text-black-50
+                |住所:
+                =place.address
+              p.col=place.explanation
+              .row.text-black-50
+                .col-auto
+                  |営業時間:
+                  =place.hours
+                .col
+                  |定休日:
+                  =place.holiday
+
