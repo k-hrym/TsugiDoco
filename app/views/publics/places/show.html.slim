@@ -15,9 +15,14 @@
 
       = link_to '情報を編集する',edit_place_path(@place),class:"badge ml-auto col-auto"
 
+    / 画像を元に生成されたタグを多い順に設置
+    .tags
+      -@tags.each do |tag|
+        span.place__tag=tag
+
     - @place.place_images.each do |image|
       =link_to attachment_url(image,:image),'data-lightbox': image do
-        = attachment_image_tag image,:image,:fill,150,150,class:"mr-1"
+        = attachment_image_tag image,:image,:fill,150,150,class:"mr-1 mb-1"
 
     table.table.back__white
       tr.row
