@@ -12,6 +12,30 @@ html
 
   body
     header
+      / 検索フォーム
+      nav.gnav
+        .gnav__wrap
+          .gnav__menu
+            .gnav__menu__item
+              p 画像と似た場所を探す
+            .gnav__menu__item
+              =form_for @image_search,url: image_search_path,method: :post do |f|
+                =f.attachment_field :image,class:"search-box　btn text-white"
+                <br>
+                =f.button '検索',type:'button', onclick: 'submit();',class:"form-control mt-3 btn btn-outline-light"
+
+            .gnav__menu__item
+              p キーワードで検索
+            .gnav__menu__item
+              =form_with url: search_path,method: :get,local: true,onsubmit:"return false;"  do |form|
+                =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'
+                =form.button '検索',type:'button', onclick: 'submit();',class:"form-control mt-3 btn btn-outline-light"
+
+            / クローズボタン
+            a.close
+              span.close__line.close__line--top
+              span.close__line.close__line--bottom
+
       nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
         ul.navbar-nav.mr-auto.nav-right
           li.nav-item
@@ -19,9 +43,10 @@ html
               .logo-img
 
         ul.navbar-nav.ml-auto.nav-right
-          =form_with url: search_path,method: :get,local: true do |form|
-            .nav-item.m-0.mr-2
-              =form.text_field :search,class:"form-control search-box",placeholder:'プレイス・ルートを検索'
+          li.nav-item.m-0.mr-4
+            a.search-menu.btn.btn-outline-light.text-white
+              i.fas.fa-search-location
+              |検索する
 
           -if user_signed_in?
             li.nav-item
@@ -80,3 +105,7 @@ html
     script[src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"]
     script[src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"]
     script[src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"]
+    script[src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"]
+    script[src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"]
+    script[type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"]
+    script[src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"]
