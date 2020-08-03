@@ -4,7 +4,7 @@ $(function(){
       $('.gnav').fadeToggle();
   });
   // ×を押すとメニューを閉じる
-  $('.menu').on('click',function(){
+  $('.close').on('click',function(){
       $('.gnav').fadeToggle();
   });
 });
