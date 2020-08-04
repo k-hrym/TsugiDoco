@@ -8,8 +8,6 @@ module Vision
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_VISION_API_KEY']}"
       # 画像をbase64にエンコード
       base64_image = Base64.encode64(image_file.image.read)
-      Rails.logger.error base64_image
-      Rails.logger.error "ーーーーーー１ーーーーーーー"
       # APIリクエスト用のJSONパラメータ
       params = {
         requests: [{
@@ -23,27 +21,15 @@ module Vision
           ]
         }]
       }.to_json
-      Rails.logger.error "ーーーーーー２ーーーーーーー"
-      Rails.logger.error params
       # Google Cloud Vision APIにリクエスト
       uri = URI.parse(api_url)
       https = Net::HTTP.new(uri.host, uri.port)
       https.use_ssl = true
-      Rails.logger.error "ーーーーーー３ーーーーーーー"
       request = Net::HTTP::Post.new(uri.request_uri)
       request['Content-Type'] = 'application/json'
-      Rails.logger.error "ーーーーーー４ーーーーーーー"
       response = https.request(request, params)
-      p JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
-      p "------------------------"
-      p response
-      p "------------------------"
-      Rails.logger.error response
-      Rails.logger.error "ーーーーーー５ーーーーーーー"
       # APIレスポンス出力
-
       JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
-      #Rails.logger.error "ーーーーーー６ーーーーーーー"
     end
 
     # 画像検索用のメソッド
