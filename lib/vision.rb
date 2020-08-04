@@ -34,15 +34,16 @@ module Vision
       request['Content-Type'] = 'application/json'
       Rails.logger.error "ーーーーーー４ーーーーーーー"
       response = https.request(request, params)
-      Rails.logger.error response
-      Rails.logger.error "ーーーーーー５ーーーーーーー"
-      # APIレスポンス出力
       p JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
       p "------------------------"
       p response
       p "------------------------"
+      Rails.logger.error response
+      Rails.logger.error "ーーーーーー５ーーーーーーー"
+      # APIレスポンス出力
+
       JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
-      Rails.logger.error "ーーーーーー６ーーーーーーー"
+      #Rails.logger.error "ーーーーーー６ーーーーーーー"
     end
 
     # 画像検索用のメソッド
