@@ -37,6 +37,10 @@ module Vision
       Rails.logger.error response
       Rails.logger.error "ーーーーーー５ーーーーーーー"
       # APIレスポンス出力
+      p JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
+      p "------------------------"
+      p response
+      p "------------------------"
       JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description').take(3)
       Rails.logger.error "ーーーーーー６ーーーーーーー"
     end
