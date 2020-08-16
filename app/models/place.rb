@@ -17,7 +17,7 @@ class Place < ApplicationRecord
 
   validates :name,presence: true,length: {maximum: 50}
   validates :explanation,length: {maximum: 300}
-  validates :genre_id,presence: true
+  validates :genre_id,presence: true, format: { with: /\A\d+\z/ }
   validates :postcode,length: {is: 7}, allow_blank: true
   validates :address,presence: true,length: {maximum: 100}
   validates :access,length: {maximum: 200}
