@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-  let(:genre){ Genre.create(name: 'genre') }
-
   describe 'バリデーションのテスト' do
-    let(:place) { Place.new(params) }
-    let(:params) {{ name: 'test',genre_id: genre.id,address: '東京都新宿区' }}
+    let(:genre){ Genre.create(name: 'genre') }
+    let(:place) { create(:place, genre_id: genre.id) }
     subject { place.valid? }
     context 'nameカラム' do
       it '空欄ではないこと' do
