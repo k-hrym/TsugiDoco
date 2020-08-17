@@ -106,35 +106,59 @@ RSpec.describe "Publics::Users", type: :request do
     describe 'ログインしている時' do
       before { sign_in user }
 
-      context 'マイページにアクセス' do
-        before { get user_path user }
+      context '自分の編集ページにアクセス' do
+        before { get edit_user_path  user }
         it '成功する' do
           expect(response).to have_http_status(200)
-        end
-        it 'プロフィール編集リンクがある' do
-          expect(response.body).to include('プロフィール編集')
         end
       end
 
       context '他のユーザーのページにログイン' do
-        before { get user_path another_user }
-        it '成功する' do
-          expect(response).to have_http_status(200)
-        end
-        it 'プロフィール編集リンクがない' do
-          expect(response.body).not_to include('プロフィール編集')
+        before { get edit_user_path another_user }
+        it '失敗してtopページに飛ぶ' do
+          expect(response).to redirect_to root_path
+          expect(response.body).not_to include('アクセス権限がありません')
         end
       end
     end
 
     describe '未ログインの場合' do
       context 'ユーザーページにアクセス' do
-        before { get user_path user }
+        before { get edit_user_path user }
+        it '失敗してtopページに飛ぶ' do
+          expect(response).to redirect_to new_user_session_path
+          expect(response.body).not_to include('アカウント登録もしくはログインしてください')
+        end
+      end
+    end
+  end
+
+  describe 'ユーザー情報更新(update)ページのテスト' do
+    describe 'ログインしている時' do
+      before { sign_in user }
+
+      context '自分の編集ページにアクセス' do
+        before { get edit_user_path  user }
         it '成功する' do
           expect(response).to have_http_status(200)
         end
-        it 'プロフィール編集リンクがない' do
-          expect(response.body).not_to include('プロフィール編集')
+      end
+
+      context '他のユーザーのページにログイン' do
+        before { get edit_user_path another_user }
+        it '失敗してtopページに飛ぶ' do
+          expect(response).to redirect_to root_path
+          expect(response.body).not_to include('アクセス権限がありません')
+        end
+      end
+    end
+
+    describe '未ログインの場合' do
+      context 'ユーザーページにアクセス' do
+        before { get edit_user_path user }
+        it '失敗してtopページに飛ぶ' do
+          expect(response).to redirect_to new_user_session_path
+          expect(response.body).not_to include('アカウント登録もしくはログインしてください')
         end
       end
     end
