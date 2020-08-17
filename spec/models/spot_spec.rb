@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Spot, type: :model do
   describe 'バリデーションのテスト' do
-    let(:genre) { create(:genre) }
-    let(:place) { create(:place, genre_id: genre.id) }
-    let(:user) { create(:user) }
-    let(:route) { create(:route, user_id: user.id) }
-    let(:spot) { Spot.create(place_id: place.id, route_id: route.id)}
+    let(:spot) { create(:spot) }
     subject{ spot.valid? }
 
     context 'place_id' do

@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Place, type: :model do
   describe 'バリデーションのテスト' do
-    let(:genre){ Genre.create(name: 'genre') }
-    let(:place) { create(:place, genre_id: genre.id) }
+    let(:place) { create(:place) }
     subject { place.valid? }
     context 'nameカラム' do
       it '空欄ではないこと' do

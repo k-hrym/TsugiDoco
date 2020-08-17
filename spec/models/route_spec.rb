@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Route, type: :model do
   describe 'バリデーションのテスト' do
-    let(:user) { create(:user) }
-    let(:route) { create(:route, user_id: user.id) }
+    let(:route) { create(:route) }
     subject { route.valid? }
     context 'titleカラム' do
       it '空欄ではないこと' do
