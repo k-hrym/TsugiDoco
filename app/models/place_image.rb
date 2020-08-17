@@ -8,7 +8,8 @@ class PlaceImage < ApplicationRecord
 
   attachment :image
 
-  def self.add_place_images(params,place,user) #既存のPlaceに追加するときだけ使う
+  # 既存のPlaceに画像を追加するときだけ使うメソッド
+  def self.add_place_images(params,place,user)
     params.each do |image|
       unless image == "[]" #Refileで複数アップロードするとパラメーター最初に[]が入ってしまうため、はじく
         new_image = place.place_images.new(image: image)
