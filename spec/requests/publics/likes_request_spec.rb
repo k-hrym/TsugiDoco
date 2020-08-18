@@ -11,7 +11,7 @@ RSpec.describe "Publics::Likes", type: :request do
         post route_likes_path(route.id), xhr: true
         expect(response).to have_http_status(:success)
       end
-      # it 'いいねボタンの色が変わる' do
+      # it 'いいねボタンの色が変わる', type: :feature do
       #   find('i','.heart__gray').click
       #   expect(page).to have_css('.heart__pink')
       # end

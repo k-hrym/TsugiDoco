@@ -166,9 +166,9 @@ RSpec.describe "Publics::Users", type: :request do
     end
 
     describe '未ログインの場合' do
-      context 'ユーザーページにアクセス' do
+      context 'ユーザー情報を更新' do
         before { patch user_path  user, user: user_params }
-        it '失敗してtopページに飛ぶ' do
+        it '失敗してログインページに飛ぶ' do
           expect(response).to redirect_to new_user_session_path
           expect(flash[:alert]).to include('アカウント登録もしくはログインしてください')
         end
