@@ -1,5 +1,5 @@
 class Publics::PlacesController < ApplicationController
-  before_action :authenticate_user!,only: [:new,:create,:edit]
+  before_action :authenticate_user!,only: [:new,:create,:edit,:update]
   before_action :valid_genres,only: [:new,:create,:edit,:update]
   before_action :find_place,only: [:show,:edit,:update]
 
@@ -52,7 +52,7 @@ class Publics::PlacesController < ApplicationController
   end
 
   def update
-    if @place.update(place_params_without_images) && PlaceImage.add_place_images(place_params[:place_images_images],@place,current_user)
+    if @place.update(place_params_without_images) && PlaceImage.add_place_images(params[:place][:place_images_images],@place,current_user)
       redirect_to @place
       flash[:notice] = "保存しました"
     else

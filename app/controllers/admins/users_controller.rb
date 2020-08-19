@@ -5,10 +5,6 @@ class Admins::UsersController < ApplicationController
     @users = User.all.reverse_order
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def edit
     @user = User.find(params[:id])
   end
