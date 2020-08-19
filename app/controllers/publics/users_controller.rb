@@ -1,7 +1,7 @@
 class Publics::UsersController < ApplicationController
   before_action :find_user,only: [:show,:edit,:update,:hide]
   before_action :authenticate_user!,only: [:edit,:hide,:update,:routes]
-  before_action :user_self?,only: [:edit,:hide,:update,:routes]
+  before_action :user_self?,only: [:edit,:hide,:update]
   before_action :valid_user?,only: [:show]
 
   def show

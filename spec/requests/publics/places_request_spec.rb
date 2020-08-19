@@ -16,7 +16,7 @@ RSpec.describe "Publics::Places", type: :request do
                         hours: '営業時間',
                         price: '料金',
                         holiday: '定休日',
-                        place_images_images: '[]',
+                        place_images_images: ['[]'],
                         }}}
   let(:invalid_place_params) {{ place: {
                         name: '', #必須
@@ -108,7 +108,7 @@ RSpec.describe "Publics::Places", type: :request do
         end
         # it '行きたいボタンがある', type: :feature  do
         #   get place_path place
-        #   expect(page).to have_css '.fa-bookmark'
+        #   expect(response).to have_css '.fa-bookmark'
         # end
       end
     end
