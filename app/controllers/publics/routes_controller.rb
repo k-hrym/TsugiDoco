@@ -1,6 +1,6 @@
 class Publics::RoutesController < ApplicationController
   protect_from_forgery
-  before_action :authenticate_user!,only: [:new,:edit,:create,:control]
+  before_action :authenticate_user!,only: [:new,:edit,:create,:draft,:release,:destroy]
   before_action :find_route,only: [:show,:edit,:draft,:release,:destroy]
   def new
     @route = Route.new
@@ -66,7 +66,6 @@ class Publics::RoutesController < ApplicationController
     @route.spots.map do |rsi|
       rsi.update(route_spot_params(rsi.id))
     end
-
     unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
       @route.spots.order_update(@route.spots) #route.spotに通し番号を振り直す
       @route.update(status: true) #ステータスを「公開」にする
