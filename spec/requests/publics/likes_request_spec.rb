@@ -11,11 +11,15 @@ RSpec.describe "Publics::Likes", type: :request do
         post route_likes_path(route.id), xhr: true
         expect(response).to have_http_status(:success)
       end
-      # it 'いいねボタンの色が変わる', type: :feature do
-      #   find('i','.heart__gray').click
+
+      # it 'いいねボタンの色が変わる' do
+      #   get route_path route, xhr: true
+      #   find('.heart__gray').click
+      #   sleep 5
       #   expect(page).to have_css('.heart__pink')
       # end
     end
+
     context "いいねを取り消す" do
       before do
         post route_likes_path(route.id), xhr: true
