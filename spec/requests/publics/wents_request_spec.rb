@@ -13,7 +13,7 @@ RSpec.describe "Publics::Wents", type: :request do
       end
     end
 
-    context "いいねを取り消す" do
+    context "いったを取り消す" do
       before do
         post wents_path(id: place.id), xhr: true
       end
