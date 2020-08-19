@@ -187,7 +187,7 @@ RSpec.describe "Publics::Users", type: :request do
       context '自分のルート管理ページにアクセス' do
         before { get user_routes_path }
         it '成功する' do
-          expect(response).to have_http_status(302)
+          expect(response).to have_http_status(200)
         end
       end
     end
