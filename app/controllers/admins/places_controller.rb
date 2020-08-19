@@ -5,18 +5,17 @@ class Admins::PlacesController < ApplicationController
     @places = Place.all
   end
 
-  def show
-  end
-
   def edit
     @place = Place.find(params[:id])
     @genres = Genre.only_valid
   end
 
   def update
+    @genres = Genre.only_valid
     @place = Place.find(params[:id])
-    if @place.update(place_params_without_images) && PlaceImage.add_place_images(place_params[:place_images_images],@place,current_user)
-      redirect_to admins_place_path(@place)
+    if @place.update(place_params_without_images) && PlaceImage.add_place_images(params[:place][:place_images_images],@place,current_user)
+      redirect_to admins_places_path
+      flash[:notice] = "保存しました"
     else
       render :edit
     end
