@@ -106,10 +106,10 @@ RSpec.describe "Publics::Places", type: :request do
           get place_path place
           expect(response).to have_http_status(200)
         end
-        # it '行きたいボタンがある', type: :feature  do
-        #   get place_path place
-        #   expect(response).to have_css '.fa-bookmark'
-        # end
+        it '行きたいボタンがある' do
+          visit place_path place
+          expect(page).to have_css '.fa-bookmark'
+        end
       end
     end
     describe '未ログインの時' do

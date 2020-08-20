@@ -1,4 +1,5 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -12,6 +13,22 @@ RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include Capybara::DSL
 end
+
+Capybara.register_driver :chrome do |app|
+  args = %w(disable-gpu mute-audio window-size=1280,800 lang=ja)
+  args << 'headless' unless ENV['NO_HEADLESS']
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+      chrome_options: {
+        args: args,
+        w3c: false
+      }
+    )
+  )
+end
+Capybara.default_driver = :chrome
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
