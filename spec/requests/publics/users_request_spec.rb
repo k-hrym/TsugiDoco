@@ -149,7 +149,7 @@ RSpec.describe "Publics::Users", type: :request do
         it '更新が成功する' do
           expect(user.reload.name).to eq '編集後'
           expect(user.reload.profile).to eq '自己紹介文'
-          # expect(user.reload.birth).to eq Thu, 10 Aug 1995
+          expect(user.reload.birth.strftime("%Y/%m/%d")).to eq '1995/08/10'
         end
         it 'マイページにリダイレクト' do
           expect(response).to redirect_to user_path user
