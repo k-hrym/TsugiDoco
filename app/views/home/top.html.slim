@@ -2,10 +2,10 @@
     b 新着ルート
   .row
     ==render 'publics/users/posted_route',routes: @routes
-  .text-right=link_to '全て見る',routes_path,class:"text-reset"
+    .text-right.ml-auto=link_to '全て見る',routes_path,class:"text-reset"
 
   h3.mt-3
     b 新着プレイス
   .row
     ==render 'publics/places/places',places: @places
-  .text-right=link_to '全て見る',places_path,class:"text-reset"
+    .text-right.ml-auto=link_to '全て見る',places_path,class:"text-reset"
