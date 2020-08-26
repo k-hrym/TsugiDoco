@@ -17,6 +17,12 @@
  @import "jquery-ui/theme";
  @import "jquery-ui/menu";
  @import "jquery-ui";
+ @import "bootstrap";
+
+
+body{
+  background-color: #EEE;
+}
 
 .row{
   margin:15px 0;
