@@ -13,73 +13,73 @@
 
 
 = form_for place,html: {class:"needs-validation"} do |f|
-  .back__white.p-3.my-4
-    table.table
+  .back__white.p-3.my-4.table-responsive
+    table.table.place_form__table
       tr.row
-        th.col-2
+        th.col-md-2
           = f.label :name,'プレイス名'
           span.required 必須
-        td.col= f.text_field :name,class:"form-control",placeholder: '例：TsugiCafe'
+        td.col-md= f.text_field :name,class:"form-control",placeholder: '例：TsugiCafe'
 
       tr.row
-        th.col-2
+        th.col-md-2
           = f.label :genre_id,'ジャンル'
           span.required 必須
-        td.col
+        td.col-md
           -@genres.each do |genre|
             = f.radio_button :genre_id,genre.id,class:"ml-2"
             =genre.name
 
       tr.row
-        th.col-2= f.label :explanation,'説明'
-        td.col= f.text_area :explanation,size: "20x10",class:"form-control",placeholder:"説明文を入力してください"
+        th.col-md-2= f.label :explanation,'説明'
+        td.col-md= f.text_area :explanation,size: "20x10",class:"form-control",placeholder:"説明文を入力してください"
 
       tr.row
-        th.col-2
+        th.col-md-2
           = f.label :postcode,'郵便番号'
-        td.col= f.text_field :postcode,class:"form-control",placeholder:"ハイフンなし(例：1230000)"
+        td.col-md= f.text_field :postcode,class:"form-control",placeholder:"ハイフンなし(例：1230000)"
 
       tr.row
-        th.col-2
+        th.col-md-2
           = f.label :address,'住所'
           span.required 必須
-        td.col= f.text_field :address,class:"form-control",placeholder:"例：東京都新宿区東新宿1-1"
+        td.col-md= f.text_field :address,class:"form-control",placeholder:"例：東京都新宿区東新宿1-1"
 
       tr.row
-        th.col-2= f.label :place_images_images,'画像'
-        td.col= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true
+        th.col-md-2= f.label :place_images_images,'画像'
+        td.col-md= f.attachment_field :place_images_images,multiple: true, direct: true, presigned: true
 
       tr.row
-        th.col-2= f.label :access,'アクセス'
-        td.col= f.text_field :access,class:"form-control",placeholder:"例：東新宿駅から徒歩5分"
+        th.col-md-2= f.label :access,'アクセス'
+        td.col-md= f.text_field :access,class:"form-control",placeholder:"例：東新宿駅から徒歩5分"
 
       tr.row
-        th.col-2= f.label :tel,'電話番号'
-        td.col= f.telephone_field :tel,class:"form-control",placeholder:"例：03-1111-2222"
+        th.col-md-2= f.label :tel,'電話番号'
+        td.col-md= f.telephone_field :tel,class:"form-control",placeholder:"例：03-1111-2222"
 
       tr.row
-        th.col-2= f.label :url,'Webサイト'
-        td.col= f.url_field :url,class:"form-control",placeholder:"例：http://localhost:3000/places/new"
+        th.col-md-2= f.label :url,'Webサイト'
+        td.col-md= f.url_field :url,class:"form-control",placeholder:"例：http://localhost:3000/places/new"
 
       tr.row
-        th.col-2= f.label :hours,'営業時間'
-        td.col= f.text_field :hours,class:"form-control",placeholder:"例：月~金 17:00~22:00"
+        th.col-md-2= f.label :hours,'営業時間'
+        td.col-md= f.text_field :hours,class:"form-control",placeholder:"例：月~金 17:00~22:00"
 
       tr.row
-        th.col-2= f.label :price,'料金'
-        td.col= f.text_field :price,class:"form-control",placeholder:"例：入場料　大人800円 こども400円"
+        th.col-md-2= f.label :price,'料金'
+        td.col-md= f.text_field :price,class:"form-control",placeholder:"例：入場料　大人800円 こども400円"
 
       tr.row
-        th.col-2= f.label :holiday,'定休日'
-        td.col= f.text_field :holiday,class:"form-control",placeholder:"例：水曜日"
+        th.col-md-2= f.label :holiday,'定休日'
+        td.col-md= f.text_field :holiday,class:"form-control",placeholder:"例：水曜日"
 
       -if place.id #newページで呼び出された時は表示しない
         tr.row
-          th.col-2= f.label :is_closed,'閉店サイン'
-          td.col
+          th.col-md-2= f.label :is_closed,'閉店サイン'
+          td.col-md
             = f.check_box :is_closed,{checked: false},"false","true"
             | 閉店や廃業の場合のみチェックを入れてください
 
-    .row.justify-content-md-center
-      .col-6
-        = f.submit '登録',class:"btn btn-lg btn-primary btn-block"
+    .row.justify-content-center
+      .col-md-6
+        = f.submit '登録',class:"btn btn-md btn-primary btn-block form-control"

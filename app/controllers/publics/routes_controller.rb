@@ -17,24 +17,8 @@ class Publics::RoutesController < ApplicationController
   end
 
   def index
-    routes = Route.released
-    @routes_left = [] #左列用の配列
-    @routes_center = [] #真ん中列用の配列
-    @routes_right = [] #右列用の配列
-    n = 1
-    routes.map do |route|
-      case n
-      when 1
-        @routes_left << route
-        n += 1
-      when 2
-        @routes_center << route
-        n += 1
-      when 3
-        @routes_right << route
-        n = 1
-      end
-    end
+    @routes = Route.released
+    @routes_left,@routes_center,@routes_right = Route.grid_contents(@routes)
   end
 
   def show
@@ -66,14 +50,14 @@ class Publics::RoutesController < ApplicationController
     @route.spots.map do |rsi|
       rsi.update(route_spot_params(rsi.id))
     end
-    unless @route.spots.pluck(:place_id).include?(nil) #placeと紐づいてないspotがあったら公開失敗
+    if @route.spot_place_nil? #placeと紐づいてないspotがあったら公開失敗
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = "プレイスが未登録のスポットがあります"
+    else
       @route.spots.order_update(@route.spots) #route.spotに通し番号を振り直す
       @route.update(status: true) #ステータスを「公開」にする
       @route.update(route_params)
       redirect_to @route,notice: "公開が完了しました！"
-    else
-      redirect_back(fallback_location: root_path)
-      flash[:alert] = "プレイスが未登録のスポットがあります"
     end
   end
 

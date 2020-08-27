@@ -50,5 +50,30 @@ class Route < ApplicationRecord
     return (routes + place_to_routes).flatten.map{|route| route if route.status == true}.uniq
   end
 
+  # 一覧ページでの3グリッド作成用メソッド
+  def self.grid_contents(routes)
+    left = [] #左列用の配列
+    center = [] #真ん中列用の配列
+    right = [] #右列用の配列
+    n = 1
+    routes.each do |route|
+      case n
+      when 1
+        left << route
+        n += 1
+      when 2
+        center << route
+        n += 1
+      when 3
+        right << route
+        n = 1
+      end
+    end
+    return left,center,right
+  end
 
+  def spot_place_nil?
+    return true if self.spots.pluck(:place_id).include?(nil)
+    false
+  end
 end

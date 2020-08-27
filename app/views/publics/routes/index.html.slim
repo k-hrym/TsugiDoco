@@ -2,12 +2,14 @@ h3
   b ルート一覧
 
 .row
-  .col-4.p-1 
+  .d-block.d-md-none
+    == render 'route_repeat',routes: @routes
+  .col-4.p-1.d-none.d-md-block
     /左列
     == render 'route_repeat',routes: @routes_left
-  .col-4.p-1
+  .col-4.p-1.d-none.d-md-block
     /真ん中列
     == render 'route_repeat',routes: @routes_center
-  .col-4.p-1
+  .col-4.p-1.d-none.d-md-block
     /右列
     == render 'route_repeat',routes: @routes_right

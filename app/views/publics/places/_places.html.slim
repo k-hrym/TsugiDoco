@@ -1,10 +1,10 @@
 -unless places.blank?
   .row.mt-0
     - places.each do |place|
-      .col-md-auto.p-1
+      .col-6.col-md-4.col-lg-2.p-0.justify-content-center
         = link_to place_path(place) do
           .place__image--wrap
-            = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image"
+            = attachment_image_tag place.place_images.first,:image,fallback: "no_image.jpg",class:"place__image p-1"
           h4.place__image--text
             b= place.name
 

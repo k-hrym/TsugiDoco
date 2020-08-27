@@ -1,0 +1,8 @@
+.partition{
+  border-right:1px solid #EEE;
+}
+@media (max-width:992px){
+  .partition{
+    border:0px;
+  }
+}
