@@ -31,16 +31,17 @@ header{
       }
     }
   }
-  @media (max-width: 768px){
+  @media (max-width: 576px){
     .main-image{
       height:400px;
       background-size:cover;
       background-position:center center;
       &__text{
-        height:150px;
+        height:50%;
       }
       &__content{
         height:400px;
+        padding:30px;
       }
     }
   }
