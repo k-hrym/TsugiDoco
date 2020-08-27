@@ -17,10 +17,11 @@ html
       / 検索フォーム
       ==render 'home/search_form'
       / ヘッダー上部
-      ==render 'home/top_header'
-      / ヘッダー下部
-      ==render 'home/bottom_header'
-
+      .header-top
+        ==render 'home/top_header'
+        / ヘッダー下部
+        ==render 'home/bottom_header'
+      .header-padding-143
     .container
       .row
         .col-lg-10.offset-lg-1

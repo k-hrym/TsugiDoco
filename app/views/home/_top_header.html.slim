@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
+nav.navbar.navbar-expand-lg.navbar-light.d-none.d-md-flex[style="background-color: #999999;"]
   ul.navbar-nav.mr-auto.nav-right
     li.nav-item
       = link_to root_path,class:"nav-link p-0" do
@@ -21,3 +21,57 @@ nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
         = link_to 'ログイン',new_user_session_path,class:"nav-link text-white"
       li.nav-item
         = link_to '会員登録',new_user_registration_path,class:"nav-link text-white"
+
+nav.navbar.navbar-expand-lg.navbar-light.d-md-none.d-flex[style="background-color: #999999;"]
+  ul.navbar-nav.mx-auto.nav-right
+    li.nav-item
+      a.hamburger.btn.btn-outline-light.text-white
+        i.fas.fa-bars
+
+  ul.navbar-nav.mx-auto.nav-right
+    li.nav-item
+      = link_to root_path,class:"nav-link p-0" do
+        .logo-img
+
+  ul.navbar-nav.ml-auto.nav-right
+    li.nav-item
+      a.search-menu.btn.btn-outline-light.text-white
+        i.fas.fa-search
+
+.hamburger-menu
+  nav.hamburger-gnav
+    .hamburger-gnav__wrap
+      .hamburger-gnav__menu
+        -if user_signed_in?
+          .hamburger-gnav__menu__item
+            =link_to user_path(current_user),class:"nav-link" do
+              = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle mr-2"
+              |マイページ
+          .hamburger-gnav__menu__item
+            =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link"
+        -else
+          .hamburger-gnav__menu__item
+            = link_to 'ログイン',new_user_session_path,class:"nav-link"
+          .hamburger-gnav__menu__item
+            = link_to '会員登録',new_user_registration_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'ホーム',root_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'TsugiDocoとは？',about_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'プレイス登録',new_place_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'プレイス一覧',places_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'ルート登録',new_route_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+            =link_to 'ルート一覧',routes_path,class:"nav-link"
+        .hamburger-gnav__menu__item
+
+        .hamburger-gnav__menu__item
+
+        / クローズボタン
+        a.close.hamburger-close
+          span.hamburger-close__line.hamburger-close__line--top
+          span.hamburger-close__line.hamburger-close__line--bottom
+
