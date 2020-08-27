@@ -1,0 +1,23 @@
+.container-fluid.main-image
+  .row.mt-0.justify-content-center.main-image__content
+    .col-lg-3.main-image__text
+      div
+        h4
+          b 「次、どこ行こうか」
+        br
+        |  どんな所・順番で回ったかをシェアしよう。
+        br
+        |  デート、食べ歩き、はしご酒....
+        br
+        |  あなたは街をどう歩きますか？
+    .col-2.col-lg-0
+    .col-lg-3.main-image__text
+      div
+        h4
+          b さあ、はじめよう
+        br
+        -if user_signed_in?
+          = link_to 'ルートを投稿',new_route_path,class:"nav-link btn btn-sm btn-light form-control"
+        -else
+          = link_to 'ログイン',new_user_session_path,class:"nav-link btn btn-sm btn-outline-light mb-2"
+          = link_to '会員登録',new_user_registration_path,class:"nav-link btn btn-sm btn-outline-light"

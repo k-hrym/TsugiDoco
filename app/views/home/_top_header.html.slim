@@ -1,0 +1,23 @@
+nav.navbar.navbar-expand-lg.navbar-light[style="background-color: #999999;"]
+  ul.navbar-nav.mr-auto.nav-right
+    li.nav-item
+      = link_to root_path,class:"nav-link p-0" do
+        .logo-img
+
+  ul.navbar-nav.ml-auto.nav-right
+    li.nav-item.m-0.mr-4
+      a.search-menu.btn.btn-outline-light.text-white
+        i.fas.fa-search-location
+        |検索する
+
+    -if user_signed_in?
+      li.nav-item
+        =link_to user_path(current_user) do
+          = attachment_image_tag current_user,:profile_image,:fill,40,40,fallback: 'no_image.jpg',size: '40x40',class:"rounded-circle"
+      li.nav-item
+        =link_to 'ログアウト',destroy_user_session_path,method: :delete,class:"nav-link text-white"
+    -else
+      li.nav-item
+        = link_to 'ログイン',new_user_session_path,class:"nav-link text-white"
+      li.nav-item
+        = link_to '会員登録',new_user_registration_path,class:"nav-link text-white"
