@@ -4,6 +4,10 @@ class PlaceImage < ApplicationRecord
 
   has_many :tags
 
+  # VisionAPIを用いてplace_imageにタグを付与
+  after_save :create_tag
+  after_update :create_tag
+
   # validates :image_id,presence: true
 
   attachment :image
