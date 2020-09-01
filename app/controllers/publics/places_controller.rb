@@ -39,7 +39,9 @@ class Publics::PlacesController < ApplicationController
 
   def update
     # place_images.newで作成しておくとupdateで一緒に保存される。
-    @place.add_place_images(params[:place][:place_images_images],current_user)
+    unless params[:place][:place_images_images].nil?
+      @place.add_place_images(params[:place][:place_images_images],current_user)
+    end
     if @place.update(place_params_without_images)
       redirect_to @place
       flash[:notice] = "保存しました"
