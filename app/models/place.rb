@@ -70,4 +70,14 @@ class Place < ApplicationRecord
   def with_tags
     self.tags.pluck(:name).group_by{|e| e}.sort_by{|_,v|-v.size}.map(&:first)
   end
+
+  # 既存のPlaceに画像を追加するときだけ使うメソッド
+  def add_place_images(params,user)
+    params.each do |image|
+      # Refileで複数アップロードするとパラメーター最初に[]が入ってしまうため、はじく
+      unless image == "[]"
+        self.place_images.new(image: image,user_id: user.id)
+      end
+    end
+  end
 end
