@@ -12,11 +12,6 @@ class Publics::PlacesController < ApplicationController
     @place = Place.new(place_params)
     @place.place_images.map{|pi| pi.user = current_user} # PlaceImageのuser_idに値を渡す
     if @place.save
-      # VisionAPIを用いてplace_imageにタグを付与
-      @place.place_images.each do |place_image|
-        place_image.create_tag
-      end
-
       redirect_to @place
       flash[:notice] = "保存しました"
     else
@@ -29,22 +24,13 @@ class Publics::PlacesController < ApplicationController
   end
 
   def show
+    # 次、どこ行く？に表示するplaceをspotsから取得
     spots = Spot.where(place_id: @place.id)
-    # @placeに紐づくSpotが登録されているかを確認
-    unless spots.nil?
-      #あればその次にいったSpotを配列にして返す
-      @next = spots.map do |spot|
-        next_spots = []
-        route_spots = spot.route.spots
-        route_spots.find_by(order: spot.order + 1)
-      end
-      @next_spots = @next.compact #nilは含めない
-    end
-
+    @next_spots = Spot.find_next_spots(spots)
     # アップロードされている画像にタグ付されたタグを抽出して先頭から5個を渡す。
     @tags = @place.with_tags.take(5)
-
-    gon.place = @place #map表示用の変数を定義
+    # map表示用の変数を定義
+    gon.place = @place
   end
 
   def edit
@@ -52,7 +38,11 @@ class Publics::PlacesController < ApplicationController
   end
 
   def update
-    if @place.update(place_params_without_images) && PlaceImage.add_place_images(params[:place][:place_images_images],@place,current_user)
+    # place_images.newで作成しておくとupdateで一緒に保存される。
+    unless params[:place][:place_images_images].nil?
+      @place.add_place_images(params[:place][:place_images_images],current_user)
+    end
+    if @place.update(place_params_without_images)
       redirect_to @place
       flash[:notice] = "保存しました"
     else

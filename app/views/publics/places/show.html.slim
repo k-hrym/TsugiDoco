@@ -20,7 +20,7 @@
       -@tags.each do |tag|
         span.place__tag=tag
 
-    .row.justify-content-center
+    .row.justify-content-center.justify-content-md-start
       - @place.place_images.each do |image|
         =link_to attachment_url(image,:image),class:"col-6 col-md-4 col-lg-auto p-0",'data-lightbox': image do
           = attachment_image_tag image,:image,:fill,130,130,class:"m-1"
@@ -71,12 +71,11 @@
     h5
       b 次、どこ行く？
     p みんなが行ったプレイス
-
-    -if @next_spots && @next_spots != [nil]
+    -if @next_spots.nil? || @next_spots.blank? || @next_spots == [nil]
+      p まだ登録されていません
+    -else
       -@next_spots.each do |spot|
         =link_to place_path(spot.place) do
           .place__next-spot
             =attachment_image_tag spot.place.place_images.sample,:image,:fill,150,90,fallback: 'no_image.jpg',size: '150x90',class:"place__next-spot--image"
             p=spot.place.name
-    -else
-      p 登録されていません

@@ -13,7 +13,10 @@ class Admins::PlacesController < ApplicationController
   def update
     @genres = Genre.only_valid
     @place = Place.find(params[:id])
-    if @place.update(place_params_without_images) && PlaceImage.add_place_images(params[:place][:place_images_images],@place,current_user)
+    unless params[:place][:place_images_images].nil?
+      @place.add_place_images(params[:place][:place_images_images],User.first)
+    end
+    if @place.update(place_params_without_images)
       redirect_to admins_places_path
       flash[:notice] = "保存しました"
     else
