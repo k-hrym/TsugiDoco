@@ -29,6 +29,27 @@ https://tsugidoco.work/
 - お店の情報をもっと知って欲しいから書き足しておこう。  
 
 ## 機能一覧
+![ルート表示画面](https://user-images.githubusercontent.com/63027881/92236612-b38ac800-eef0-11ea-83c5-0f01d7561c2b.png)
+- オートコンプリート機能
+  - ルートの投稿画面でスポットを登録する際、データベースに保存されているプレイスのnameと一致する候補を表示します。
+- マップ表示
+  - プレイスの詳細画面に登録住所の地図を表示します。
+- ルート表示
+  - ルートの詳細画面で、紐づけられたスポットを結んだ徒歩でのルートを表示。
+- つぎにいくとこ候補表示
+  - あるプレイスの後に他のユーザーが訪れた場所を表示して提案。
+- 検索機能
+  - 名前、タイトル、住所を利用したプレイス、ルートの検索
+  - 似ている画像が登録されているプレイスをVisionAPIを用いて検索
+- マッチング（フォロー）機能
+- ブックマーク（いった、いきたい）機能
+- いいね機能
+- 画像の拡大プレビュー表示機能
+- レスポンシブデザイン
+
+- csvファイルによるプレイス一括登録機能（管理者権限）
+
+- その他詳細機能の一覧はこちら
 https://docs.google.com/spreadsheets/d/11BxktMnu3jaWmELXdUGlKXVrmQoiVLTQCAmwMqRlrXs/edit?usp=sharing  
 
 ## 環境
@@ -50,7 +71,7 @@ Capistrano
 Google MapAPI、Geocoding API  
 Vision API  
 HTTPS接続  
-
+Rspec  
 
 ## ER図
 https://drive.google.com/file/d/1cNZY019o9EwdUIYHde4c8KzaSYt99uDt/view?usp=sharing
