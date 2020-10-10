@@ -11,9 +11,6 @@
         |  あなたは街をどう歩きますか？
     .col-0.col-md-2
     .col-md-4.main-image__text.d-flex.flex-column.justify-content-center
-        h4
-          b さあ、はじめよう
-        br
         -if user_signed_in?
           = link_to 'ルートを投稿',new_route_path,class:"nav-link btn btn-sm btn-light form-control"
         -else
