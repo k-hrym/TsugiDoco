@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     registrations: 'publics/registrations'
   }
 
+  devise_scope :user do
+    post 'guest_sign_in', to: 'publics/sessions#new_guest'
+  end
+
   scope module: :publics do
     get 'users/routes' => 'users#routes',as: 'user_routes'
     patch 'users/:id/hide' => 'users#hide',as: 'users_hide'
@@ -47,5 +51,6 @@ Rails.application.routes.draw do
 
   root to: 'home#top'
   get 'about' => 'home#about'
+  post 'guest_sign_in', to: 'home#new_guest'
 
 end
